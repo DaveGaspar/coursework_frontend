@@ -14,7 +14,7 @@ function navItems(user) {
     { route: 'live', key: 'nav.watchLive', icon: 'radio' },
     { route: 'tickets', key: 'nav.buyTickets', icon: 'ticket' },
   ];
-  if (isAdmin(user)) items.push({ route: 'adminTeams', key: 'nav.admin', icon: 'shield', section: 'admin/' });
+  if (isAdmin(user)) items.push({ route: 'adminTeams', key: 'nav.admin', icon: 'shield', section: 'pages/Admin/' });
   return items;
 }
 

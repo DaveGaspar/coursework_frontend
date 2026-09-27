@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const MAX_LINES = 500;
 const CODE_EXTENSIONS = new Set(['.html', '.css', '.js', '.mjs']);
-const IGNORED_DIRS = new Set(['.git', 'node_modules', '.claude', '.lighthouse', '.vscode', '_dev']);
+const IGNORED_DIRS = new Set(['.git', 'node_modules', '.claude', '.lighthouse', '.vscode']);
 // Shared building blocks may be longer.
 const EXEMPT = [
   /^styles\/index\.css$/,

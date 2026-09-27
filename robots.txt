@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Disallow: /account.html
-Disallow: /checkout.html
-Disallow: /styleguide.html
-Disallow: /tools/

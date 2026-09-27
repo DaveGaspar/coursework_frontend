@@ -1,5 +1,5 @@
 # Fallback web server for Windows PCs without Node.js (uses only built-in PowerShell).
-# Usage: powershell -ExecutionPolicy Bypass -File tools\serve.ps1 [-Port 3000] [-Open]
+# Usage: powershell -ExecutionPolicy Bypass -File server\serve.ps1 [-Port 3000] [-Open]
 param([int]$Port = 3000, [switch]$Open)
 
 $root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
@@ -42,7 +42,7 @@ try {
       $status = 200
       if ($hidden -or -not $file.StartsWith($root + '\') -or -not [System.IO.File]::Exists($file)) {
         $status = 404
-        $file = Join-Path $root '404.html'
+        $file = Join-Path $root 'pages\NotFound\NotFound.html'
       }
       if ([System.IO.File]::Exists($file)) {
         $bytes = [System.IO.File]::ReadAllBytes($file)

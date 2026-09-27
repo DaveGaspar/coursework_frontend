@@ -1,15 +1,16 @@
-// Local web server for Sports Live. Needs only Node.js (no npm install).
-//   node server.js              → http://localhost:3000
-//   node server.js --open       → also opens the browser
-//   node server.js --port 4000  → another port
-//   node server.js --host 0.0.0.0 → reachable from other devices on the network
+// Local web server for Sports Live. Needs only Node.js (no npm install). Run from the project folder:
+//   node server/server.js              → http://localhost:3000
+//   node server/server.js --open       → also opens the browser
+//   node server/server.js --port 4000  → another port
+//   node server/server.js --host 0.0.0.0 → reachable from other devices on the network
 import { exec } from 'node:child_process';
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = fileURLToPath(new URL('.', import.meta.url));
+const ROOT = fileURLToPath(new URL('../', import.meta.url));
+const NOT_FOUND_PAGE = join(ROOT, 'pages', 'NotFound', 'NotFound.html');
 const args = process.argv.slice(2);
 const option = (name) => {
   const i = args.indexOf(name);
@@ -63,7 +64,7 @@ const server = createServer(async (req, res) => {
     file = null;
   }
   const status = file ? 200 : 404;
-  file ??= join(ROOT, '404.html');
+  file ??= NOT_FOUND_PAGE;
   try {
     const body = await readFile(file);
     res.writeHead(status, {

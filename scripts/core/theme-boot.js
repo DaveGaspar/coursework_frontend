@@ -24,7 +24,7 @@
       box.setAttribute('role', 'alert');
       [
         'This site must be opened through the local server.',
-        'Windows: double-click start.bat. Any system with Node.js: run "node server.js" in the project folder.',
+        'Windows: double-click start.bat. Any system with Node.js: run "node server/server.js" in the project folder.',
         'Then open http://localhost:3000',
       ].forEach(function (text) {
         var p = document.createElement('p');

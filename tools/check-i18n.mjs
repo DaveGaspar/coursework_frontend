@@ -74,7 +74,7 @@ async function main() {
 
   const files = (await walk(ROOT))
     .map((file) => ({ file, rel: relative(ROOT, file).split(sep).join('/') }))
-    .filter(({ rel }) => ['.html', '.js'].includes(extname(rel)) && !rel.startsWith('tools/') && !rel.startsWith('docs/') && rel !== 'preview.html');
+    .filter(({ rel }) => ['.html', '.js'].includes(extname(rel)) && !rel.startsWith('tools/') && !rel.startsWith('docs/'));
 
   let refs = 0;
   for (const { file, rel } of files) {

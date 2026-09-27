@@ -8,15 +8,15 @@ export function assetUrl(path) {
 
 const PAGES = {
   home: 'index.html',
-  live: 'live.html',
-  tickets: 'tickets.html',
-  checkout: 'checkout.html',
-  signin: 'signin.html',
-  signup: 'signup.html',
-  account: 'account.html',
-  adminTeams: 'admin/teams.html',
-  adminMatches: 'admin/matches.html',
-  adminReports: 'admin/reports.html',
+  live: 'pages/Live/Live.html',
+  tickets: 'pages/Tickets/Tickets.html',
+  checkout: 'pages/Checkout/Checkout.html',
+  signin: 'pages/Auth/SignIn.html',
+  signup: 'pages/Auth/SignUp.html',
+  account: 'pages/Account/Account.html',
+  adminTeams: 'pages/Admin/Teams.html',
+  adminMatches: 'pages/Admin/Matches.html',
+  adminReports: 'pages/Admin/Reports.html',
 };
 export const ROUTES = Object.fromEntries(Object.entries(PAGES).map(([name, file]) => [name, BASE_PATH + file]));
 

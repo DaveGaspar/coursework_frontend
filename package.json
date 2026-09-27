@@ -5,8 +5,8 @@
   "description": "Sports Live: live sports streaming and match tickets (coursework frontend)",
   "type": "module",
   "scripts": {
-    "start": "node server.js --open",
-    "serve": "node server.js",
+    "start": "node server/server.js --open",
+    "serve": "node server/server.js",
     "check": "node tools/check-lines.mjs && node tools/check-i18n.mjs",
     "build:sprite": "node tools/build-sprite.mjs",
     "build:brand": "node tools/render-brand.mjs"

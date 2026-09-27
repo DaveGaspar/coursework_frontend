@@ -34,7 +34,7 @@ the local server.
 3. Start the server:
 
    ```bash
-   node server.js --open
+   node server/server.js --open
    ```
 
    `npm start` does the same thing. No `npm install` is needed because the project has no dependencies.
@@ -57,9 +57,9 @@ files with the wrong type, and the page stays blank.
 
 ### Port 3000 is busy?
 
-`start.bat` and `server.js` automatically try 3001, 3002 and so on, and print the address they used.
-To pick a port yourself, run `node server.js --port 4000`. To open the site from a phone on the same
-Wi-Fi, run `node server.js --host 0.0.0.0` and visit `http://<your-computer-ip>:3000`.
+`start.bat` and `server/server.js` automatically try 3001, 3002 and so on, and print the address they used.
+To pick a port yourself, run `node server/server.js --port 4000`. To open the site from a phone on the same
+Wi-Fi, run `node server/server.js --host 0.0.0.0` and visit `http://<your-computer-ip>:3000`.
 
 ### Internet connection
 
@@ -88,22 +88,24 @@ To start over with fresh data, open the browser's developer tools (`F12`) → **
 ## Project structure
 
 ```
-index.html, tickets.html, checkout.html,   the pages
-live.html, signin.html, signup.html,
-account.html, 404.html
-admin/                                     admin pages (teams, matches, reports)
-components/<Name>/                         reusable UI pieces: <Name>.html, <Name>.css, <Name>.js
-pages/<Name>/                              page-specific CSS and JS
-styles/index.css                           design tokens (colours, spacing, fonts), base styles, layout
-styles/components.css                      loads every component stylesheet
-scripts/core/                              helpers: config, HTTP, cache, formatting, validation, theme
-scripts/data/                              data layer: repositories, public API clients, local store
-scripts/i18n/                              translations engine (English and Armenian)
-assets/                                    fonts, icons, images, translations.json
-docs/API.md                                REST API the backend team needs to build
-server.js                                  local web server (Node.js)
-start.bat, tools/serve.ps1                 Windows launcher and no-install server
-tools/                                     developer checks
+index.html            the home page; the site starts here
+start.bat             double-click to run the site on Windows
+package.json          Node.js settings: start and check commands (no packages)
+pages/<Name>/         every other page: <Name>.html with its own CSS and JS
+  Auth/               sign in and sign up
+  Admin/              teams, matches and reports (admins only)
+  NotFound/           the "page not found" page
+components/<Name>/    reusable UI pieces: <Name>.html, <Name>.css, <Name>.js
+styles/               index.css (colours, spacing, fonts, base styles), components.css
+scripts/              shared JavaScript
+  core/               helpers: settings, requests, cache, formatting, validation, theme
+  data/               data layer: repositories, public API clients, browser storage
+  i18n/               translation engine (English and Armenian)
+  services/           sign-in state, live score refresh, match text helpers
+assets/               fonts, icons, images, translations.json, manifest
+server/               server.js (Node.js) and serve.ps1 (Windows, no install)
+tools/                developer checks and asset builders (need Node.js)
+docs/API.md           the REST API the backend team needs to build
 ```
 
 ## Data sources

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sports Live</title>
+  <meta name="description" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sports Live">
+  <meta property="og:title" content="Sports Live">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="../../assets/img/og-image.png">
+  <meta name="theme-color" content="#F3EFE4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="../../assets/manifest.webmanifest">
+  <link rel="preload" href="../../assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/barlow-condensed-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="../../styles/index.css">
+  <link rel="stylesheet" href="../../styles/components.css">
+  <link rel="stylesheet" href="Live.css">
+  <script src="../../scripts/core/theme-boot.js"></script>
+  <script type="module" src="Live.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skipToContent"></a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main" class="page" tabindex="-1">
+    <div class="container">
+      <div class="live" id="live-loading" aria-busy="true">
+        <span class="skeleton player" aria-hidden="true"></span>
+      </div>
+
+      <div id="live-problem" hidden></div>
+
+      <div class="live" id="live" hidden>
+        <div class="player on-night live__player" id="player"></div>
+
+        <section class="card live__score" aria-labelledby="match-title">
+          <h1 class="visually-hidden" id="match-title"></h1>
+          <div class="scoreboard">
+            <div class="scoreboard__team scoreboard__team--home" id="home"></div>
+            <div class="scoreboard__score" id="score"></div>
+            <div class="scoreboard__team scoreboard__team--away" id="away"></div>
+            <div class="scoreboard__meta" id="scoreboard-meta"></div>
+          </div>
+        </section>
+
+        <div class="live__chat" id="chat"></div>
+
+        <section class="card card--accent live__info" aria-labelledby="info-title">
+          <h2 class="h3" id="info-title" data-i18n="live.info.title"></h2>
+          <dl class="info-list">
+            <div><dt><svg data-icon="map-pin"></svg><span data-i18n="live.info.venue"></span></dt><dd id="info-venue"></dd></div>
+            <div><dt><svg data-icon="calendar"></svg><span data-i18n="live.info.dateTime"></span></dt><dd id="info-date"></dd></div>
+            <div><dt><svg data-icon="users"></svg><span data-i18n="live.info.attendance"></span></dt><dd id="info-attendance"></dd></div>
+            <div><dt><svg data-icon="flag"></svg><span data-i18n="live.info.referee"></span></dt><dd id="info-referee"></dd></div>
+          </dl>
+        </section>
+
+        <section class="card live__others" aria-labelledby="others-title">
+          <h2 class="h3" id="others-title" data-i18n="live.others.title"></h2>
+          <ul class="others" id="others" role="list"></ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer on-night"></footer>
+</body>
+</html>

@@ -21,6 +21,11 @@ export function liveLabel(match) {
   return match.live_minute ? t('common.minute', { minute: match.live_minute }) : t('status.live');
 }
 
+// Just the clock, for places that already show a Live badge. Empty when the minute is unknown.
+export function liveClock(match) {
+  return match.live_minute || match.live_period === 'HT' ? liveLabel(match) : '';
+}
+
 export function scoreLabel(match) {
   return t('common.score', { home: match.home_score ?? 0, away: match.away_score ?? 0 });
 }

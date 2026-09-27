@@ -1,0 +1,49 @@
+<template id="chat">
+  <section class="card chat" aria-labelledby="chat-title">
+    <header class="chat__header">
+      <h2 class="chat__title" id="chat-title">
+        <svg data-icon="message-circle"></svg>
+        <span data-i18n="live.chat.title"></span>
+      </h2>
+    </header>
+    <div class="chat__viewport">
+      <ol class="chat__list" data-ref="list" tabindex="0" aria-labelledby="chat-title">
+        <li class="chat__empty" data-ref="empty" data-i18n="live.chat.empty"></li>
+      </ol>
+      <button class="btn btn--primary btn--sm chat__new" type="button" data-ref="newPill" hidden>
+        <span data-i18n="live.chat.newMessages"></span>
+        <svg class="icon--sm" data-icon="arrow-down"></svg>
+      </button>
+    </div>
+    <form class="chat__composer" data-ref="composer" novalidate hidden>
+      <div class="field">
+        <label class="visually-hidden" for="chat-input" data-i18n="live.chat.label"></label>
+        <input class="input" id="chat-input" name="text" maxlength="280" autocomplete="off" enterkeyhint="send" data-i18n-attr="placeholder:live.chat.placeholder">
+      </div>
+      <button class="btn btn--primary btn--icon" type="submit" data-i18n-attr="aria-label:live.chat.send">
+        <svg data-icon="send"></svg>
+      </button>
+    </form>
+    <p class="chat__signin" data-ref="signin" hidden>
+      <svg class="icon--sm" data-icon="lock"></svg>
+      <a class="btn btn--secondary btn--sm" data-ref="signinLink" data-i18n="live.chat.signIn"></a>
+    </p>
+  </section>
+</template>
+
+<template id="chat-message">
+  <li class="chat-msg">
+    <span data-ref="avatar"></span>
+    <div class="chat-msg__content">
+      <p class="chat-msg__head">
+        <span class="chat-msg__name" data-ref="name"></span>
+        <time class="chat-msg__time" data-ref="time"></time>
+      </p>
+      <p class="chat-msg__text" data-ref="text"></p>
+    </div>
+  </li>
+</template>
+
+<template id="chat-system">
+  <li class="chat-msg chat-msg--system"></li>
+</template>

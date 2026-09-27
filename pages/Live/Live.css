@@ -1,0 +1,103 @@
+/* Mobile order: player, scoreboard, chat, match info, other games. */
+.live {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "player" "score" "chat" "info" "others";
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .live {
+    gap: var(--space-6);
+    grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+    grid-template-areas: "player chat" "score chat" "info others";
+  }
+}
+.live__player { grid-area: player; }
+.live__score { grid-area: score; }
+.live__chat { grid-area: chat; }
+.live__info { grid-area: info; }
+.live__others { grid-area: others; }
+.live__chat > .chat { height: 100%; }
+
+.player {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 15rem;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-night-bg);
+  color: var(--color-on-night);
+}
+.player__frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.player__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.player__content {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  padding: var(--space-5);
+  background: var(--overlay-night);
+  text-align: center;
+}
+.player__eyebrow { color: var(--color-on-night-muted); }
+.player__score {
+  font-family: var(--font-display);
+  font-size: var(--text-display-lg);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+@media (min-width: 640px) {
+  .player__score { font-size: var(--text-display-xl); }
+}
+.player__credit { position: absolute; inset-block-end: var(--space-2); inset-inline-end: var(--space-3); color: var(--color-on-night-muted); }
+
+.goals { display: flex; flex-direction: column; gap: var(--space-1); max-height: 7.5rem; overflow-y: auto; padding: 0; list-style: none; font-size: var(--text-sm); }
+.goals li { display: flex; align-items: center; justify-content: center; gap: var(--space-2); }
+.goals .num { color: var(--color-on-night-muted); }
+
+.countdown { display: flex; gap: var(--space-3); padding: 0; list-style: none; }
+.countdown li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 4rem;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-thin) solid var(--color-night-border);
+  border-radius: var(--radius-md);
+  background: var(--overlay-night);
+}
+.countdown__value { font-family: var(--font-display); font-size: var(--text-h1); font-weight: var(--weight-bold); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.countdown__unit { color: var(--color-on-night-muted); font-size: var(--text-xs); }
+
+.live__info,
+.live__others { display: flex; flex-direction: column; gap: var(--space-4); }
+.info-list { display: grid; gap: var(--space-3); margin: 0; }
+.info-list > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-1) var(--space-4); }
+.info-list dt { display: flex; align-items: center; gap: var(--space-2); color: var(--color-text-muted); font-size: var(--text-sm); }
+.info-list dd { margin: 0; font-weight: var(--weight-medium); text-align: end; }
+
+.others { display: flex; flex-direction: column; gap: var(--space-1); padding: 0; list-style: none; }
+.other-game {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: var(--control-lg);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  color: inherit;
+  text-decoration: none;
+}
+.other-game:hover { background: var(--color-accent-tint); }
+.other-game__title { font-weight: var(--weight-semibold); }
+.other-game__side { display: flex; align-items: center; gap: var(--space-2); color: var(--color-text-muted); font-size: var(--text-sm); white-space: nowrap; }

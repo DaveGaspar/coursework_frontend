@@ -324,6 +324,53 @@
         "other": "Card"
       }
     },
+    "live": {
+      "player": {
+        "stream": "Live stream: {match}",
+        "highlights": "Highlights: {match}"
+      },
+      "kickoff": "Kick-off {when}",
+      "countdown": {
+        "days": { "one": "day", "other": "days" },
+        "hours": { "one": "hour", "other": "hours" },
+        "minutes": { "one": "minute", "other": "minutes" },
+        "seconds": { "one": "second", "other": "seconds" }
+      },
+      "fullTime": "Full time",
+      "noHighlights": "No highlights for this match yet.",
+      "goals": "Goals",
+      "goal": "Goal",
+      "noGoals": "No goals yet.",
+      "penalty": "(pen.)",
+      "ownGoal": "(o.g.)",
+      "info": {
+        "title": "Match information",
+        "venue": "Venue",
+        "dateTime": "Date and time",
+        "attendance": "Attendance",
+        "referee": "Referee"
+      },
+      "others": {
+        "title": "Other games",
+        "empty": "No other live or upcoming games."
+      },
+      "chat": {
+        "title": "Live chat",
+        "empty": "No messages yet. Say hello!",
+        "newMessages": "New messages",
+        "label": "Message",
+        "placeholder": "Write a message…",
+        "send": "Send message",
+        "signIn": "Sign in to chat",
+        "from": "{name}: {text}",
+        "newCount": { "one": "{count} new message", "other": "{count} new messages" },
+        "goal": "⚽ {minute}′ {scorer} scores — {score}"
+      },
+      "notFoundTitle": "Match not found",
+      "notFoundText": "This match doesn't exist or was removed.",
+      "noneTitle": "Nothing to watch right now",
+      "noneText": "There are no live or upcoming matches. New fixtures appear here as soon as they're announced."
+    },
     "meta": {
       "home": {
         "title": "Sports Live — watch live football and buy match tickets",
@@ -695,6 +742,53 @@
         "amex": "American Express",
         "other": "Քարտ"
       }
+    },
+    "live": {
+      "player": {
+        "stream": "Ուղիղ հեռարձակում՝ {match}",
+        "highlights": "Լավագույն դրվագներ՝ {match}"
+      },
+      "kickoff": "Մեկնարկ՝ {when}",
+      "countdown": {
+        "days": { "one": "օր", "other": "օր" },
+        "hours": { "one": "ժամ", "other": "ժամ" },
+        "minutes": { "one": "րոպե", "other": "րոպե" },
+        "seconds": { "one": "վայրկյան", "other": "վայրկյան" }
+      },
+      "fullTime": "Խաղն ավարտված է",
+      "noHighlights": "Այս խաղի դրվագները դեռ հասանելի չեն։",
+      "goals": "Գոլեր",
+      "goal": "Գոլ",
+      "noGoals": "Գոլեր դեռ չկան։",
+      "penalty": "(11 մ)",
+      "ownGoal": "(ինքնագոլ)",
+      "info": {
+        "title": "Խաղի մասին",
+        "venue": "Մարզադաշտ",
+        "dateTime": "Ամսաթիվ և ժամ",
+        "attendance": "Հանդիսատես",
+        "referee": "Մրցավար"
+      },
+      "others": {
+        "title": "Այլ խաղեր",
+        "empty": "Այլ ուղիղ կամ առաջիկա խաղեր չկան։"
+      },
+      "chat": {
+        "title": "Ուղիղ զրույց",
+        "empty": "Հաղորդագրություններ դեռ չկան։ Ողջունեք բոլորին։",
+        "newMessages": "Նոր հաղորդագրություններ",
+        "label": "Հաղորդագրություն",
+        "placeholder": "Գրեք հաղորդագրություն…",
+        "send": "Ուղարկել",
+        "signIn": "Մուտք գործեք՝ զրուցելու համար",
+        "from": "{name}՝ {text}",
+        "newCount": { "one": "{count} նոր հաղորդագրություն", "other": "{count} նոր հաղորդագրություն" },
+        "goal": "⚽ {minute}′ Գոլ՝ {scorer} — {score}"
+      },
+      "notFoundTitle": "Խաղը չգտնվեց",
+      "notFoundText": "Այս խաղը գոյություն չունի կամ հեռացվել է։",
+      "noneTitle": "Այս պահին դիտելու խաղ չկա",
+      "noneText": "Ուղիղ կամ առաջիկա խաղեր չկան։ Նոր խաղերն այստեղ կհայտնվեն հայտարարվելուն պես։"
     },
     "meta": {
       "home": {

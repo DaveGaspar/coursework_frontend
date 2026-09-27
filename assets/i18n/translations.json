@@ -263,6 +263,67 @@
       "noneTitle": "No matches on sale right now",
       "noneText": "New fixtures appear here as soon as they're announced."
     },
+    "checkout": {
+      "title": "Checkout",
+      "back": "Back to matches",
+      "steps": {
+        "label": "Checkout progress",
+        "match": "Match",
+        "payment": "Payment",
+        "confirmation": "Confirmation",
+        "done": "(completed)"
+      },
+      "summary": "Order summary",
+      "tickets": "Tickets",
+      "qtyLess": "Fewer tickets",
+      "qtyMore": "More tickets",
+      "unitLine": "{count} × {price}",
+      "total": "Total",
+      "maxNote": {
+        "one": "You can buy up to {count} ticket in this order.",
+        "other": "You can buy up to {count} tickets in this order."
+      },
+      "payment": "Payment",
+      "testMode": "Test mode: no real money is charged. Use a test card such as 4242 4242 4242 4242.",
+      "payWith": "Pay with",
+      "pay": "Pay {amount}",
+      "paying": "Paying…",
+      "notFoundTitle": "Choose a match first",
+      "notFoundText": "We couldn't find this match. Pick one from the matches on sale.",
+      "unavailableTitle": "Tickets aren't on sale",
+      "unavailableText": "This match has sold out or has already started.",
+      "chooseMatch": "Choose a match",
+      "confirmTitle": "You're going to the match!",
+      "confirmText": "Your tickets are booked. You'll find them in My account.",
+      "orderNumber": "Order #{id}",
+      "quantityLine": {
+        "one": "{count} ticket",
+        "other": "{count} tickets"
+      },
+      "paidWith": "{brand} ending in {last4}",
+      "viewTickets": "View my tickets"
+    },
+    "cards": {
+      "number": "Card number",
+      "expiry": "Expiry date",
+      "expiryPlaceholder": "MM/YY",
+      "cvv": "Security code (CVV)",
+      "cvvHelpLabel": "What is the security code?",
+      "cvvHelp": "The 3 digits on the back of your card. American Express cards have 4 digits on the front.",
+      "name": "Name on card",
+      "save": "Save this card for next time",
+      "secureNote": "We only keep the last 4 digits. The full number and security code are never stored.",
+      "useNew": "Use a new card",
+      "endingIn": "Card ending in {last4}",
+      "meta": "Expires {expiry} · {name}",
+      "default": "Default",
+      "brands": {
+        "visa": "Visa",
+        "mastercard": "Mastercard",
+        "amex": "American Express",
+        "other": "Card"
+      }
+    },
     "meta": {
       "home": {
         "title": "Sports Live — watch live football and buy match tickets",
@@ -573,6 +634,67 @@
       "emptyText": "Փորձեք այլ ամսաթիվ կամ լիգա, կամ մաքրեք զտիչները։",
       "noneTitle": "Այս պահին վաճառքում խաղեր չկան",
       "noneText": "Նոր խաղերն այստեղ կհայտնվեն հայտարարվելուն պես։"
+    },
+    "checkout": {
+      "title": "Պատվերի ձևակերպում",
+      "back": "Վերադառնալ խաղերին",
+      "steps": {
+        "label": "Պատվերի փուլերը",
+        "match": "Խաղ",
+        "payment": "Վճարում",
+        "confirmation": "Հաստատում",
+        "done": "(ավարտված)"
+      },
+      "summary": "Պատվերի ամփոփում",
+      "tickets": "Տոմսեր",
+      "qtyLess": "Ավելի քիչ տոմս",
+      "qtyMore": "Ավելի շատ տոմս",
+      "unitLine": "{count} × {price}",
+      "total": "Ընդամենը",
+      "maxNote": {
+        "one": "Այս պատվերով կարող եք գնել առավելագույնը {count} տոմս։",
+        "other": "Այս պատվերով կարող եք գնել առավելագույնը {count} տոմս։"
+      },
+      "payment": "Վճարում",
+      "testMode": "Թեստային ռեժիմ․ իրական գումար չի գանձվում։ Օգտագործեք թեստային քարտ, օրինակ՝ 4242 4242 4242 4242։",
+      "payWith": "Վճարման եղանակը",
+      "pay": "Վճարել {amount}",
+      "paying": "Վճարվում է…",
+      "notFoundTitle": "Նախ ընտրեք խաղը",
+      "notFoundText": "Այս խաղը չգտնվեց։ Ընտրեք վաճառքում գտնվող խաղերից մեկը։",
+      "unavailableTitle": "Տոմսերը վաճառքում չեն",
+      "unavailableText": "Այս խաղի տոմսերը սպառվել են, կամ խաղն արդեն սկսվել է։",
+      "chooseMatch": "Ընտրել խաղ",
+      "confirmTitle": "Տոմսերը գնված են։",
+      "confirmText": "Ձեր տոմսերն ամրագրված են։ Դրանք կգտնեք «Իմ հաշիվը» բաժնում։",
+      "orderNumber": "Պատվեր №{id}",
+      "quantityLine": {
+        "one": "{count} տոմս",
+        "other": "{count} տոմս"
+      },
+      "paidWith": "{brand}, վերջին թվանշանները՝ {last4}",
+      "viewTickets": "Դիտել իմ տոմսերը"
+    },
+    "cards": {
+      "number": "Քարտի համարը",
+      "expiry": "Գործողության ժամկետը",
+      "expiryPlaceholder": "ԱԱ/ՏՏ",
+      "cvv": "Անվտանգության կոդը (CVV)",
+      "cvvHelpLabel": "Ի՞նչ է անվտանգության կոդը",
+      "cvvHelp": "Քարտի հետևի մասի 3 թվանշանները։ American Express քարտերի վրա 4 թվանշանը առջևի մասում է։",
+      "name": "Անունը քարտի վրա",
+      "save": "Պահպանել քարտը հաջորդ անգամվա համար",
+      "secureNote": "Մենք պահում ենք միայն վերջին 4 թվանշանները։ Ամբողջական համարը և անվտանգության կոդը երբեք չեն պահվում։",
+      "useNew": "Օգտագործել նոր քարտ",
+      "endingIn": "Քարտ՝ •••• {last4}",
+      "meta": "Ժամկետը՝ {expiry} · {name}",
+      "default": "Հիմնական",
+      "brands": {
+        "visa": "Visa",
+        "mastercard": "Mastercard",
+        "amex": "American Express",
+        "other": "Քարտ"
+      }
     },
     "meta": {
       "home": {

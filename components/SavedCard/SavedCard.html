@@ -1,0 +1,32 @@
+<template id="saved-card">
+  <label class="saved-card">
+    <input class="saved-card__radio" type="radio" data-ref="radio">
+    <span class="saved-card__brand" data-ref="brand"></span>
+    <span class="saved-card__info">
+      <span class="saved-card__number" data-ref="number"></span>
+      <span class="saved-card__meta" data-ref="meta"></span>
+    </span>
+    <span class="saved-card__actions" data-ref="actions"></span>
+  </label>
+</template>
+
+<template id="saved-card-item">
+  <div class="saved-card">
+    <span class="saved-card__brand" data-ref="brand"></span>
+    <span class="saved-card__info">
+      <span class="saved-card__number" data-ref="number"></span>
+      <span class="saved-card__meta" data-ref="meta"></span>
+    </span>
+    <span class="saved-card__actions" data-ref="actions"></span>
+  </div>
+</template>
+
+<template id="new-card-option">
+  <label class="saved-card saved-card--new">
+    <input class="saved-card__radio" type="radio" value="new" data-ref="radio">
+    <span class="saved-card__brand"><svg data-icon="plus"></svg></span>
+    <span class="saved-card__info">
+      <span class="saved-card__number" data-i18n="cards.useNew"></span>
+    </span>
+  </label>
+</template>

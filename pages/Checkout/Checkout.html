@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sports Live</title>
+  <meta name="description" content="">
+  <meta name="robots" content="noindex">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sports Live">
+  <meta property="og:title" content="Sports Live">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="../../assets/img/og-image.png">
+  <meta name="theme-color" content="#F3EFE4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="../../assets/manifest.webmanifest">
+  <link rel="preload" href="../../assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/barlow-condensed-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="../../styles/index.css">
+  <link rel="stylesheet" href="../../styles/components.css">
+  <link rel="stylesheet" href="Checkout.css">
+  <script src="../../scripts/core/theme-boot.js"></script>
+  <script type="module" src="Checkout.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skipToContent"></a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main" class="page" tabindex="-1">
+    <div class="container stack stack--lg">
+      <div class="checkout__head">
+        <a class="section__link" data-route="tickets">
+          <svg class="icon--sm" data-icon="arrow-left"></svg>
+          <span data-i18n="checkout.back"></span>
+        </a>
+        <h1 class="h1" data-i18n="checkout.title"></h1>
+        <ol class="stepper" id="stepper" data-i18n-attr="aria-label:checkout.steps.label"></ol>
+      </div>
+
+      <div class="checkout__grid" id="checkout-loading" aria-busy="true">
+        <span class="skeleton skeleton--chart checkout__main" aria-hidden="true"></span>
+        <span class="skeleton skeleton--chart checkout__side" aria-hidden="true"></span>
+      </div>
+
+      <div id="checkout-problem" hidden></div>
+
+      <form class="checkout__grid" id="checkout-form" novalidate hidden>
+        <aside class="card card--accent checkout__side checkout__summary" aria-labelledby="summary-title">
+          <h2 class="h2" id="summary-title" data-i18n="checkout.summary"></h2>
+          <div class="stack stack--sm">
+            <div id="summary-league"></div>
+            <p class="h3" id="summary-match"></p>
+            <ul class="meta-list" role="list">
+              <li><svg data-icon="calendar"></svg><span id="summary-date"></span></li>
+              <li id="summary-venue-row"><svg data-icon="map-pin"></svg><span id="summary-venue"></span></li>
+            </ul>
+          </div>
+          <div class="summary__row">
+            <span class="field__label" id="qty-label" data-i18n="checkout.tickets"></span>
+            <div id="qty"></div>
+          </div>
+          <p class="summary__row muted">
+            <span id="unit-line"></span>
+            <span class="num" id="subtotal"></span>
+          </p>
+          <p class="text-sm muted" id="max-note"></p>
+          <hr class="divider">
+          <p class="summary__total">
+            <span data-i18n="checkout.total"></span>
+            <span class="summary__total-value num" id="total"></span>
+          </p>
+        </aside>
+
+        <section class="card checkout__main checkout__payment" aria-labelledby="payment-title">
+          <h2 class="h2" id="payment-title" data-i18n="checkout.payment"></h2>
+          <div class="form-alert" role="alert"></div>
+          <p class="form-note form-note--test">
+            <svg class="icon--sm" data-icon="info"></svg>
+            <span data-i18n="checkout.testMode"></span>
+          </p>
+          <fieldset class="stack stack--sm">
+            <legend class="field__label" data-i18n="checkout.payWith"></legend>
+            <div class="saved-cards" id="saved-cards"></div>
+          </fieldset>
+          <div class="new-card-panel" id="new-card" hidden></div>
+          <button class="btn btn--primary btn--lg btn--block" id="pay" type="submit">
+            <svg data-icon="lock"></svg>
+            <span id="pay-label"></span>
+          </button>
+        </section>
+      </form>
+
+      <section class="card card--xl confirmation" id="confirmation" aria-labelledby="confirm-title" hidden>
+        <svg class="icon--xl confirmation__icon" data-icon="circle-check"></svg>
+        <h2 class="d-lg" id="confirm-title" tabindex="-1" data-i18n="checkout.confirmTitle"></h2>
+        <p class="lead" data-i18n="checkout.confirmText"></p>
+        <div class="confirmation__ticket">
+          <p class="eyebrow" id="confirm-order"></p>
+          <p class="h3" id="confirm-match"></p>
+          <ul class="meta-list" role="list">
+            <li><svg data-icon="calendar"></svg><span id="confirm-date"></span></li>
+            <li id="confirm-venue-row"><svg data-icon="map-pin"></svg><span id="confirm-venue"></span></li>
+            <li><svg data-icon="ticket"></svg><span id="confirm-quantity"></span></li>
+            <li><svg data-icon="credit-card"></svg><span id="confirm-card"></span></li>
+          </ul>
+          <p class="summary__total">
+            <span data-i18n="checkout.total"></span>
+            <span class="summary__total-value num" id="confirm-total"></span>
+          </p>
+        </div>
+        <div class="cluster">
+          <a class="btn btn--primary btn--lg" data-route="account">
+            <svg data-icon="ticket"></svg>
+            <span data-i18n="checkout.viewTickets"></span>
+          </a>
+          <a class="btn btn--ghost btn--lg" data-route="home" data-i18n="common.backToHome"></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer on-night"></footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<template id="card-form">
+  <div class="card-form">
+    <div class="field">
+      <label class="field__label" for="card-number" data-i18n="cards.number"></label>
+      <div class="field__control field__control--icon field__control--end">
+        <svg class="field__icon" data-icon="credit-card"></svg>
+        <input class="input input--num" id="card-number" name="number" inputmode="numeric" autocomplete="cc-number" maxlength="23" placeholder="1234 5678 9012 3456" required>
+        <span class="field__end" data-ref="brand"></span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label class="field__label" for="card-expiry" data-i18n="cards.expiry"></label>
+        <input class="input input--num" id="card-expiry" name="expiry" inputmode="numeric" autocomplete="cc-exp" maxlength="5" data-i18n-attr="placeholder:cards.expiryPlaceholder" required>
+      </div>
+      <div class="field">
+        <div class="field__label-row">
+          <label class="field__label" for="card-cvv" data-i18n="cards.cvv"></label>
+          <span class="tip">
+            <button class="btn btn--icon btn--sm" type="button" aria-describedby="card-cvv-tip" data-ref="tipButton" data-i18n-attr="aria-label:cards.cvvHelpLabel">
+              <svg class="icon--sm" data-icon="info"></svg>
+            </button>
+            <span class="tip__bubble" id="card-cvv-tip" role="tooltip" data-ref="tip" data-i18n="cards.cvvHelp" hidden></span>
+          </span>
+        </div>
+        <input class="input input--num" id="card-cvv" name="cvv" type="password" inputmode="numeric" autocomplete="cc-csc" maxlength="4" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="card-name" data-i18n="cards.name"></label>
+      <input class="input" id="card-name" name="name" autocomplete="cc-name" autocapitalize="words" spellcheck="false" required>
+    </div>
+
+    <div class="switch" data-ref="saveRow">
+      <button class="switch__track" id="card-save" type="button" role="switch" aria-checked="false" aria-labelledby="card-save-label" data-ref="save"></button>
+      <label class="switch__label" id="card-save-label" for="card-save" data-i18n="cards.save"></label>
+    </div>
+
+    <p class="form-note">
+      <svg class="icon--sm" data-icon="lock"></svg>
+      <span data-i18n="cards.secureNote"></span>
+    </p>
+  </div>
+</template>

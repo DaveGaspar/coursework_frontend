@@ -1,4 +1,4 @@
-import { applyTranslations, t } from '../i18n/i18n.js';
+import { applyTranslations } from '../i18n/i18n.js';
 import { h, icon } from './dom.js';
 import { errorMessageKey } from './errors.js';
 
@@ -12,7 +12,7 @@ export function setBusy(button, busy, busyKey) {
     if (busyKey) {
       label.dataset.idleKey = label.dataset.i18n ?? '';
       label.dataset.i18n = busyKey;
-      label.textContent = t(busyKey);
+      applyTranslations(label);
     }
   } else {
     button.disabled = false;
@@ -20,7 +20,7 @@ export function setBusy(button, busy, busyKey) {
     button.querySelector(':scope > .spinner')?.remove();
     if (label.dataset.idleKey) {
       label.dataset.i18n = label.dataset.idleKey;
-      label.textContent = t(label.dataset.idleKey);
+      applyTranslations(label);
       delete label.dataset.idleKey;
     }
   }

@@ -371,6 +371,25 @@
       "noneTitle": "Nothing to watch right now",
       "noneText": "There are no live or upcoming matches. New fixtures appear here as soon as they're announced."
     },
+    "account": {
+      "tabsLabel": "Account sections",
+      "tickets": "My tickets",
+      "cards": "Saved cards",
+      "noTicketsTitle": "No tickets yet",
+      "noTicketsText": "Tickets you buy appear here.",
+      "noCardsTitle": "No saved cards",
+      "noCardsText": "Add a card to pay faster at checkout.",
+      "addCard": "Add card",
+      "addCardTitle": "Add a card",
+      "cardAdded": "Card added.",
+      "setDefault": "Set as default",
+      "defaultSet": "Default card updated.",
+      "remove": "Remove",
+      "removeLabel": "Remove the card ending in {last4}",
+      "removeTitle": "Remove this card?",
+      "removeText": "The card ending in {last4} will be removed from your account.",
+      "cardRemoved": "Card removed."
+    },
     "meta": {
       "home": {
         "title": "Sports Live — watch live football and buy match tickets",
@@ -789,6 +808,25 @@
       "notFoundText": "Այս խաղը գոյություն չունի կամ հեռացվել է։",
       "noneTitle": "Այս պահին դիտելու խաղ չկա",
       "noneText": "Ուղիղ կամ առաջիկա խաղեր չկան։ Նոր խաղերն այստեղ կհայտնվեն հայտարարվելուն պես։"
+    },
+    "account": {
+      "tabsLabel": "Հաշվի բաժիններ",
+      "tickets": "Իմ տոմսերը",
+      "cards": "Պահպանված քարտեր",
+      "noTicketsTitle": "Տոմսեր դեռ չկան",
+      "noTicketsText": "Ձեր գնած տոմսերը կհայտնվեն այստեղ։",
+      "noCardsTitle": "Պահպանված քարտեր չկան",
+      "noCardsText": "Ավելացրեք քարտ՝ ավելի արագ վճարելու համար։",
+      "addCard": "Ավելացնել քարտ",
+      "addCardTitle": "Նոր քարտ",
+      "cardAdded": "Քարտն ավելացվեց։",
+      "setDefault": "Դարձնել հիմնական",
+      "defaultSet": "Հիմնական քարտը թարմացվեց։",
+      "remove": "Հեռացնել",
+      "removeLabel": "Հեռացնել {last4}-ով ավարտվող քարտը",
+      "removeTitle": "Հեռացնե՞լ այս քարտը",
+      "removeText": "{last4}-ով ավարտվող քարտը կհեռացվի ձեր հաշվից։",
+      "cardRemoved": "Քարտը հեռացվեց։"
     },
     "meta": {
       "home": {

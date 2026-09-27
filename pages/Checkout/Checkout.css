@@ -9,8 +9,6 @@
 .checkout__summary,
 .checkout__payment { display: flex; flex-direction: column; gap: var(--space-5); }
 
-.meta-list { display: flex; flex-direction: column; gap: var(--space-2); list-style: none; padding: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
-.meta-list li { display: flex; align-items: center; gap: var(--space-2); }
 .summary__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); }
 .summary__total { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); font-weight: var(--weight-semibold); }
 .summary__total-value {

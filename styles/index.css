@@ -451,6 +451,8 @@ strong, b { font-weight: var(--weight-semibold); }
 .lead { font-size: var(--text-lg); color: var(--color-text-muted); }
 .credit { font-size: var(--text-xs); color: var(--color-text-muted); }
 .credit a { color: inherit; }
+.meta-list { display: flex; flex-direction: column; gap: var(--space-2); list-style: none; padding: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+.meta-list li { display: flex; align-items: center; gap: var(--space-2); }
 
 /* Utilities */
 .visually-hidden {

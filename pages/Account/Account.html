@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sports Live</title>
+  <meta name="description" content="">
+  <meta name="robots" content="noindex">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sports Live">
+  <meta property="og:title" content="Sports Live">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="../../assets/img/og-image.png">
+  <meta name="theme-color" content="#F3EFE4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="../../assets/manifest.webmanifest">
+  <link rel="preload" href="../../assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/barlow-condensed-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="../../styles/index.css">
+  <link rel="stylesheet" href="../../styles/components.css">
+  <link rel="stylesheet" href="Account.css">
+  <script src="../../scripts/core/theme-boot.js"></script>
+  <script type="module" src="Account.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skipToContent"></a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main" class="page" tabindex="-1">
+    <div class="container stack stack--lg">
+      <header class="account__head">
+        <span id="avatar"></span>
+        <div class="stack stack--sm">
+          <h1 class="h1" id="username"></h1>
+          <p class="muted" id="email"></p>
+        </div>
+      </header>
+
+      <div class="tabs" role="tablist" data-i18n-attr="aria-label:account.tabsLabel">
+        <button class="tabs__item" type="button" role="tab" id="tab-tickets" aria-controls="panel-tickets" data-tab="tickets">
+          <svg data-icon="ticket"></svg>
+          <span data-i18n="account.tickets"></span>
+        </button>
+        <button class="tabs__item" type="button" role="tab" id="tab-cards" aria-controls="panel-cards" data-tab="cards">
+          <svg data-icon="credit-card"></svg>
+          <span data-i18n="account.cards"></span>
+        </button>
+      </div>
+
+      <section id="panel-tickets" role="tabpanel" aria-labelledby="tab-tickets" tabindex="0">
+        <ul class="account-list" id="tickets" role="list" aria-busy="true">
+          <li><span class="skeleton skeleton--row" aria-hidden="true"></span></li>
+          <li><span class="skeleton skeleton--row" aria-hidden="true"></span></li>
+        </ul>
+      </section>
+
+      <section class="stack" id="panel-cards" role="tabpanel" aria-labelledby="tab-cards" tabindex="0" hidden>
+        <div class="section__head">
+          <h2 class="h2" data-i18n="account.cards"></h2>
+          <button class="btn btn--primary" type="button" id="add-card">
+            <svg data-icon="plus"></svg>
+            <span data-i18n="account.addCard"></span>
+          </button>
+        </div>
+        <ul class="saved-cards" id="cards" role="list"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer on-night"></footer>
+</body>
+</html>

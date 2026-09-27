@@ -1,0 +1,68 @@
+// Project root, so the site also works when served from a subfolder.
+const ROOT = new URL('../../', import.meta.url);
+export const BASE_PATH = ROOT.pathname;
+
+export function assetUrl(path) {
+  return new URL(path, ROOT).pathname;
+}
+
+const PAGES = {
+  home: 'index.html',
+  live: 'live.html',
+  tickets: 'tickets.html',
+  checkout: 'checkout.html',
+  signin: 'signin.html',
+  signup: 'signup.html',
+  account: 'account.html',
+  adminTeams: 'admin/teams.html',
+  adminMatches: 'admin/matches.html',
+  adminReports: 'admin/reports.html',
+};
+export const ROUTES = Object.fromEntries(Object.entries(PAGES).map(([name, file]) => [name, BASE_PATH + file]));
+
+export function routeTo(name, params = {}) {
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value !== undefined && value !== null && value !== '') query.set(key, String(value));
+  }
+  const qs = query.toString();
+  return qs ? `${ROUTES[name]}?${qs}` : ROUTES[name];
+}
+
+export function getParam(name) {
+  return new URLSearchParams(location.search).get(name);
+}
+
+export function replaceParams(params) {
+  const url = new URL(location.href);
+  for (const [key, value] of Object.entries(params)) {
+    if (value === undefined || value === null || value === '') url.searchParams.delete(key);
+    else url.searchParams.set(key, String(value));
+  }
+  history.replaceState(history.state, '', `${url.pathname}${url.search}${url.hash}`);
+}
+
+export function normalizePath(path) {
+  let p = path.replace(/\/{2,}/g, '/');
+  if (p.endsWith('/')) p += 'index.html';
+  else if (!/\.[a-z]+$/i.test(p)) p += '.html';
+  return p;
+}
+
+export function isCurrent(href) {
+  return normalizePath(new URL(href, location.origin).pathname) === normalizePath(location.pathname);
+}
+
+export function currentLocation() {
+  return `${location.pathname}${location.search}`;
+}
+
+export function safeNext(next, fallback = ROUTES.home) {
+  if (!next || !next.startsWith('/') || next.startsWith('//') || next.includes('\\')) return fallback;
+  try {
+    const url = new URL(next, location.origin);
+    return url.origin === location.origin ? `${url.pathname}${url.search}${url.hash}` : fallback;
+  } catch {
+    return fallback;
+  }
+}

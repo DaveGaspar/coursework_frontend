@@ -1,0 +1,76 @@
+/* ============================================================
+   Footer — night background, muted text (DESIGN_SYSTEM §12 Home 6)
+   ============================================================ */
+.site-footer {
+  margin-block-start: var(--space-16);
+  padding-block: var(--space-10) var(--space-8);
+  background: var(--night-900);
+  border-block-start: var(--border-thin) solid var(--color-night-border);
+  color: var(--color-on-night-muted);
+  font-size: var(--text-sm);
+}
+.site-footer .brand,
+.site-footer .brand__word { color: var(--color-on-night); }
+.site-footer .brand__word span { color: var(--amber-400); }
+
+.footer__grid { display: grid; gap: var(--space-8); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 768px) {
+  .footer__grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); }
+}
+.footer__about { display: flex; flex-direction: column; gap: var(--space-4); max-width: 26rem; }
+.footer__title {
+  margin-block-end: var(--space-3);
+  color: var(--color-on-night);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+:lang(hy) .footer__title { text-transform: none; letter-spacing: 0; }
+.footer__links { display: flex; flex-direction: column; list-style: none; padding: 0; }
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  color: var(--color-on-night-muted);
+  text-decoration: none;
+}
+.footer__link:hover { color: var(--color-on-night); text-decoration: underline; }
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-block-start: var(--space-8);
+  padding-block-start: var(--space-6);
+  border-block-start: var(--border-thin) solid var(--color-night-border);
+}
+.footer__credits { max-width: var(--size-prose); }
+.footer__credits a { color: inherit; }
+
+/* Theme segmented control on night */
+.theme-switch {
+  display: inline-flex;
+  gap: var(--space-1);
+  padding: calc(var(--space-1) / 2);
+  border-radius: var(--radius-pill);
+  background: var(--color-on-night-hover);
+}
+.theme-switch__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--control-sm);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  color: var(--color-on-night-muted);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+}
+.theme-switch__option:hover { color: var(--color-on-night); }
+.theme-switch__option[aria-pressed="true"] { background: var(--night-600); color: var(--color-on-night); }
+@media (pointer: coarse) {
+  .theme-switch__option { min-height: var(--touch-min); }
+}

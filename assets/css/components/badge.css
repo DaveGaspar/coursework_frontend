@@ -1,0 +1,53 @@
+/* ============================================================
+   Badges and chips (DESIGN_SYSTEM §7.4) — status is never color-only
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--size-badge);
+  padding: 0 calc(var(--space-2) + var(--space-1) / 2);
+  border: var(--border-thin) solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.badge .icon { width: var(--size-icon-sm); height: var(--size-icon-sm); margin-inline-start: calc(var(--space-1) * -0.5); }
+
+.badge--league   { background: var(--color-accent-subtle); color: var(--color-accent-subtle-text); }
+.badge--meta     { background: transparent; border-color: var(--color-border-strong); color: var(--color-text-muted); }
+.badge--low      { background: var(--color-warning-subtle); color: var(--color-warning-text); }
+.badge--live     { background: var(--color-live); color: var(--color-on-solid); }
+.badge--upcoming { background: var(--color-info-subtle); color: var(--color-info); }
+.badge--finished { background: var(--color-surface-sunken); color: var(--color-text-muted); }
+.badge--soldout  { background: var(--color-danger-subtle); color: var(--color-danger); }
+.badge--success  { background: var(--color-success-subtle); color: var(--color-success); }
+.badge--default  { background: var(--color-accent-subtle); color: var(--color-accent-subtle-text); }
+.badge--role     { background: var(--color-surface-sunken); color: var(--color-text); }
+
+/* On night surfaces the meta chip needs light text */
+.on-night .badge--meta { border-color: var(--color-on-night-border); color: var(--color-on-night); }
+.on-night .badge--finished { background: var(--color-on-night-hover); color: var(--color-on-night); }
+
+/* LIVE: pulsing white dot (static under reduced motion) */
+.badge--live::before {
+  content: "";
+  width: var(--size-dot);
+  height: var(--size-dot);
+  flex: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-on-solid);
+  animation: live-pulse var(--duration-pulse) ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .badge--live::before { animation: none; }
+}

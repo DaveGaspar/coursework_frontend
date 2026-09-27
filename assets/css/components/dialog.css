@@ -1,0 +1,59 @@
+/* ============================================================
+   Dialog — native <dialog> (DESIGN_SYSTEM §7.13)
+   ============================================================ */
+.dialog {
+  width: min(100% - 2 * var(--gutter), var(--size-dialog));
+  max-width: none;
+  max-height: calc(100dvh - 2 * var(--space-6));
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+.dialog--wide { width: min(100% - 2 * var(--gutter), var(--size-dialog-wide)); }
+.dialog::backdrop { background: var(--overlay-backdrop); }
+.dialog[open] { animation: dialog-in var(--duration-base) var(--ease-out); }
+.dialog[open]::backdrop { animation: backdrop-in var(--duration-base) var(--ease-out); }
+@keyframes dialog-in {
+  from { opacity: 0; transform: translateY(var(--slide)); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+
+.dialog__form {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 2 * var(--space-6));
+}
+.dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-4) var(--space-3) var(--space-6);
+}
+.dialog__title { font-size: var(--text-h3); font-weight: var(--weight-semibold); line-height: var(--leading-snug); }
+.dialog__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--space-6) var(--space-4);
+  overflow-y: auto;
+}
+.dialog__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6) var(--space-6);
+  border-block-start: var(--border-thin) solid var(--color-border);
+}
+.dialog__message { color: var(--color-text); }
+.dialog__message strong { font-weight: var(--weight-semibold); }
+@media (max-width: 479.98px) {
+  .dialog__footer > .btn { flex: 1 1 auto; }
+}

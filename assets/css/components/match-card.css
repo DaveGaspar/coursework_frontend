@@ -1,0 +1,93 @@
+/* ============================================================
+   Match poster card + horizontal row (DESIGN_SYSTEM §7.6)
+   ============================================================ */
+.poster-row__controls { display: none; gap: var(--space-2); }
+@media (min-width: 1024px) {
+  .poster-row__controls { display: inline-flex; }
+}
+.poster-row__track {
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding: var(--space-1) var(--space-1) var(--space-3);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--space-1);
+  list-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+.poster-row__track > li { flex: none; scroll-snap-align: start; }
+
+.poster {
+  position: relative;
+  display: block;
+  width: var(--size-poster-w-sm);
+  aspect-ratio: 5 / 7;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, var(--night-600), var(--night-900));
+  color: var(--color-on-night);
+  text-decoration: none;
+  transition: box-shadow var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+@media (min-width: 640px) {
+  .poster { width: var(--size-poster-w); }
+}
+.poster:hover { box-shadow: var(--shadow-md); transform: translateY(var(--lift)); text-decoration: none; }
+@media (prefers-reduced-motion: reduce) {
+  .poster:hover { transform: none; }
+}
+.poster:focus-visible { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
+.poster__img {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.poster__fallback {
+  position: absolute;
+  inset: 0 0 30% 0;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: radial-gradient(90% 70% at 50% 35%, var(--glow-amber), transparent 70%);
+}
+.poster__vs {
+  font-family: var(--font-display);
+  font-size: var(--text-vs);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  color: var(--amber-400);
+}
+.poster__fallback .team-logo { --logo-size: var(--size-logo); }
+.poster > .badge {
+  position: absolute;
+  inset-block-start: var(--space-3);
+  inset-inline-start: var(--space-3);
+}
+.poster__caption {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-8) var(--space-3) var(--space-3);
+  background: var(--overlay-poster);
+}
+.poster__title {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+.poster__meta { font-size: var(--text-xs); color: var(--color-on-night-muted); font-variant-numeric: tabular-nums; }

@@ -1,0 +1,90 @@
+<template id="navbar">
+  <div class="container navbar">
+    <a class="brand" data-route="home" data-i18n-attr="aria-label:a11y.homeLink">
+      <svg class="brand__mark" viewBox="0 0 48 32" width="40" height="27" aria-hidden="true">
+        <g fill="none" stroke-width="3" stroke-linecap="round">
+          <path class="brand__lines" d="M3 11h8M1 16h10M3 21h8"/>
+          <path class="brand__waves" d="M35.5 9.5a9 9 0 0 1 0 13M40.5 5a15 15 0 0 1 0 22"/>
+        </g>
+        <path class="brand__play" d="M15 6.6v18.8a1.5 1.5 0 0 0 2.3 1.25l13.9-9.4a1.5 1.5 0 0 0 0-2.5L17.3 5.35A1.5 1.5 0 0 0 15 6.6z"/>
+      </svg>
+      <span class="brand__word" aria-hidden="true">SPORTS<span>LIVE</span></span>
+    </a>
+    <nav class="navbar__nav" data-i18n-attr="aria-label:a11y.mainNav">
+      <ul class="navbar__links" role="list" data-ref="links"></ul>
+    </nav>
+    <div class="navbar__actions">
+      <div class="navbar__lang" data-ref="lang"></div>
+      <div class="account" data-ref="account"></div>
+      <button class="btn btn--icon navbar__menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" data-ref="menuButton" data-i18n-attr="aria-label:nav.openMenu">
+        <svg class="icon--lg" data-icon="menu"></svg>
+      </button>
+    </div>
+  </div>
+</template>
+
+<template id="nav-link">
+  <li><a class="navbar__link"></a></li>
+</template>
+
+<template id="sign-in">
+  <a class="btn btn--secondary navbar__signin" data-route="signin" data-i18n="nav.signIn"></a>
+</template>
+
+<template id="user-menu">
+  <div class="account">
+    <button class="avatar-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="user-menu" data-ref="toggle" data-i18n-attr="aria-label:nav.accountMenu"></button>
+    <div class="menu" id="user-menu" role="menu" hidden data-ref="menu">
+      <div class="menu__header">
+        <span class="menu__name" data-ref="name"></span>
+        <span class="menu__email" data-ref="email"></span>
+      </div>
+      <ul class="menu__list" role="none">
+        <li role="none">
+          <a class="menu__item" role="menuitem" data-route="account">
+            <svg data-icon="user"></svg>
+            <span data-i18n="nav.myAccount"></span>
+          </a>
+        </li>
+        <li role="none" data-ref="adminItem" hidden>
+          <a class="menu__item" role="menuitem" data-route="adminTeams">
+            <svg data-icon="shield"></svg>
+            <span data-i18n="nav.admin"></span>
+          </a>
+        </li>
+        <li role="none">
+          <button class="menu__item" type="button" role="menuitem" data-ref="theme">
+            <svg data-ref="themeIcon" data-icon="monitor"></svg>
+            <span data-i18n="nav.theme"></span>
+            <span class="menu__item-value" data-ref="themeValue"></span>
+          </button>
+        </li>
+        <li role="none"><hr class="menu__sep"></li>
+        <li role="none">
+          <button class="menu__item" type="button" role="menuitem" data-ref="signOut">
+            <svg data-icon="log-out"></svg>
+            <span data-i18n="nav.signOut"></span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<template id="nav-sheet">
+  <div class="nav-sheet" id="nav-sheet" hidden>
+    <ul class="nav-sheet__links" role="list" data-ref="links"></ul>
+    <div class="nav-sheet__row">
+      <span data-i18n="language.label"></span>
+      <div data-ref="lang"></div>
+    </div>
+    <div class="nav-sheet__auth" data-ref="auth" hidden>
+      <a class="btn btn--primary btn--block" data-route="signin" data-i18n="nav.signIn"></a>
+      <a class="btn btn--secondary btn--block" data-route="signup" data-i18n="nav.signUp"></a>
+    </div>
+  </div>
+</template>
+
+<template id="sheet-link">
+  <li><a class="nav-sheet__link"><svg data-icon="house"></svg><span></span></a></li>
+</template>

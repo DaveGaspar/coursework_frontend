@@ -1,0 +1,48 @@
+<template id="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <a class="brand" data-route="home" data-i18n-attr="aria-label:a11y.homeLink">
+          <svg class="brand__mark" viewBox="0 0 48 32" width="40" height="27" aria-hidden="true">
+            <g fill="none" stroke-width="3" stroke-linecap="round">
+              <path class="brand__lines" d="M3 11h8M1 16h10M3 21h8"/>
+              <path class="brand__waves" d="M35.5 9.5a9 9 0 0 1 0 13M40.5 5a15 15 0 0 1 0 22"/>
+            </g>
+            <path class="brand__play" d="M15 6.6v18.8a1.5 1.5 0 0 0 2.3 1.25l13.9-9.4a1.5 1.5 0 0 0 0-2.5L17.3 5.35A1.5 1.5 0 0 0 15 6.6z"/>
+          </svg>
+          <span class="brand__word" aria-hidden="true">SPORTS<span>LIVE</span></span>
+        </a>
+        <p data-i18n="footer.tagline"></p>
+      </div>
+      <nav data-i18n-attr="aria-label:a11y.footerNav">
+        <h2 class="footer__title" data-i18n="footer.explore"></h2>
+        <ul class="footer__links" role="list">
+          <li><a class="footer__link" data-route="home" data-i18n="nav.home"></a></li>
+          <li><a class="footer__link" data-route="live" data-i18n="nav.watchLive"></a></li>
+          <li><a class="footer__link" data-route="tickets" data-i18n="nav.buyTickets"></a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="footer__title" data-i18n="footer.account"></h2>
+        <ul class="footer__links" role="list" data-ref="account"></ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__credits stack stack--sm">
+        <p data-ref="rights" data-i18n="footer.rights"></p>
+        <p>
+          <span data-i18n="footer.sources"></span>:
+          <a href="https://www.openligadb.de" data-i18n="footer.openLigaDb"></a>,
+          <a href="https://www.thesportsdb.com" data-i18n="footer.theSportsDb"></a>,
+          <a href="https://commons.wikimedia.org" data-i18n="footer.wikimedia"></a>.
+          <span data-i18n="footer.credits"></span>
+        </p>
+      </div>
+      <div data-ref="theme"></div>
+    </div>
+  </div>
+</template>
+
+<template id="footer-link">
+  <li><a class="footer__link"></a></li>
+</template>

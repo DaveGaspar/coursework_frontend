@@ -1,0 +1,448 @@
+{
+  "en": {
+    "common": {
+      "loading": "Loading…",
+      "tryAgain": "Try again",
+      "cancel": "Cancel",
+      "close": "Close",
+      "save": "Save",
+      "saveChanges": "Save changes",
+      "delete": "Delete",
+      "edit": "Edit",
+      "seeAll": "See all",
+      "previous": "Previous",
+      "next": "Next",
+      "vs": "vs",
+      "notSet": "Not set",
+      "toBeAnnounced": "To be announced",
+      "backToHome": "Back to home",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password"
+    },
+    "nav": {
+      "home": "Home",
+      "watchLive": "Watch live",
+      "buyTickets": "Buy tickets",
+      "admin": "Admin panel",
+      "signIn": "Sign in",
+      "signUp": "Create account",
+      "signOut": "Sign out",
+      "myAccount": "My account",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "accountMenu": "Account menu",
+      "theme": "Theme"
+    },
+    "language": {
+      "label": "Language",
+      "en": "English",
+      "hy": "Հայերեն"
+    },
+    "theme": {
+      "label": "Theme",
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "footer": {
+      "tagline": "Watch football live, follow every goal and get match tickets in seconds.",
+      "explore": "Explore",
+      "account": "Account",
+      "sources": "Data sources",
+      "openLigaDb": "OpenLigaDB",
+      "theSportsDb": "TheSportsDB",
+      "wikimedia": "Wikimedia Commons",
+      "rights": "© {year} Sports Live. University coursework project.",
+      "credits": "Match data, team badges and stadium photos belong to their owners and are used through public APIs."
+    },
+    "a11y": {
+      "skipToContent": "Skip to content",
+      "homeLink": "Sports Live, home",
+      "mainNav": "Main",
+      "footerNav": "Footer",
+      "teamLogo": "{team} logo",
+      "newTab": "{label} (opens in a new tab)",
+      "dismiss": "Dismiss notification"
+    },
+    "status": {
+      "live": "Live",
+      "upcoming": "Upcoming",
+      "finished": "Finished"
+    },
+    "positions": {
+      "Goalkeeper": "Goalkeeper",
+      "Defender": "Defender",
+      "Midfielder": "Midfielder",
+      "Forward": "Forward"
+    },
+    "roles": {
+      "viewer": "Viewer",
+      "admin": "Admin"
+    },
+    "notice": {
+      "stale": "Showing saved data. Some sources can't be reached right now."
+    },
+    "errors": {
+      "network": "Couldn't connect. Check your internet connection and try again.",
+      "timeout": "The server is taking too long to respond. Try again.",
+      "not_found": "We couldn't find what you're looking for.",
+      "rate_limited": "Too many requests. Wait a moment and try again.",
+      "validation": "Check the highlighted fields.",
+      "unauthorized": "Sign in to continue.",
+      "forbidden": "Only admins can do this.",
+      "invalid_credentials": "Wrong username or password.",
+      "username_taken": "That username is already taken.",
+      "email_taken": "An account with this email already exists.",
+      "not_enough_tickets": "There aren't enough tickets left for this match.",
+      "match_not_on_sale": "Tickets for this match are no longer on sale.",
+      "card_declined": "Your card was declined. Try another card.",
+      "server": "Something went wrong on our side. Try again.",
+      "unknown": "Something went wrong. Try again.",
+      "adminOnly": "The admin panel is only available to admins.",
+      "loadFailed": "We couldn't load this section."
+    },
+    "validation": {
+      "summary": {
+        "one": "Fix the highlighted field.",
+        "other": "Fix the {count} highlighted fields."
+      },
+      "required": "This field is required.",
+      "tooLong": "Use 100 characters or fewer.",
+      "wholeNumber": "Enter a whole number, 0 or more.",
+      "outOfRange": "Enter a value in the allowed range.",
+      "money": "Enter an amount such as 49.99.",
+      "urlInvalid": "Enter a full link that starts with https://",
+      "dateTime": "Choose a date and time.",
+      "sameTeams": "Choose a team other than the home team.",
+      "jerseyNumber": "Use a number from 1 to 99.",
+      "jerseyTaken": "Another player in this team already has this number.",
+      "quantity": "Choose from 1 to 10 tickets.",
+      "notEnoughTickets": "There aren't enough tickets left. Choose fewer.",
+      "cardChoose": "Choose a card or add a new one.",
+      "cardNumberRequired": "Enter your card number.",
+      "cardNumberLength": "This card number has too few or too many digits.",
+      "cardNumberInvalid": "This card number isn't valid. Check the digits.",
+      "expiryRequired": "Enter the expiry date.",
+      "expiryFormat": "Enter the expiry as MM/YY.",
+      "expiryMonth": "The month must be from 01 to 12.",
+      "expiryPast": "This card has expired.",
+      "cvvRequired": "Enter the security code.",
+      "cvvLength": "The security code has 3 digits.",
+      "cvvAmex": "American Express security codes have 4 digits.",
+      "cardholderRequired": "Enter the name on the card.",
+      "cardholderInvalid": "Use letters only, as printed on the card.",
+      "usernameRequired": "Enter a username.",
+      "usernameLength": "Use 3 to 30 characters.",
+      "usernameChars": "Use Latin letters, numbers, dots or underscores.",
+      "usernameTaken": "That username is taken. Try another one.",
+      "emailRequired": "Enter your email.",
+      "emailInvalid": "Enter an email such as name@example.com.",
+      "emailTaken": "An account with this email already exists. Sign in instead.",
+      "passwordRequired": "Enter your password.",
+      "passwordLength": "Use at least 8 characters.",
+      "passwordMismatch": "The passwords don't match.",
+      "loginRequired": "Enter your username or email."
+    },
+    "auth": {
+      "signInTitle": "Sign in",
+      "signInLead": "Welcome back. Sign in to buy tickets and chat during matches.",
+      "signUpTitle": "Create your account",
+      "signUpLead": "Join to buy tickets, save your cards and chat with other fans.",
+      "login": "Username or email",
+      "username": "Username",
+      "usernameHint": "3–30 characters: Latin letters, numbers, dots or underscores",
+      "email": "Email",
+      "password": "Password",
+      "passwordHint": "At least 8 characters",
+      "confirmPassword": "Confirm password",
+      "submitSignIn": "Sign in",
+      "submitSignUp": "Create account",
+      "signingIn": "Signing in…",
+      "creating": "Creating account…",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Create one",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "welcome": "Welcome back, {name}!",
+      "welcomeNew": "Your account is ready. Welcome, {name}!",
+      "signedOut": "You've signed out.",
+      "signInRequired": "Sign in to continue."
+    },
+    "notFound": {
+      "eyebrow": "Error 404",
+      "title": "This page is offside",
+      "text": "The page you're looking for doesn't exist or has moved.",
+      "home": "Back to home",
+      "tickets": "Buy tickets"
+    },
+    "meta": {
+      "home": {
+        "title": "Sports Live — watch live football and buy match tickets",
+        "description": "Watch Premier League, Champions League and Bundesliga matches live, follow every goal and buy match tickets in seconds."
+      },
+      "live": {
+        "title": "Watch live — Sports Live",
+        "description": "Live scores, goals, highlights and fan chat for today's matches."
+      },
+      "tickets": {
+        "title": "Buy tickets — Sports Live",
+        "description": "Find upcoming matches by league, date or team and buy tickets in a few clicks."
+      },
+      "checkout": {
+        "title": "Checkout — Sports Live",
+        "description": "Choose your seats and pay for your match tickets."
+      },
+      "signin": {
+        "title": "Sign in — Sports Live",
+        "description": "Sign in to buy tickets, manage your cards and chat during matches."
+      },
+      "signup": {
+        "title": "Create account — Sports Live",
+        "description": "Create a free Sports Live account to buy tickets and chat with other fans."
+      },
+      "account": {
+        "title": "My account — Sports Live",
+        "description": "Your tickets and saved cards."
+      },
+      "adminTeams": {
+        "title": "Teams and players — Admin — Sports Live",
+        "description": "Manage teams, coaches and player rosters."
+      },
+      "adminMatches": {
+        "title": "Matches — Admin — Sports Live",
+        "description": "Schedule matches, update results and ticket settings."
+      },
+      "adminReports": {
+        "title": "Reports — Admin — Sports Live",
+        "description": "Attendance, revenue and match statistics."
+      },
+      "notFound": {
+        "title": "Page not found — Sports Live",
+        "description": "This page doesn't exist."
+      }
+    }
+  },
+  "hy": {
+    "common": {
+      "loading": "Բեռնվում է…",
+      "tryAgain": "Կրկին փորձել",
+      "cancel": "Չեղարկել",
+      "close": "Փակել",
+      "save": "Պահել",
+      "saveChanges": "Պահել փոփոխությունները",
+      "delete": "Ջնջել",
+      "edit": "Խմբագրել",
+      "seeAll": "Տեսնել բոլորը",
+      "previous": "Նախորդը",
+      "next": "Հաջորդը",
+      "vs": "–",
+      "notSet": "Նշված չէ",
+      "toBeAnnounced": "Կհայտարարվի ավելի ուշ",
+      "backToHome": "Վերադառնալ գլխավոր էջ",
+      "showPassword": "Ցույց տալ գաղտնաբառը",
+      "hidePassword": "Թաքցնել գաղտնաբառը"
+    },
+    "nav": {
+      "home": "Գլխավոր",
+      "watchLive": "Ուղիղ եթեր",
+      "buyTickets": "Գնել տոմսեր",
+      "admin": "Կառավարման վահանակ",
+      "signIn": "Մուտք",
+      "signUp": "Ստեղծել հաշիվ",
+      "signOut": "Դուրս գալ",
+      "myAccount": "Իմ հաշիվը",
+      "openMenu": "Բացել ընտրացանկը",
+      "closeMenu": "Փակել ընտրացանկը",
+      "accountMenu": "Հաշվի ընտրացանկ",
+      "theme": "Թեմա"
+    },
+    "language": {
+      "label": "Լեզու",
+      "en": "English",
+      "hy": "Հայերեն"
+    },
+    "theme": {
+      "label": "Թեմա",
+      "system": "Համակարգային",
+      "light": "Բաց",
+      "dark": "Մուգ"
+    },
+    "footer": {
+      "tagline": "Դիտեք ֆուտբոլն ուղիղ եթերում, հետևեք յուրաքանչյուր գոլին և գնեք տոմսեր մի քանի վայրկյանում։",
+      "explore": "Բաժիններ",
+      "account": "Հաշիվ",
+      "sources": "Տվյալների աղբյուրներ",
+      "openLigaDb": "OpenLigaDB",
+      "theSportsDb": "TheSportsDB",
+      "wikimedia": "Wikimedia Commons",
+      "rights": "© {year} Sports Live։ Համալսարանական կուրսային աշխատանք։",
+      "credits": "Խաղերի տվյալները, թիմերի տարբերանշաններն ու մարզադաշտերի լուսանկարները պատկանում են իրենց հեղինակներին և ստացվում են բաց API-ների միջոցով։"
+    },
+    "a11y": {
+      "skipToContent": "Անցնել հիմնական բովանդակությանը",
+      "homeLink": "Sports Live, գլխավոր էջ",
+      "mainNav": "Հիմնական",
+      "footerNav": "Էջատակ",
+      "teamLogo": "{team} թիմի տարբերանշանը",
+      "newTab": "{label} (բացվում է նոր ներդիրում)",
+      "dismiss": "Փակել ծանուցումը"
+    },
+    "status": {
+      "live": "Ուղիղ",
+      "upcoming": "Սպասվող",
+      "finished": "Ավարտված"
+    },
+    "positions": {
+      "Goalkeeper": "Դարպասապահ",
+      "Defender": "Պաշտպան",
+      "Midfielder": "Կիսապաշտպան",
+      "Forward": "Հարձակվող"
+    },
+    "roles": {
+      "viewer": "Դիտող",
+      "admin": "Ադմինիստրատոր"
+    },
+    "notice": {
+      "stale": "Ցուցադրվում են պահված տվյալները։ Որոշ աղբյուրներ այս պահին հասանելի չեն։"
+    },
+    "errors": {
+      "network": "Չհաջողվեց միանալ։ Ստուգեք ինտերնետ կապը և կրկին փորձեք։",
+      "timeout": "Սերվերը երկար չի պատասխանում։ Կրկին փորձեք։",
+      "not_found": "Չգտանք այն, ինչ փնտրում եք։",
+      "rate_limited": "Չափազանց շատ հարցումներ։ Մի պահ սպասեք և կրկին փորձեք։",
+      "validation": "Ստուգեք նշված դաշտերը։",
+      "unauthorized": "Շարունակելու համար մուտք գործեք։",
+      "forbidden": "Սա կարող են անել միայն ադմինիստրատորները։",
+      "invalid_credentials": "Սխալ օգտանուն կամ գաղտնաբառ։",
+      "username_taken": "Այս օգտանունն արդեն զբաղված է։",
+      "email_taken": "Այս էլ. հասցեով հաշիվ արդեն կա։",
+      "not_enough_tickets": "Այս խաղի համար բավարար տոմսեր չեն մնացել։",
+      "match_not_on_sale": "Այս խաղի տոմսերն այլևս վաճառքում չեն։",
+      "card_declined": "Քարտը մերժվեց։ Փորձեք այլ քարտ։",
+      "server": "Մեր կողմից ինչ-որ բան սխալ գնաց։ Կրկին փորձեք։",
+      "unknown": "Ինչ-որ բան սխալ գնաց։ Կրկին փորձեք։",
+      "adminOnly": "Կառավարման վահանակը հասանելի է միայն ադմինիստրատորներին։",
+      "loadFailed": "Չհաջողվեց բեռնել այս բաժինը։"
+    },
+    "validation": {
+      "summary": {
+        "one": "Ուղղեք նշված դաշտը։",
+        "other": "Ուղղեք նշված {count} դաշտերը։"
+      },
+      "required": "Այս դաշտը պարտադիր է։",
+      "tooLong": "Օգտագործեք առավելագույնը 100 նիշ։",
+      "wholeNumber": "Մուտքագրեք 0 կամ ավելի ամբողջ թիվ։",
+      "outOfRange": "Մուտքագրեք թույլատրելի միջակայքի արժեք։",
+      "money": "Մուտքագրեք գումար, օրինակ՝ 49.99։",
+      "urlInvalid": "Մուտքագրեք ամբողջական հղում, որը սկսվում է https://-ով։",
+      "dateTime": "Ընտրեք ամսաթիվ և ժամ։",
+      "sameTeams": "Ընտրեք տանտեր թիմից տարբեր թիմ։",
+      "jerseyNumber": "Օգտագործեք 1-ից 99 թիվ։",
+      "jerseyTaken": "Այս համարն արդեն ունի թիմի մեկ այլ խաղացող։",
+      "quantity": "Ընտրեք 1-ից 10 տոմս։",
+      "notEnoughTickets": "Բավարար տոմսեր չեն մնացել։ Ընտրեք ավելի քիչ։",
+      "cardChoose": "Ընտրեք քարտ կամ ավելացրեք նորը։",
+      "cardNumberRequired": "Մուտքագրեք քարտի համարը։",
+      "cardNumberLength": "Քարտի համարում թվանշանների քանակը սխալ է։",
+      "cardNumberInvalid": "Քարտի համարը վավեր չէ։ Ստուգեք թվանշանները։",
+      "expiryRequired": "Մուտքագրեք վավերականության ժամկետը։",
+      "expiryFormat": "Մուտքագրեք ժամկետը ԱԱ/ՏՏ ձևաչափով։",
+      "expiryMonth": "Ամիսը պետք է լինի 01-ից 12։",
+      "expiryPast": "Այս քարտի ժամկետն անցել է։",
+      "cvvRequired": "Մուտքագրեք անվտանգության կոդը։",
+      "cvvLength": "Անվտանգության կոդը 3 թվանշան է։",
+      "cvvAmex": "American Express քարտերի անվտանգության կոդը 4 թվանշան է։",
+      "cardholderRequired": "Մուտքագրեք քարտի վրա նշված անունը։",
+      "cardholderInvalid": "Օգտագործեք միայն տառեր, ինչպես գրված է քարտի վրա։",
+      "usernameRequired": "Մուտքագրեք օգտանուն։",
+      "usernameLength": "Օգտագործեք 3-ից 30 նիշ։",
+      "usernameChars": "Օգտագործեք լատինատառեր, թվեր, կետ կամ ընդգծման գիծ։",
+      "usernameTaken": "Այս օգտանունն զբաղված է։ Փորձեք մեկ ուրիշը։",
+      "emailRequired": "Մուտքագրեք էլ. հասցեն։",
+      "emailInvalid": "Մուտքագրեք էլ. հասցե, օրինակ՝ name@example.com։",
+      "emailTaken": "Այս էլ. հասցեով հաշիվ արդեն կա։ Մուտք գործեք։",
+      "passwordRequired": "Մուտքագրեք գաղտնաբառը։",
+      "passwordLength": "Օգտագործեք առնվազն 8 նիշ։",
+      "passwordMismatch": "Գաղտնաբառերը չեն համընկնում։",
+      "loginRequired": "Մուտքագրեք օգտանունը կամ էլ. հասցեն։"
+    },
+    "auth": {
+      "signInTitle": "Մուտք",
+      "signInLead": "Բարի վերադարձ։ Մուտք գործեք՝ տոմսեր գնելու և խաղերի ընթացքում զրուցելու համար։",
+      "signUpTitle": "Ստեղծեք ձեր հաշիվը",
+      "signUpLead": "Միացեք՝ տոմսեր գնելու, քարտերը պահելու և այլ երկրպագուների հետ զրուցելու համար։",
+      "login": "Օգտանուն կամ էլ. հասցե",
+      "username": "Օգտանուն",
+      "usernameHint": "3–30 նիշ՝ լատինատառեր, թվեր, կետ կամ ընդգծման գիծ",
+      "email": "Էլ. հասցե",
+      "password": "Գաղտնաբառ",
+      "passwordHint": "Առնվազն 8 նիշ",
+      "confirmPassword": "Կրկնեք գաղտնաբառը",
+      "submitSignIn": "Մուտք գործել",
+      "submitSignUp": "Ստեղծել հաշիվ",
+      "signingIn": "Մուտք…",
+      "creating": "Հաշիվը ստեղծվում է…",
+      "noAccount": "Հաշիվ չունե՞ք։",
+      "signUpLink": "Ստեղծել հաշիվ",
+      "haveAccount": "Արդեն ունե՞ք հաշիվ։",
+      "signInLink": "Մուտք գործել",
+      "welcome": "Բարի վերադարձ, {name}։",
+      "welcomeNew": "Ձեր հաշիվը պատրաստ է։ Բարի գալուստ, {name}։",
+      "signedOut": "Դուք դուրս եկաք հաշվից։",
+      "signInRequired": "Շարունակելու համար մուտք գործեք։"
+    },
+    "notFound": {
+      "eyebrow": "Սխալ 404",
+      "title": "Այս էջը խաղից դուրս է",
+      "text": "Ձեր փնտրած էջը գոյություն չունի կամ տեղափոխվել է։",
+      "home": "Վերադառնալ գլխավոր էջ",
+      "tickets": "Գնել տոմսեր"
+    },
+    "meta": {
+      "home": {
+        "title": "Sports Live — ուղիղ ֆուտբոլ և խաղերի տոմսեր",
+        "description": "Դիտեք Պրեմիեր լիգայի, Չեմպիոնների լիգայի և Բունդեսլիգայի խաղերն ուղիղ եթերում, հետևեք յուրաքանչյուր գոլին և գնեք տոմսեր մի քանի վայրկյանում։"
+      },
+      "live": {
+        "title": "Ուղիղ եթեր — Sports Live",
+        "description": "Այսօրվա խաղերի ուղիղ հաշիվը, գոլերը, տեսաամփոփումները և երկրպագուների զրուցարանը։"
+      },
+      "tickets": {
+        "title": "Գնել տոմսեր — Sports Live",
+        "description": "Գտեք առաջիկա խաղերն ըստ լիգայի, ամսաթվի կամ թիմի և գնեք տոմսեր մի քանի քայլով։"
+      },
+      "checkout": {
+        "title": "Վճարում — Sports Live",
+        "description": "Ընտրեք տոմսերի քանակը և վճարեք։"
+      },
+      "signin": {
+        "title": "Մուտք — Sports Live",
+        "description": "Մուտք գործեք՝ տոմսեր գնելու, քարտերը կառավարելու և խաղերի ընթացքում զրուցելու համար։"
+      },
+      "signup": {
+        "title": "Գրանցում — Sports Live",
+        "description": "Ստեղծեք անվճար Sports Live հաշիվ՝ տոմսեր գնելու և այլ երկրպագուների հետ զրուցելու համար։"
+      },
+      "account": {
+        "title": "Իմ հաշիվը — Sports Live",
+        "description": "Ձեր տոմսերը և պահված քարտերը։"
+      },
+      "adminTeams": {
+        "title": "Թիմեր և խաղացողներ — Կառավարում — Sports Live",
+        "description": "Կառավարեք թիմերը, մարզիչներին և խաղացողների կազմերը։"
+      },
+      "adminMatches": {
+        "title": "Խաղեր — Կառավարում — Sports Live",
+        "description": "Նշանակեք խաղեր, թարմացրեք արդյունքները և տոմսերի կարգավորումները։"
+      },
+      "adminReports": {
+        "title": "Հաշվետվություններ — Կառավարում — Sports Live",
+        "description": "Հաճախելիություն, եկամուտներ և խաղերի վիճակագրություն։"
+      },
+      "notFound": {
+        "title": "Էջը չի գտնվել — Sports Live",
+        "description": "Այս էջը գոյություն չունի։"
+      }
+    }
+  }
+}

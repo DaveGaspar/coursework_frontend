@@ -1,0 +1,12 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding-block: var(--space-10);
+}
+.not-found__icon { color: var(--color-text-accent); }
+.not-found .lead { max-width: var(--size-prose); }
+@media (min-width: 1024px) {
+  .not-found { padding-block: var(--space-20); }
+}

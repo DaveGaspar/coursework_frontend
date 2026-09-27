@@ -1,5 +1,6 @@
 .site-header {
   position: sticky;
+  min-height: var(--nav-height);
   inset-block-start: 0;
   z-index: var(--z-sticky);
   background: var(--color-surface);
@@ -23,6 +24,9 @@
 }
 .brand:hover { text-decoration: none; }
 .brand__mark { width: var(--size-logo); height: auto; }
+.brand__lines { stroke: var(--color-text-muted); }
+.brand__waves { stroke: var(--amber-500); }
+.brand__play { fill: var(--amber-500); }
 .brand__word {
   font-family: var(--font-brand);
   font-size: var(--text-brand);
@@ -155,4 +159,11 @@
 .nav-sheet__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: var(--size-sheet-link); padding: 0 var(--space-3); }
 @media (min-width: 768px) {
   .nav-sheet { display: none; }
+}
+.nav-sheet__link .icon { color: var(--color-text-muted); }
+.nav-sheet__link[aria-current="page"] .icon { color: inherit; }
+.nav-sheet__auth { display: grid; gap: var(--space-3); padding: var(--space-4) var(--space-3) 0; }
+.navbar__signin { display: none; }
+@media (min-width: 768px) {
+  .navbar__signin { display: inline-flex; }
 }

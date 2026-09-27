@@ -46,3 +46,6 @@
 .footer__credits { max-width: var(--size-prose); }
 .footer__credits a { color: inherit; }
 
+.site-footer .brand__lines { stroke: var(--color-on-night-muted); }
+.site-footer .brand__waves { stroke: var(--amber-400); }
+.site-footer .brand__play { fill: var(--amber-400); }

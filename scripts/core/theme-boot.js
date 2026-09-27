@@ -7,7 +7,11 @@
     var lang = JSON.parse(localStorage.getItem('sl:lang') || 'null');
     if (lang !== 'en' && lang !== 'hy') {
       var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
-      lang = prefs.some(function (l) { return /^hy\b/i.test(l || ''); }) ? 'hy' : 'en';
+      lang = 'en';
+      for (var i = 0; i < prefs.length; i += 1) {
+        var code = String(prefs[i] || '').slice(0, 2).toLowerCase();
+        if (code === 'en' || code === 'hy') { lang = code; break; }
+      }
     }
     root.setAttribute('lang', lang);
   } catch (e) { /* storage unavailable */ }

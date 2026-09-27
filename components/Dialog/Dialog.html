@@ -1,0 +1,19 @@
+<template id="dialog">
+  <dialog class="dialog">
+    <form class="dialog__form" method="dialog" novalidate data-ref="form">
+      <header class="dialog__header">
+        <h2 class="dialog__title" data-ref="title"></h2>
+        <button class="btn btn--icon" type="button" data-ref="close" data-i18n-attr="aria-label:common.close">
+          <svg data-icon="x"></svg>
+        </button>
+      </header>
+      <div class="dialog__body" data-ref="body">
+        <div class="form-alert" role="alert"></div>
+      </div>
+      <footer class="dialog__footer">
+        <button class="btn btn--secondary" type="button" data-ref="cancel" data-i18n="common.cancel"></button>
+        <button class="btn btn--primary" type="submit" data-ref="submit"><span data-ref="submitLabel"></span></button>
+      </footer>
+    </form>
+  </dialog>
+</template>

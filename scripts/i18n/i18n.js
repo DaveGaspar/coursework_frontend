@@ -14,8 +14,13 @@ const warned = new Set();
 export function detectLanguage() {
   const saved = readJSON(STORAGE_KEY, null);
   if (LANGUAGES.includes(saved)) return saved;
+  // The first browser language we support wins.
   const preferred = navigator.languages?.length ? navigator.languages : [navigator.language];
-  return preferred.some((l) => /^hy\b/i.test(l ?? '')) ? 'hy' : DEFAULT_LANGUAGE;
+  for (const tag of preferred) {
+    const code = String(tag ?? '').slice(0, 2).toLowerCase();
+    if (LANGUAGES.includes(code)) return code;
+  }
+  return DEFAULT_LANGUAGE;
 }
 
 export async function initI18n() {
@@ -74,17 +79,15 @@ export function applyTranslations(root = document) {
   if (!dictionaries) return;
   const scope = root instanceof Element ? [root, ...root.querySelectorAll('[data-i18n],[data-i18n-attr]')] : [...root.querySelectorAll('[data-i18n],[data-i18n-attr]')];
   for (const el of scope) {
-    if (el.dataset.i18n) {
-      let params = {};
-      if (el.dataset.i18nParams) {
-        try { params = JSON.parse(el.dataset.i18nParams); } catch { /* ignore */ }
-      }
-      el.textContent = t(el.dataset.i18n, params);
+    let params = {};
+    if (el.dataset.i18nParams) {
+      try { params = JSON.parse(el.dataset.i18nParams); } catch { /* ignore */ }
     }
+    if (el.dataset.i18n) el.textContent = t(el.dataset.i18n, params);
     if (el.dataset.i18nAttr) {
       for (const pair of el.dataset.i18nAttr.split(';')) {
         const [attr, key] = pair.split(':').map((s) => s.trim());
-        if (attr && key) el.setAttribute(attr, t(key));
+        if (attr && key) el.setAttribute(attr, t(key, params));
       }
     }
   }

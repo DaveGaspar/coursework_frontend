@@ -15,7 +15,7 @@ export const ICONS = [
   'chevron-left', 'chevron-right', 'circle-alert', 'circle-check', 'circle-play', 'circle-user-round',
   'circle-x', 'clock', 'credit-card', 'external-link', 'eye', 'eye-off', 'file-chart-column', 'flag',
   'goal', 'house', 'image', 'info', 'languages', 'list-filter', 'lock', 'log-in', 'log-out',
-  'map-pin', 'menu', 'message-circle', 'minus', 'monitor', 'moon', 'octagon-alert', 'pause',
+  'mail', 'map-pin', 'menu', 'message-circle', 'minus', 'monitor', 'moon', 'octagon-alert', 'pause',
   'pencil', 'play', 'plus', 'radio', 'refresh-cw', 'search', 'send', 'shield', 'shirt', 'star',
   'sun', 'table-2', 'thumbs-up', 'ticket', 'timer', 'trash-2', 'trending-down', 'trending-up',
   'triangle-alert', 'trophy', 'tv', 'user', 'user-plus', 'users', 'whistle', 'wifi-off', 'x',

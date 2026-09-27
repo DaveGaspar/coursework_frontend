@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sports Live</title>
+  <meta name="description" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sports Live">
+  <meta property="og:title" content="Sports Live">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta name="theme-color" content="#F3EFE4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/barlow-condensed-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="pages/Auth/Auth.css">
+  <script src="scripts/core/theme-boot.js"></script>
+  <script type="module" src="pages/Auth/SignIn.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skipToContent"></a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main" class="page auth" tabindex="-1">
+    <div class="container auth__wrap">
+      <svg class="brand__mark auth__mark" viewBox="0 0 48 32" width="96" height="64" aria-hidden="true">
+        <g fill="none" stroke-width="3" stroke-linecap="round">
+          <path class="brand__lines" d="M3 11h8M1 16h10M3 21h8"/>
+          <path class="brand__waves" d="M35.5 9.5a9 9 0 0 1 0 13M40.5 5a15 15 0 0 1 0 22"/>
+        </g>
+        <path class="brand__play" d="M15 6.6v18.8a1.5 1.5 0 0 0 2.3 1.25l13.9-9.4a1.5 1.5 0 0 0 0-2.5L17.3 5.35A1.5 1.5 0 0 0 15 6.6z"/>
+      </svg>
+
+      <section class="card card--xl auth__card" aria-labelledby="auth-title">
+        <div class="auth__head">
+          <h1 class="h1" id="auth-title" data-i18n="auth.signInTitle"></h1>
+          <p class="muted" data-i18n="auth.signInLead"></p>
+        </div>
+
+        <form class="form" id="signin-form" novalidate>
+          <div class="form-alert" role="alert"></div>
+
+          <div class="field">
+            <label class="field__label" for="login" data-i18n="auth.login"></label>
+            <div class="field__control field__control--icon">
+              <svg class="field__icon" data-icon="user"></svg>
+              <input class="input" id="login" name="login" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="password" data-i18n="auth.password"></label>
+            <div class="field__control field__control--icon field__control--end">
+              <svg class="field__icon" data-icon="lock"></svg>
+              <input class="input" id="password" name="password" type="password" autocomplete="current-password" required>
+              <button class="btn btn--icon field__end" type="button" data-password-toggle="password">
+                <svg data-icon="eye"></svg>
+              </button>
+            </div>
+          </div>
+
+          <button class="btn btn--primary btn--lg btn--block" type="submit">
+            <span data-i18n="auth.submitSignIn"></span>
+          </button>
+        </form>
+
+        <p class="auth__switch">
+          <span data-i18n="auth.noAccount"></span>
+          <a id="switch-link" data-route="signup" data-i18n="auth.signUpLink"></a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer on-night"></footer>
+</body>
+</html>

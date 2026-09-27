@@ -104,3 +104,37 @@ export function bindPasswordToggle(button, input) {
   });
   sync();
 }
+
+// rules: { fieldName: (value) => translationKey | null }. Checks a field when it loses focus,
+// then on every keystroke once it shows an error.
+export function validateOnBlur(form, rules) {
+  for (const [name, rule] of Object.entries(rules)) {
+    const input = form.elements.namedItem(name);
+    if (!input) continue;
+    input.addEventListener('blur', () => {
+      if (input.value) setFieldError(input, rule(input.value));
+    });
+    input.addEventListener('input', () => {
+      if (input.getAttribute('aria-invalid') === 'true') setFieldError(input, rule(input.value));
+    });
+  }
+}
+
+// Runs every rule; shows the errors and a summary. Returns true when the form is valid.
+export function validateForm(form, rules) {
+  const fields = {};
+  for (const [name, rule] of Object.entries(rules)) {
+    const input = form.elements.namedItem(name);
+    const error = input ? rule(input.value) : null;
+    if (error) fields[name] = error;
+  }
+  if (!showErrors(form, fields)) return true;
+  showFormAlert(form, 'validation.summary', { count: Object.keys(fields).length });
+  return false;
+}
+
+export function bindPasswordToggles(root) {
+  for (const button of root.querySelectorAll('[data-password-toggle]')) {
+    bindPasswordToggle(button, document.getElementById(button.dataset.passwordToggle));
+  }
+}

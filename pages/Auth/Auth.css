@@ -1,0 +1,16 @@
+.auth { padding-block: var(--space-8) var(--space-12); }
+.auth__wrap { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
+.auth__mark { width: var(--size-auth-mark); height: auto; }
+.auth__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+  max-width: var(--size-auth-card);
+}
+.auth__head { display: flex; flex-direction: column; gap: var(--space-2); text-align: center; }
+.auth__switch { color: var(--color-text-muted); font-size: var(--text-sm); text-align: center; }
+.auth__switch a { font-weight: var(--weight-semibold); }
+@media (min-width: 768px) {
+  .auth { padding-block: var(--space-12) var(--space-16); }
+}

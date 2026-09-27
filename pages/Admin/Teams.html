@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sports Live</title>
+  <meta name="description" content="">
+  <meta name="robots" content="noindex">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sports Live">
+  <meta property="og:title" content="Sports Live">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="../../assets/img/og-image.png">
+  <meta name="theme-color" content="#F3EFE4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="../../assets/manifest.webmanifest">
+  <link rel="preload" href="../../assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/barlow-condensed-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="../../styles/index.css">
+  <link rel="stylesheet" href="../../styles/components.css">
+  <link rel="stylesheet" href="Admin.css">
+  <script src="../../scripts/core/theme-boot.js"></script>
+  <script type="module" src="Teams.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skipToContent"></a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main" class="page" tabindex="-1">
+    <div class="container stack stack--lg">
+      <div class="admin-head">
+        <p class="d-lg" data-i18n="nav.admin"></p>
+        <nav class="tabs" data-i18n-attr="aria-label:admin.sections">
+          <a class="tabs__item" data-route="adminTeams" aria-current="page"><svg data-icon="users"></svg><span data-i18n="admin.tabs.teams"></span></a>
+          <a class="tabs__item" data-route="adminMatches"><svg data-icon="calendar"></svg><span data-i18n="admin.tabs.matches"></span></a>
+          <a class="tabs__item" data-route="adminReports"><svg data-icon="chart-column"></svg><span data-i18n="admin.tabs.reports"></span></a>
+        </nav>
+      </div>
+      <hr class="divider">
+      <div class="admin-section-head">
+        <h1 class="h1" data-i18n="admin.teams.title"></h1>
+        <div class="cluster">
+          <button class="btn btn--primary" type="button" id="add-team"><svg data-icon="plus"></svg><span data-i18n="admin.teams.add"></span></button>
+        </div>
+      </div>
+      <form class="admin-filters" role="search" id="filters" novalidate>
+        <div class="field">
+          <label class="field__label" for="q" data-i18n="admin.teams.search"></label>
+          <input class="input" id="q" name="q" type="search" autocomplete="off">
+        </div>
+        <p class="muted text-sm" id="count" aria-live="polite"></p>
+      </form>
+      <div class="team-list" id="teams" aria-busy="true">
+        <span class="skeleton skeleton--row" aria-hidden="true"></span>
+        <span class="skeleton skeleton--row" aria-hidden="true"></span>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer on-night"></footer>
+</body>
+</html>

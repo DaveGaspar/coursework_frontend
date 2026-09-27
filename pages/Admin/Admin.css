@@ -1,0 +1,27 @@
+.admin-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.admin-section-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3) var(--space-4); }
+.admin-filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3) var(--space-4); }
+.admin-filters .field { flex: 1 1 14rem; max-width: 24rem; }
+
+.team-list { display: flex; flex-direction: column; gap: var(--space-5); }
+.team-card { display: flex; flex-direction: column; gap: var(--space-4); }
+.team-card__head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-4); }
+.team-card__title { display: flex; flex: 1 1 14rem; flex-direction: column; gap: var(--space-1); min-width: 0; }
+.team-card__name { color: var(--color-text-accent); overflow-wrap: anywhere; }
+.team-card__coach { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); color: var(--color-text-muted); font-size: var(--text-sm); }
+.team-card__coach strong { color: var(--color-text); }
+.team-card__coach .input { width: 16rem; max-width: 100%; min-height: var(--control-sm); }
+.team-card__actions { margin-inline-start: auto; }
+
+.match-dialog { display: flex; flex-direction: column; gap: var(--space-6); }
+.match-dialog legend { margin-block-end: var(--space-4); }
+
+.report-grid { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1024px) {
+  .report-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .report-grid > .report-grid__full { grid-column: 1 / -1; }
+}
+.match-details { display: grid; gap: var(--space-5); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 768px) {
+  .match-details { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}

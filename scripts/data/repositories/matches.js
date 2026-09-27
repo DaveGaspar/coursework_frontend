@@ -1,6 +1,7 @@
 import { LEAGUES } from '../../core/config.js';
 import { ValidationError } from '../../core/errors.js';
 import { toDateInputValue } from '../../core/format.js';
+import { validateOptionalUrl } from '../../core/validators.js';
 import { db } from '../sources/local/local-db.js';
 import { whenMatchesAvailable } from '../sources/local/seed.js';
 import { refreshFromSources, refreshLive, refreshMatch, venueImage } from '../sources/local/sync.js';
@@ -30,6 +31,10 @@ function clean(input, existing = null) {
     }
     if ((key === 'home_team_id' || key === 'away_team_id') && value !== null) value = Number(value);
     out[key] = value;
+  }
+  for (const key of ['stream_url', 'poster_url']) {
+    const error = key in out ? validateOptionalUrl(out[key]) : null;
+    if (error) fields[key] = error;
   }
   const merged = { ...existing, ...out };
   if (!merged.home_team_id || !db.get('teams', merged.home_team_id)) fields.home_team_id = 'validation.required';

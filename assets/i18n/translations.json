@@ -234,6 +234,35 @@
         "link": "Tickets for {team}"
       }
     },
+    "tickets": {
+      "title": "Select a match",
+      "lead": "Upcoming matches you can buy tickets for.",
+      "filtersLabel": "Filter matches",
+      "league": "League",
+      "allLeagues": "All leagues",
+      "date": "Date",
+      "search": "Search teams",
+      "searchPlaceholder": "Team name",
+      "clearFilters": "Clear filters",
+      "available": "Available matches",
+      "count": "({count})",
+      "results": {
+        "one": "{count} match found",
+        "other": "{count} matches found"
+      },
+      "from": "From",
+      "buyNow": "Buy now",
+      "buyFor": "Buy tickets for {match}",
+      "soldOut": "Sold out",
+      "left": {
+        "one": "{count} ticket left",
+        "other": "{count} tickets left"
+      },
+      "emptyTitle": "No matches for these filters",
+      "emptyText": "Try another date or league, or clear the filters.",
+      "noneTitle": "No matches on sale right now",
+      "noneText": "New fixtures appear here as soon as they're announced."
+    },
     "meta": {
       "home": {
         "title": "Sports Live — watch live football and buy match tickets",
@@ -515,6 +544,35 @@
         "text": "Պրեմիեր լիգայի, Չեմպիոնների լիգայի և Բունդեսլիգայի ակումբներ։",
         "link": "{team} թիմի խաղերի տոմսեր"
       }
+    },
+    "tickets": {
+      "title": "Ընտրեք խաղը",
+      "lead": "Առաջիկա խաղեր, որոնց համար կարող եք տոմսեր գնել։",
+      "filtersLabel": "Զտել խաղերը",
+      "league": "Լիգա",
+      "allLeagues": "Բոլոր լիգաները",
+      "date": "Ամսաթիվ",
+      "search": "Որոնել թիմեր",
+      "searchPlaceholder": "Թիմի անունը",
+      "clearFilters": "Մաքրել զտիչները",
+      "available": "Հասանելի խաղեր",
+      "count": "({count})",
+      "results": {
+        "one": "Գտնվել է {count} խաղ",
+        "other": "Գտնվել է {count} խաղ"
+      },
+      "from": "Գինը",
+      "buyNow": "Գնել",
+      "buyFor": "Գնել տոմսեր՝ {match}",
+      "soldOut": "Սպառված է",
+      "left": {
+        "one": "Մնացել է {count} տոմս",
+        "other": "Մնացել է {count} տոմս"
+      },
+      "emptyTitle": "Այս զտիչներով խաղեր չկան",
+      "emptyText": "Փորձեք այլ ամսաթիվ կամ լիգա, կամ մաքրեք զտիչները։",
+      "noneTitle": "Այս պահին վաճառքում խաղեր չկան",
+      "noneText": "Նոր խաղերն այստեղ կհայտնվեն հայտարարվելուն պես։"
     },
     "meta": {
       "home": {

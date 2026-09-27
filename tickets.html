@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sports Live</title>
+  <meta name="description" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sports Live">
+  <meta property="og:title" content="Sports Live">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta name="theme-color" content="#F3EFE4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/barlow-condensed-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="pages/Tickets/Tickets.css">
+  <script src="scripts/core/theme-boot.js"></script>
+  <script type="module" src="pages/Tickets/Tickets.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skipToContent"></a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main" class="page" tabindex="-1">
+    <div class="container stack stack--lg">
+      <section class="card card--accent tickets-panel" aria-labelledby="tickets-title">
+        <div class="stack stack--sm">
+          <h1 class="h1" id="tickets-title" data-i18n="tickets.title"></h1>
+          <p class="muted" data-i18n="tickets.lead"></p>
+        </div>
+        <form class="filters" id="filters" role="search" novalidate data-i18n-attr="aria-label:tickets.filtersLabel">
+          <div class="field">
+            <label class="field__label" for="league" data-i18n="tickets.league"></label>
+            <div class="field__control">
+              <select class="select" id="league" name="league">
+                <option value="" data-i18n="tickets.allLeagues"></option>
+              </select>
+              <svg class="field__chevron" data-icon="chevron-down"></svg>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="date" data-i18n="tickets.date"></label>
+            <input class="input" id="date" name="date" type="date">
+          </div>
+          <div class="field filters__search">
+            <label class="field__label" for="q" data-i18n="tickets.search"></label>
+            <div class="field__control field__control--icon">
+              <svg class="field__icon" data-icon="search"></svg>
+              <input class="input" id="q" name="q" type="search" autocomplete="off" data-i18n-attr="placeholder:tickets.searchPlaceholder">
+            </div>
+          </div>
+          <button class="btn btn--link filters__clear" id="clear" type="button" hidden>
+            <svg class="icon--sm" data-icon="x"></svg>
+            <span data-i18n="tickets.clearFilters"></span>
+          </button>
+        </form>
+      </section>
+
+      <section class="stack" aria-labelledby="results-title">
+        <h2 class="h3" id="results-title">
+          <span data-i18n="tickets.available"></span>
+          <span class="muted num" id="count"></span>
+        </h2>
+        <p class="visually-hidden" id="results-status" role="status"></p>
+        <ul class="match-list" id="match-list" role="list" aria-busy="true">
+          <li><span class="skeleton skeleton--row" aria-hidden="true"></span></li>
+          <li><span class="skeleton skeleton--row" aria-hidden="true"></span></li>
+          <li><span class="skeleton skeleton--row" aria-hidden="true"></span></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer on-night"></footer>
+</body>
+</html>

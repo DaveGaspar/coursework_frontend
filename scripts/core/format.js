@@ -22,11 +22,11 @@ export function formatNumber(value, options = {}) {
 
 export function formatCurrency(amount, { whole = false } = {}) {
   const digits = whole ? { minimumFractionDigits: 0, maximumFractionDigits: 0 } : { minimumFractionDigits: 2, maximumFractionDigits: 2 };
-  return formatter('number', { style: 'currency', currency: CURRENCY, ...digits }).format(Number(amount) || 0);
+  return formatter('number', { style: 'currency', currency: CURRENCY, currencyDisplay: 'narrowSymbol', ...digits }).format(Number(amount) || 0);
 }
 
 export function formatCompactCurrency(amount) {
-  return formatter('number', { style: 'currency', currency: CURRENCY, notation: 'compact', maximumFractionDigits: 1 }).format(Number(amount) || 0);
+  return formatter('number', { style: 'currency', currency: CURRENCY, currencyDisplay: 'narrowSymbol', notation: 'compact', maximumFractionDigits: 1 }).format(Number(amount) || 0);
 }
 
 export function formatCompactNumber(value) {

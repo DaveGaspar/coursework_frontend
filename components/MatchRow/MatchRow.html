@@ -1,0 +1,41 @@
+<template id="match-row">
+  <li>
+    <article class="match-row">
+      <div class="match-row__main">
+        <div class="match-row__badges" data-ref="badges"></div>
+        <h3 class="match-row__title">
+          <span class="match-row__team" data-ref="home"></span>
+          <span class="match-row__vs" data-i18n="common.vs"></span>
+          <span class="match-row__team" data-ref="away"></span>
+        </h3>
+        <p class="match-row__meta">
+          <span class="match-row__meta-item">
+            <svg class="icon--sm" data-icon="calendar"></svg>
+            <time data-ref="date"></time>
+          </span>
+          <span class="match-row__meta-item">
+            <svg class="icon--sm" data-icon="clock"></svg>
+            <span data-ref="time"></span>
+          </span>
+          <span class="match-row__meta-item" data-ref="venueItem">
+            <svg class="icon--sm" data-icon="map-pin"></svg>
+            <span data-ref="venue"></span>
+          </span>
+        </p>
+      </div>
+      <div class="match-row__buy">
+        <p class="price">
+          <span class="price__label" data-i18n="tickets.from"></span>
+          <span class="price__value" data-ref="price"></span>
+        </p>
+        <a class="btn btn--primary" data-ref="buy">
+          <svg data-icon="ticket"></svg>
+          <span data-i18n="tickets.buyNow"></span>
+        </a>
+        <button class="btn btn--primary" type="button" disabled data-ref="soldOut" hidden>
+          <span data-i18n="tickets.soldOut"></span>
+        </button>
+      </div>
+    </article>
+  </li>
+</template>

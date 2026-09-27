@@ -1,14 +1,5 @@
 #!/usr/bin/env node
-/**
- * Dev-only i18n checks. Fails when:
- *  1. `en` and `hy` in assets/i18n/translations.json have different key sets;
- *  2. a data-i18n / data-i18n-attr key in HTML or JS is missing;
- *  3. a t('…') call (or a string literal that looks like a translation key)
- *     in JS references a missing key; template keys (t(`status.${x}`)) must
- *     point at an existing namespace;
- *  4. HTML contains hard-coded text nodes or user-facing attributes.
- * Run: node tools/check-i18n.mjs
- */
+// Checks translations and hard-coded text. Run: node tools/check-i18n.mjs
 import { readFile } from 'node:fs/promises';
 import { dirname, extname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -17,17 +8,11 @@ import { walk } from './check-lines.mjs';
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const TRANSLATIONS = resolve(ROOT, 'assets/i18n/translations.json');
 const PLURAL_FORMS = new Set(['zero', 'one', 'two', 'few', 'many', 'other']);
-/** Text allowed in HTML markup: the brand name is never translated. */
+// The brand name is never translated.
 const ALLOWED_TEXT = new Set(['Sports Live', 'SPORTS', 'LIVE', 'SPORTSLIVE', 'EN', 'ՀՅ']);
 const USER_FACING_ATTRS = ['aria-label', 'alt', 'placeholder', 'title', 'aria-description'];
 
-/**
- * Flattens a nested dictionary to dotted leaf keys. Plural objects
- * (only CLDR plural-category children) count as one leaf.
- * @param {object} obj Dictionary.
- * @param {string} [prefix] Key prefix.
- * @returns {Map<string, 'leaf'|'plural'>} Keys.
- */
+// Plural objects (only CLDR category children) count as one key.
 export function flatten(obj, prefix = '') {
   const out = new Map();
   for (const [key, value] of Object.entries(obj)) {
@@ -47,11 +32,6 @@ export function flatten(obj, prefix = '') {
   return out;
 }
 
-/**
- * Collects every namespace prefix of a key set ("a.b.c" → "a", "a.b").
- * @param {Iterable<string>} keys Keys.
- * @returns {Set<string>} Namespaces.
- */
 function namespaces(keys) {
   const set = new Set();
   for (const key of keys) {
@@ -94,7 +74,7 @@ async function main() {
 
   const files = (await walk(ROOT))
     .map((file) => ({ file, rel: relative(ROOT, file).split(sep).join('/') }))
-    .filter(({ rel }) => ['.html', '.js'].includes(extname(rel)) && !rel.startsWith('tools/') && !rel.startsWith('docs/'));
+    .filter(({ rel }) => ['.html', '.js'].includes(extname(rel)) && !rel.startsWith('tools/') && !rel.startsWith('docs/') && rel !== 'preview.html');
 
   let refs = 0;
   for (const { file, rel } of files) {

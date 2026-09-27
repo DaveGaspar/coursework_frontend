@@ -1,0 +1,29 @@
+.team-logo {
+  --logo-size: var(--size-logo);
+  display: inline-grid;
+  place-items: center;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  flex: none;
+  object-fit: contain;
+}
+.team-logo--sm { --logo-size: var(--size-logo-sm); }
+.team-logo--lg { --logo-size: var(--size-logo-lg); }
+.team-logo--xl { --logo-size: var(--size-logo-xl); }
+.team-logo--mono {
+  border-radius: var(--radius-pill);
+  font-family: var(--font-brand);
+  font-size: calc(var(--logo-size) * 0.36);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  user-select: none;
+}
+.team-logo--tint-0 { background: var(--amber-100); color: var(--amber-800); }
+.team-logo--tint-1 { background: var(--amber-400); color: var(--sand-900); }
+.team-logo--tint-2 { background: var(--sand-100); color: var(--sand-900); }
+.team-logo--tint-3 { background: var(--night-600); color: var(--amber-200); }
+.team-logo--tint-4 { background: var(--amber-700); color: var(--sand-0); }
+.team-logo--tint-5 { background: var(--sand-600); color: var(--sand-0); }
+.on-night .team-logo--tint-3 { box-shadow: inset 0 0 0 var(--border-thin) var(--night-500); }

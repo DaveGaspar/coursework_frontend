@@ -1,10 +1,6 @@
 #!/usr/bin/env node
-/**
- * Dev-only: renders the PNG brand assets (apple-touch-icon, manifest icons,
- * Open Graph image) from tools/brand/*.html with headless Chrome — no image
- * libraries needed. Set CHROME_PATH if Chrome is not in a default location.
- * Run: node tools/render-brand.mjs
- */
+// Renders the PNG icons and Open Graph image from tools/brand/*.html with headless Chrome.
+// Set CHROME_PATH if Chrome is not found. Run: node tools/render-brand.mjs
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -21,7 +17,6 @@ const CANDIDATES = [
   '/usr/bin/chromium',
 ].filter(Boolean);
 
-/** Assets to render: layout size and output scale. */
 const JOBS = [
   { src: 'og-image.html', out: 'og-image.png', width: 1200, height: 630, scale: 1 },
   { src: 'app-icon.html', out: 'icon-512.png', width: 512, height: 512, scale: 1 },

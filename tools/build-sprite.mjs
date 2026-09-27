@@ -1,12 +1,5 @@
 #!/usr/bin/env node
-/**
- * Dev-only: builds assets/icons/sprite.svg from the Lucide icons the site uses.
- * Icons are fetched from a pinned lucide-static release on jsDelivr, so no
- * node_modules are needed. Run: node tools/build-sprite.mjs
- *
- * Lucide is ISC-licensed (https://lucide.dev/license); the notice is kept in
- * the sprite header and in README.md.
- */
+// Builds assets/icons/sprite.svg from pinned Lucide icons (ISC). Run: node tools/build-sprite.mjs
 import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,7 +9,6 @@ const SOURCE = `https://cdn.jsdelivr.net/npm/lucide-static@${LUCIDE_VERSION}/ico
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(ROOT, 'assets/icons/sprite.svg');
 
-/** Every Lucide icon referenced by the site (keep sorted). */
 export const ICONS = [
   'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'armchair', 'ban', 'banknote',
   'calendar', 'calendar-clock', 'calendar-plus', 'chart-column', 'check', 'chevron-down',
@@ -29,12 +21,6 @@ export const ICONS = [
   'triangle-alert', 'trophy', 'tv', 'user', 'user-plus', 'users', 'whistle', 'wifi-off', 'x',
 ];
 
-/**
- * Extracts the inner markup of a Lucide SVG file as a <symbol>.
- * @param {string} name Icon name.
- * @param {string} svg Raw SVG source.
- * @returns {string} Symbol markup.
- */
 export function toSymbol(name, svg) {
   const inner = svg
     .replace(/<!--[\s\S]*?-->/g, '')

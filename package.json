@@ -1,0 +1,17 @@
+{
+  "name": "sports-live",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sports Live: live sports streaming and match tickets (coursework frontend)",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js --open",
+    "serve": "node server.js",
+    "check": "node tools/check-lines.mjs && node tools/check-i18n.mjs",
+    "build:sprite": "node tools/build-sprite.mjs",
+    "build:brand": "node tools/render-brand.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

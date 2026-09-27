@@ -1,0 +1,25 @@
+/* Shown when the network failed and cached data is displayed */
+.stale-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--gutter);
+  background: var(--color-surface-sunken);
+  border-block-end: var(--border-thin) solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+}
+.notice--info    { background: var(--color-info-subtle); color: var(--color-info); }
+.notice--warning { background: var(--color-warning-subtle); color: var(--color-warning-text); }
+.notice--success { background: var(--color-success-subtle); color: var(--color-success); }

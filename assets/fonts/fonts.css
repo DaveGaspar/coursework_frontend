@@ -1,11 +1,4 @@
-/* ============================================================
-   Self-hosted fonts (SIL Open Font License 1.1, via Fontsource)
-   Inter (variable wght 100–900), Barlow Condensed 600/700,
-   Noto Sans Armenian (variable wght 100–900 + wdth 62.5–100%).
-   Subsets load only when their unicode-range is used.
-   ============================================================ */
-
-/* ---------- Inter ---------- */
+/* Self-hosted fonts (SIL Open Font License 1.1) */
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -23,7 +16,6 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* ---------- Barlow Condensed ---------- */
 @font-face {
   font-family: "Barlow Condensed";
   font-style: normal;
@@ -57,7 +49,6 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* ---------- Noto Sans Armenian (variable: weight + width) ---------- */
 @font-face {
   font-family: "Noto Sans Armenian";
   font-style: normal;
@@ -67,8 +58,7 @@
   src: url("./noto-sans-armenian-armenian-wdth.woff2") format("woff2");
   unicode-range: U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17;
 }
-/* Latin subsets: used only by the Armenian display stack (:lang(hy)),
-   so team names and scores in headings match the Armenian glyphs. */
+/* Latin glyphs for Armenian headings */
 @font-face {
   font-family: "Noto Sans Armenian";
   font-style: normal;

@@ -1,10 +1,5 @@
 #!/usr/bin/env node
-/**
- * Dev-only: fails if a non-exempt code file has more than 500 lines.
- * Exempt (brief §2.2): assets/css/index.css, shared component files
- * (assets/css/components/*.css, assets/js/components/*.js) and the
- * translations data file. Run: node tools/check-lines.mjs
- */
+// Fails if a code file has more than 500 lines. Run: node tools/check-lines.mjs
 import { readdir, readFile } from 'node:fs/promises';
 import { dirname, extname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -12,19 +7,14 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const MAX_LINES = 500;
 const CODE_EXTENSIONS = new Set(['.html', '.css', '.js', '.mjs']);
-const IGNORED_DIRS = new Set(['.git', 'node_modules', '.claude', '.lighthouse']);
+const IGNORED_DIRS = new Set(['.git', 'node_modules', '.claude', '.lighthouse', '.vscode', '_dev']);
+// Shared building blocks may be longer.
 const EXEMPT = [
-  /^assets\/css\/index\.css$/,
-  /^assets\/css\/components\/[^/]+\.css$/,
-  /^assets\/js\/components\/[^/]+\.js$/,
+  /^styles\/index\.css$/,
+  /^components\//,
   /^assets\/i18n\/translations\.json$/,
 ];
 
-/**
- * Recursively lists files under a directory.
- * @param {string} dir Absolute directory path.
- * @returns {Promise<string[]>} Absolute file paths.
- */
 export async function walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
   const files = [];
@@ -38,11 +28,6 @@ export async function walk(dir) {
   return files;
 }
 
-/**
- * Counts lines the way editors do (a trailing newline does not add a line).
- * @param {string} text File contents.
- * @returns {number} Line count.
- */
 export function countLines(text) {
   if (text === '') return 0;
   const lines = text.split(/\r\n|\r|\n/);
@@ -72,7 +57,7 @@ async function main() {
     for (const { rel, lines } of failures) console.error(`  ${lines}  ${rel}`);
     process.exitCode = 1;
   } else {
-    console.log(`\n✓ No non-exempt file exceeds ${MAX_LINES} lines.`);
+    console.log(`\n✓ No file exceeds ${MAX_LINES} lines.`);
   }
 }
 

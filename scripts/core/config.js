@@ -25,8 +25,9 @@ export const API = {
   openLigaDb: 'https://api.openligadb.de',
   wikipedia: 'https://en.wikipedia.org/api/rest_v1',
 };
-// TheSportsDB free tier allows ~30 requests per minute per IP.
-export const TSDB_REQUESTS_PER_MINUTE = 25;
+// TheSportsDB (behind Cloudflare) blocks an IP for 60 s after ~30 requests in a minute. The budget is only
+// shared between tabs of one browser profile, so 15 leaves room for a second window or browser on the same network.
+export const TSDB_REQUESTS_PER_MINUTE = 15;
 
 export function currentSeason(now = new Date()) {
   const startYear = now.getMonth() >= 6 ? now.getFullYear() : now.getFullYear() - 1;

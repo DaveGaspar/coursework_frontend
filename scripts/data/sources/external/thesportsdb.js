@@ -9,7 +9,8 @@ const queue = createRequestQueue({ perMinute: TSDB_REQUESTS_PER_MINUTE, storageK
 
 export const PRIORITY = { background: 0, normal: 5, visible: 10 };
 
-const BACKOFF_MS = 30_000;
+// Cloudflare's block lasts about a minute; retrying sooner only gets blocked again.
+const BACKOFF_MS = 60_000;
 
 function call(endpoint, params, { ttl, priority = PRIORITY.normal, force = false }, pick) {
   const url = withQuery(`${API.theSportsDb}/${endpoint}`, params);

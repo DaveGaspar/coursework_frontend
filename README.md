@@ -92,7 +92,11 @@ index.html            the home page; the site starts here
 start.bat             double-click to run the site on Windows
 package.json          Node.js settings: start and check commands (no packages)
 pages/<Name>/         every other page: <Name>.html with its own CSS and JS
+  Live/               watch live: stream or live match center, chat, other games
+  Tickets/            buy tickets: matches on sale with filters
+  Checkout/           ticket quantity, payment and confirmation
   Auth/               sign in and sign up
+  Account/            my tickets and saved cards
   Admin/              teams, matches and reports (admins only)
   NotFound/           the "page not found" page
 components/<Name>/    reusable UI pieces: <Name>.html, <Name>.css, <Name>.js
@@ -102,11 +106,20 @@ scripts/              shared JavaScript
   data/               data layer: repositories, public API clients, browser storage
   i18n/               translation engine (English and Armenian)
   services/           sign-in state, live score refresh, match text helpers
-assets/               fonts, icons, images, translations.json, manifest
+assets/               fonts, icons, images, translations.json, manifest, vendor/ (Chart.js)
 server/               server.js (Node.js) and serve.ps1 (Windows, no install)
 tools/                developer checks and asset builders (need Node.js)
 docs/API.md           the REST API the backend team needs to build
 ```
+
+## Trying the live features
+
+- **Chat:** open the same match on Watch live in two tabs. Messages go between the tabs in real time
+  (they are not saved). Signing in is needed to write; each tab has its own sign-in.
+- **Live match center:** it appears automatically while a real match is being played. To see it at
+  any time, sign in as an admin, open Admin → Matches, edit an upcoming match and set its status to
+  Live, then open it on Watch live.
+- **Stream:** in the same dialog, a YouTube link in "Stream URL" is shown in the Watch live player.
 
 ## Data sources
 
@@ -138,3 +151,4 @@ keys, or if an HTML file contains untranslated text.
 
 Icons: [Lucide](https://lucide.dev) (ISC). Card brand logos: [Simple Icons](https://simpleicons.org) (CC0).
 Fonts: Inter, Barlow Condensed and Noto Sans Armenian (SIL Open Font License).
+Charts: [Chart.js](https://www.chartjs.org) 4.5.1 (MIT), included in `assets/vendor` so it works without a CDN.

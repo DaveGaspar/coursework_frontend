@@ -1,0 +1,63 @@
+.home { padding-block-start: var(--space-4); }
+@media (min-width: 768px) {
+  .home { padding-block-start: var(--space-6); }
+}
+.home__title { display: inline-flex; align-items: center; gap: var(--space-3); }
+.home__live-dot {
+  width: var(--space-3);
+  height: var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-live);
+  animation: live-pulse var(--duration-pulse) ease-in-out infinite;
+}
+@keyframes live-pulse { 50% { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) {
+  .home__live-dot { animation: none; }
+}
+.home__row[aria-busy="true"] { display: flex; gap: var(--space-4); overflow: hidden; }
+
+.why { display: grid; gap: var(--space-8); }
+@media (min-width: 1024px) {
+  .why { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: var(--space-12); padding: var(--space-10); }
+}
+.why__copy { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-5); }
+.why__list { display: flex; flex-direction: column; gap: var(--space-4); list-style: none; padding: 0; }
+.why__item { display: flex; align-items: flex-start; gap: var(--space-4); }
+.why__icon {
+  display: grid;
+  place-items: center;
+  width: var(--size-well);
+  height: var(--size-well);
+  flex: none;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-tint);
+  color: var(--color-text-accent);
+}
+.why__media { display: flex; flex-direction: column; gap: var(--space-2); margin: 0; }
+.why__photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface-sunken);
+}
+
+.teams-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(var(--size-logo-lg) + var(--space-8)), 1fr));
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+}
+.teams-strip__link {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  filter: grayscale(1);
+  opacity: 0.7;
+  transition: filter var(--duration-base) var(--ease-out), opacity var(--duration-base) var(--ease-out), background-color var(--duration-base) var(--ease-out);
+}
+.teams-strip__link:hover,
+.teams-strip__link:focus-visible { filter: none; opacity: 1; background: var(--color-surface); }

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sports Live</title>
+  <meta name="description" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sports Live">
+  <meta property="og:title" content="Sports Live">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta name="theme-color" content="#F3EFE4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="assets/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/barlow-condensed-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="pages/Home/Home.css">
+  <script src="scripts/core/theme-boot.js"></script>
+  <script type="module" src="pages/Home/Home.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skipToContent"></a>
+  <header id="site-header" class="site-header"></header>
+
+  <main id="main" class="page home" tabindex="-1">
+    <h1 class="visually-hidden" data-i18n="home.title"></h1>
+    <div class="container">
+      <div id="hero" aria-busy="true">
+        <span class="skeleton skeleton--hero" aria-hidden="true"></span>
+      </div>
+
+      <section class="section" aria-labelledby="live-title">
+        <div class="section__head">
+          <h2 class="h1 home__title" id="live-title">
+            <span class="home__live-dot" aria-hidden="true"></span>
+            <span data-i18n="home.live.title"></span>
+          </h2>
+          <div class="cluster cluster--sm">
+            <a class="section__link" data-route="live">
+              <span data-i18n="common.seeAll"></span>
+              <svg class="icon--sm" data-icon="arrow-right"></svg>
+            </a>
+            <div class="poster-row__controls" data-row-controls="live-row" hidden>
+              <button class="btn btn--icon btn--secondary" type="button" data-dir="prev" data-i18n-attr="aria-label:home.rows.prev"><svg data-icon="chevron-left"></svg></button>
+              <button class="btn btn--icon btn--secondary" type="button" data-dir="next" data-i18n-attr="aria-label:home.rows.next"><svg data-icon="chevron-right"></svg></button>
+            </div>
+          </div>
+        </div>
+        <div id="live-row" class="home__row" aria-busy="true">
+          <span class="skeleton skeleton--poster" aria-hidden="true"></span>
+          <span class="skeleton skeleton--poster" aria-hidden="true"></span>
+          <span class="skeleton skeleton--poster" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="section" id="upcoming" aria-labelledby="upcoming-title">
+        <div class="section__head">
+          <h2 class="h1" id="upcoming-title" data-i18n="home.upcoming.title"></h2>
+          <div class="cluster cluster--sm">
+            <a class="section__link" data-route="tickets">
+              <span data-i18n="common.seeAll"></span>
+              <svg class="icon--sm" data-icon="arrow-right"></svg>
+            </a>
+            <div class="poster-row__controls" data-row-controls="upcoming-row" hidden>
+              <button class="btn btn--icon btn--secondary" type="button" data-dir="prev" data-i18n-attr="aria-label:home.rows.prev"><svg data-icon="chevron-left"></svg></button>
+              <button class="btn btn--icon btn--secondary" type="button" data-dir="next" data-i18n-attr="aria-label:home.rows.next"><svg data-icon="chevron-right"></svg></button>
+            </div>
+          </div>
+        </div>
+        <div id="upcoming-row" class="home__row" aria-busy="true">
+          <span class="skeleton skeleton--poster" aria-hidden="true"></span>
+          <span class="skeleton skeleton--poster" aria-hidden="true"></span>
+          <span class="skeleton skeleton--poster" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="why-title">
+        <div class="card card--accent card--xl why">
+          <div class="why__copy">
+            <p class="eyebrow" data-i18n="home.why.eyebrow"></p>
+            <h2 class="h1" id="why-title" data-i18n="home.why.title"></h2>
+            <p class="lead" data-i18n="home.why.text"></p>
+            <ul class="why__list" role="list">
+              <li class="why__item">
+                <span class="why__icon"><svg class="icon--lg" data-icon="tv"></svg></span>
+                <div>
+                  <h3 class="h3" data-i18n="home.why.hdTitle"></h3>
+                  <p class="muted" data-i18n="home.why.hdText"></p>
+                </div>
+              </li>
+              <li class="why__item">
+                <span class="why__icon"><svg class="icon--lg" data-icon="ticket"></svg></span>
+                <div>
+                  <h3 class="h3" data-i18n="home.why.ticketsTitle"></h3>
+                  <p class="muted" data-i18n="home.why.ticketsText"></p>
+                </div>
+              </li>
+              <li class="why__item">
+                <span class="why__icon"><svg class="icon--lg" data-icon="message-circle"></svg></span>
+                <div>
+                  <h3 class="h3" data-i18n="home.why.chatTitle"></h3>
+                  <p class="muted" data-i18n="home.why.chatText"></p>
+                </div>
+              </li>
+            </ul>
+            <a class="btn btn--primary btn--lg" data-route="tickets">
+              <span data-i18n="home.why.cta"></span>
+              <svg data-icon="arrow-right"></svg>
+            </a>
+          </div>
+          <figure class="why__media" id="why-media" aria-busy="true">
+            <span class="skeleton why__photo" aria-hidden="true"></span>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="teams-title">
+        <div class="section__head">
+          <div class="stack stack--sm">
+            <h2 class="h1" id="teams-title" data-i18n="home.teams.title"></h2>
+            <p class="muted" data-i18n="home.teams.text"></p>
+          </div>
+        </div>
+        <ul class="teams-strip" id="teams-strip" role="list" aria-busy="true"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer on-night"></footer>
+</body>
+</html>

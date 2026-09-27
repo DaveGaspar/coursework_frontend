@@ -1,14 +1,10 @@
 import { h, hashString, initials } from '../../scripts/core/dom.js';
 import { applyTranslations } from '../../scripts/i18n/i18n.js';
+import { sizedImage } from '../../scripts/services/match-display.js';
 
 const PIXELS = { sm: 24, md: 40, lg: 64, xl: 96 };
 const TINTS = 6;
-
-// TheSportsDB serves smaller renditions of its images.
-function sized(url, size) {
-  if (!url || !/thesportsdb\.com\/images\//.test(url)) return url;
-  return `${url}/${size === 'xl' ? 'small' : 'tiny'}`;
-}
+const sized = (url, size) => sizedImage(url, size === 'xl' ? 'small' : 'tiny');
 
 function monogram(team, size, decorative) {
   const tint = hashString(team?.name ?? '') % TINTS;

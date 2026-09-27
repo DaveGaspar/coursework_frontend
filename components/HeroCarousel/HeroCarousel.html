@@ -1,0 +1,30 @@
+<template id="hero">
+  <section class="hero" aria-roledescription="carousel" data-i18n-attr="aria-label:home.hero.label">
+    <div class="hero__viewport on-night" data-ref="viewport"></div>
+    <div class="hero__controls">
+      <button class="btn btn--icon btn--ghost" type="button" data-ref="toggle">
+        <svg data-ref="toggleIcon" data-icon="pause"></svg>
+      </button>
+      <ul class="hero__dots" role="list" data-ref="dots"></ul>
+    </div>
+  </section>
+</template>
+
+<template id="hero-slide">
+  <article class="hero__slide" aria-roledescription="slide">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__body">
+      <p class="eyebrow hero__eyebrow" data-ref="eyebrow"></p>
+      <h2 class="d-xl hero__title" data-ref="title"></h2>
+      <p class="hero__meta" data-ref="meta"></p>
+      <div class="hero__actions" data-ref="actions"></div>
+    </div>
+    <p class="hero__credit" data-ref="credit" hidden>
+      <span data-ref="creditLabel"></span>
+    </p>
+  </article>
+</template>
+
+<template id="hero-dot">
+  <li><button class="hero__dot" type="button"></button></li>
+</template>

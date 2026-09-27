@@ -17,7 +17,15 @@
       "toBeAnnounced": "To be announced",
       "backToHome": "Back to home",
       "showPassword": "Show password",
-      "hidePassword": "Hide password"
+      "hidePassword": "Hide password",
+      "matchTitle": "{home} vs {away}",
+      "vsShort": "VS",
+      "dateTime": "{date} · {time}",
+      "minute": "{minute}′",
+      "halfTime": "Half-time",
+      "score": "{home}–{away}",
+      "finalScore": "Full time {score}",
+      "liveLine": "{score} · {clock}"
     },
     "nav": {
       "home": "Home",
@@ -175,6 +183,57 @@
       "home": "Back to home",
       "tickets": "Buy tickets"
     },
+    "home": {
+      "title": "Live football and match tickets",
+      "posterLabel": "{title}. {status}. {when}",
+      "hero": {
+        "label": "Featured matches",
+        "slide": "{index} of {total}",
+        "liveNow": "Live now",
+        "upcoming": "Upcoming · {date}",
+        "watchLive": "Watch live",
+        "buyTickets": "Buy tickets",
+        "pause": "Pause slideshow",
+        "play": "Play slideshow",
+        "goTo": "Show slide {index} of {total}",
+        "photo": "Photo:",
+        "emptyTitle": "No featured matches right now",
+        "emptyText": "Fixtures are on their way. Browse all matches in the meantime."
+      },
+      "live": {
+        "title": "Live now",
+        "emptyTitle": "No live games right now",
+        "emptyText": "See what's coming up next.",
+        "emptyAction": "See upcoming"
+      },
+      "upcoming": {
+        "title": "Upcoming",
+        "emptyTitle": "No upcoming matches yet"
+      },
+      "rows": {
+        "prev": "Scroll back",
+        "next": "Scroll forward"
+      },
+      "why": {
+        "eyebrow": "Why Sports Live",
+        "title": "Every match, one place",
+        "text": "Follow scores and goals as they happen, get tickets for the biggest games in Europe and talk through every moment with other fans.",
+        "hdTitle": "Watch in HD",
+        "hdText": "Live streams and match highlights in sharp quality.",
+        "ticketsTitle": "Buy tickets in seconds",
+        "ticketsText": "Pick a match, choose your seats and pay with a saved card.",
+        "chatTitle": "Live chat with fans",
+        "chatText": "React to every goal together while the match is on.",
+        "cta": "Browse matches",
+        "photoAlt": "{venue}, home of {team}",
+        "photo": "Photo:"
+      },
+      "teams": {
+        "title": "Teams",
+        "text": "Clubs from the Premier League, the Champions League and the Bundesliga.",
+        "link": "Tickets for {team}"
+      }
+    },
     "meta": {
       "home": {
         "title": "Sports Live — watch live football and buy match tickets",
@@ -240,7 +299,15 @@
       "toBeAnnounced": "Կհայտարարվի ավելի ուշ",
       "backToHome": "Վերադառնալ գլխավոր էջ",
       "showPassword": "Ցույց տալ գաղտնաբառը",
-      "hidePassword": "Թաքցնել գաղտնաբառը"
+      "hidePassword": "Թաքցնել գաղտնաբառը",
+      "matchTitle": "{home} – {away}",
+      "vsShort": "VS",
+      "dateTime": "{date} · {time}",
+      "minute": "{minute}′",
+      "halfTime": "Ընդմիջում",
+      "score": "{home}–{away}",
+      "finalScore": "Ավարտ՝ {score}",
+      "liveLine": "{score} · {clock}"
     },
     "nav": {
       "home": "Գլխավոր",
@@ -397,6 +464,57 @@
       "text": "Ձեր փնտրած էջը գոյություն չունի կամ տեղափոխվել է։",
       "home": "Վերադառնալ գլխավոր էջ",
       "tickets": "Գնել տոմսեր"
+    },
+    "home": {
+      "title": "Ուղիղ ֆուտբոլ և խաղերի տոմսեր",
+      "posterLabel": "{title}։ {status}։ {when}",
+      "hero": {
+        "label": "Առանձնացված խաղեր",
+        "slide": "{index}՝ {total}-ից",
+        "liveNow": "Հիմա ուղիղ եթերում",
+        "upcoming": "Առաջիկայում · {date}",
+        "watchLive": "Դիտել ուղիղ",
+        "buyTickets": "Գնել տոմսեր",
+        "pause": "Դադարեցնել սլայդշոուն",
+        "play": "Միացնել սլայդշոուն",
+        "goTo": "Ցույց տալ {index}-րդ սլայդը՝ {total}-ից",
+        "photo": "Լուսանկարը՝",
+        "emptyTitle": "Այս պահին առանձնացված խաղեր չկան",
+        "emptyText": "Խաղացանկը շուտով կհայտնվի։ Մինչ այդ դիտեք բոլոր խաղերը։"
+      },
+      "live": {
+        "title": "Հիմա ուղիղ եթերում",
+        "emptyTitle": "Այս պահին ուղիղ խաղեր չկան",
+        "emptyText": "Տեսեք, թե ինչ խաղեր են սպասվում։",
+        "emptyAction": "Սպասվող խաղերը"
+      },
+      "upcoming": {
+        "title": "Սպասվող խաղեր",
+        "emptyTitle": "Սպասվող խաղեր դեռ չկան"
+      },
+      "rows": {
+        "prev": "Թերթել հետ",
+        "next": "Թերթել առաջ"
+      },
+      "why": {
+        "eyebrow": "Ինչու Sports Live",
+        "title": "Բոլոր խաղերը՝ մեկ վայրում",
+        "text": "Հետևեք հաշվին և գոլերին իրական ժամանակում, գնեք տոմսեր Եվրոպայի ամենամեծ խաղերի համար և քննարկեք յուրաքանչյուր պահը այլ երկրպագուների հետ։",
+        "hdTitle": "Դիտեք HD որակով",
+        "hdText": "Ուղիղ հեռարձակումներ և տեսաամփոփումներ բարձր որակով։",
+        "ticketsTitle": "Գնեք տոմսեր վայրկյանների ընթացքում",
+        "ticketsText": "Ընտրեք խաղը, տոմսերի քանակը և վճարեք պահված քարտով։",
+        "chatTitle": "Զրուցեք երկրպագուների հետ",
+        "chatText": "Արձագանքեք յուրաքանչյուր գոլին միասին՝ խաղի ընթացքում։",
+        "cta": "Դիտել խաղերը",
+        "photoAlt": "{venue}՝ {team} թիմի տնային մարզադաշտը",
+        "photo": "Լուսանկարը՝"
+      },
+      "teams": {
+        "title": "Թիմեր",
+        "text": "Պրեմիեր լիգայի, Չեմպիոնների լիգայի և Բունդեսլիգայի ակումբներ։",
+        "link": "{team} թիմի խաղերի տոմսեր"
+      }
     },
     "meta": {
       "home": {

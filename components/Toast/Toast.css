@@ -1,7 +1,7 @@
 .toast-region {
   position: fixed;
   inset-inline: var(--space-4);
-  inset-block-end: var(--space-4);
+  inset-block-end: calc(var(--space-6) + var(--control-lg));
   z-index: var(--z-toast);
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
   pointer-events: none;
 }
 @media (min-width: 768px) {
-  .toast-region { inset-inline: auto var(--space-6); inset-block-end: var(--space-6); align-items: flex-end; }
+  .toast-region { inset-inline: auto var(--space-6); inset-block-end: calc(var(--space-8) + var(--control-lg)); align-items: flex-end; }
 }
 .toast {
   display: flex;

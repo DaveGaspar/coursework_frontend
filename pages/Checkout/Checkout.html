@@ -56,6 +56,7 @@
             <ul class="meta-list" role="list">
               <li><svg data-icon="calendar"></svg><span id="summary-date"></span></li>
               <li id="summary-venue-row"><svg data-icon="map-pin"></svg><span id="summary-venue"></span></li>
+              <li><svg data-icon="armchair"></svg><span id="summary-zone"></span></li>
             </ul>
           </div>
           <div class="summary__row">
@@ -74,23 +75,33 @@
           </p>
         </aside>
 
-        <section class="card checkout__main checkout__payment" aria-labelledby="payment-title">
-          <h2 class="h2" id="payment-title" data-i18n="checkout.payment"></h2>
-          <div class="form-alert" role="alert"></div>
-          <p class="form-note form-note--test">
-            <svg class="icon--sm" data-icon="info"></svg>
-            <span data-i18n="checkout.testMode"></span>
-          </p>
-          <fieldset class="stack stack--sm">
-            <legend class="field__label" data-i18n="checkout.payWith"></legend>
-            <div class="saved-cards" id="saved-cards"></div>
-          </fieldset>
-          <div class="new-card-panel" id="new-card" hidden></div>
-          <button class="btn btn--primary btn--lg btn--block" id="pay" type="submit">
-            <svg data-icon="lock"></svg>
-            <span id="pay-label"></span>
-          </button>
-        </section>
+        <div class="checkout__main stack stack--lg">
+          <section class="card checkout__seats" aria-labelledby="seats-title">
+            <div class="stack stack--sm">
+              <h2 class="h2" id="seats-title" data-i18n="checkout.seats.title"></h2>
+              <p class="muted" data-i18n="checkout.seats.text"></p>
+            </div>
+            <div id="seat-map"></div>
+          </section>
+
+          <section class="card checkout__payment" id="payment" aria-labelledby="payment-title">
+            <h2 class="h2" id="payment-title" data-i18n="checkout.payment"></h2>
+            <div class="form-alert" role="alert"></div>
+            <p class="form-note form-note--test">
+              <svg class="icon--sm" data-icon="info"></svg>
+              <span data-i18n="checkout.testMode"></span>
+            </p>
+            <fieldset class="stack stack--sm">
+              <legend class="field__label" data-i18n="checkout.payWith"></legend>
+              <div class="saved-cards" id="saved-cards"></div>
+            </fieldset>
+            <div class="new-card-panel" id="new-card" hidden></div>
+            <button class="btn btn--primary btn--lg btn--block" id="pay" type="submit">
+              <svg data-icon="lock"></svg>
+              <span id="pay-label"></span>
+            </button>
+          </section>
+        </div>
       </form>
 
       <section class="card card--xl confirmation" id="confirmation" aria-labelledby="confirm-title" hidden>
@@ -103,6 +114,7 @@
           <ul class="meta-list" role="list">
             <li><svg data-icon="calendar"></svg><span id="confirm-date"></span></li>
             <li id="confirm-venue-row"><svg data-icon="map-pin"></svg><span id="confirm-venue"></span></li>
+            <li><svg data-icon="armchair"></svg><span id="confirm-zone"></span></li>
             <li><svg data-icon="ticket"></svg><span id="confirm-quantity"></span></li>
             <li><svg data-icon="credit-card"></svg><span id="confirm-card"></span></li>
           </ul>

@@ -1,0 +1,37 @@
+<template id="seat-map">
+  <div class="seat-map">
+    <svg class="seat-map__stadium" viewBox="0 0 360 240" aria-hidden="true" data-ref="stadium">
+      <g class="seat-map__stand" data-zone="side"><rect x="84" y="10" width="192" height="40" rx="10"/></g>
+      <g class="seat-map__stand" data-zone="goal">
+        <rect x="12" y="56" width="64" height="128" rx="10"/>
+        <rect x="284" y="56" width="64" height="128" rx="10"/>
+      </g>
+      <g class="seat-map__stand" data-zone="main">
+        <rect x="84" y="190" width="62" height="40" rx="10"/>
+        <rect x="214" y="190" width="62" height="40" rx="10"/>
+      </g>
+      <g class="seat-map__stand" data-zone="vip"><rect x="152" y="190" width="56" height="40" rx="10"/></g>
+      <g class="seat-map__pitch">
+        <rect x="84" y="56" width="192" height="128" rx="6"/>
+        <line x1="180" y1="56" x2="180" y2="184"/>
+        <circle cx="180" cy="120" r="18"/>
+        <rect x="84" y="92" width="28" height="56"/>
+        <rect x="248" y="92" width="28" height="56"/>
+      </g>
+    </svg>
+    <fieldset class="seat-map__zones" data-ref="zones">
+      <legend class="visually-hidden" data-i18n="checkout.seats.legend"></legend>
+    </fieldset>
+  </div>
+</template>
+
+<template id="seat-zone">
+  <label class="seat-zone">
+    <input class="seat-zone__radio" type="radio" name="zone" data-ref="radio">
+    <span class="seat-zone__info">
+      <span class="seat-zone__name" data-ref="name"></span>
+      <span class="seat-zone__text" data-ref="text"></span>
+    </span>
+    <span class="seat-zone__price num" data-ref="price"></span>
+  </label>
+</template>

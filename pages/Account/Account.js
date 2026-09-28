@@ -52,17 +52,18 @@ function showList(list, items, empty) {
   applyTranslations(list);
 }
 
-function ticketItem({ quantity, price_per_ticket: price, match }) {
+function ticketItem({ quantity, price_per_ticket: price, seat_zone: zone = 'goal', match }) {
   return h('li', { class: 'card ticket-item' },
     h('div', { class: 'ticket-item__main' },
       h('div', { class: 'cluster' }, createStatusBadge(match.status), createBadge({ kind: 'league', text: match.league })),
       h('a', { class: 'h3 ticket-item__title', href: liveUrl(match) }, matchTitle(match)),
       h('ul', { class: 'meta-list', role: 'list' },
         h('li', null, icon('calendar'), kickoffLabel(match, 'full')),
-        match.venue && h('li', null, icon('map-pin'), match.venue))),
+        match.venue && h('li', null, icon('map-pin'), match.venue),
+        h('li', null, icon('armchair'), t('checkout.seats.zoneLine', { zone: t(`checkout.seats.zones.${zone}.name`) })))),
     h('div', { class: 'ticket-item__side' },
       h('span', { class: 'muted text-sm' }, t('checkout.unitLine', { count: formatNumber(quantity), price: formatCurrency(price) })),
-      h('span', { class: 'ticket-item__total num' }, formatCurrency(quantity * price))));
+      h('span', { class: 'ticket-item__total num' }, formatCurrency(price, { quantity }))));
 }
 
 async function loadTickets() {

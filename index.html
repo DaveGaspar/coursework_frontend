@@ -37,13 +37,17 @@
 
       <section class="section" aria-labelledby="live-title">
         <div class="section__head">
-          <h2 class="h1 home__title" id="live-title">
-            <span class="home__live-dot" aria-hidden="true"></span>
-            <span data-i18n="home.live.title"></span>
-          </h2>
+          <div class="stack stack--sm">
+            <h2 class="h1 home__title" id="live-title">
+              <svg class="home__title-icon home__title-icon--live" data-icon="radio"></svg>
+              <span class="home__live-dot" aria-hidden="true"></span>
+              <span data-i18n="home.live.title"></span>
+            </h2>
+            <p class="muted" data-i18n="home.live.text"></p>
+          </div>
           <div class="cluster cluster--sm">
             <a class="section__link" data-route="live">
-              <span data-i18n="common.seeAll"></span>
+              <span data-i18n="home.live.seeAll"></span>
               <svg class="icon--sm" data-icon="arrow-right"></svg>
             </a>
             <div class="poster-row__controls" data-row-controls="live-row" hidden>
@@ -61,10 +65,16 @@
 
       <section class="section" id="upcoming" aria-labelledby="upcoming-title">
         <div class="section__head">
-          <h2 class="h1" id="upcoming-title" data-i18n="home.upcoming.title"></h2>
+          <div class="stack stack--sm">
+            <h2 class="h1 home__title" id="upcoming-title">
+              <svg class="home__title-icon" data-icon="calendar-clock"></svg>
+              <span data-i18n="home.upcoming.title"></span>
+            </h2>
+            <p class="muted" data-i18n="home.upcoming.text"></p>
+          </div>
           <div class="cluster cluster--sm">
             <a class="section__link" data-route="tickets">
-              <span data-i18n="common.seeAll"></span>
+              <span data-i18n="home.upcoming.seeAll"></span>
               <svg class="icon--sm" data-icon="arrow-right"></svg>
             </a>
             <div class="poster-row__controls" data-row-controls="upcoming-row" hidden>
@@ -123,7 +133,10 @@
       <section class="section" aria-labelledby="teams-title">
         <div class="section__head">
           <div class="stack stack--sm">
-            <h2 class="h1" id="teams-title" data-i18n="home.teams.title"></h2>
+            <h2 class="h1 home__title" id="teams-title">
+              <svg class="home__title-icon" data-icon="shirt"></svg>
+              <span data-i18n="home.teams.title"></span>
+            </h2>
             <p class="muted" data-i18n="home.teams.text"></p>
           </div>
         </div>

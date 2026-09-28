@@ -1,0 +1,25 @@
+.scroll-top {
+  position: fixed;
+  inset-inline-end: var(--space-4);
+  inset-block-end: var(--space-4);
+  z-index: var(--z-sticky);
+  display: grid;
+  place-items: center;
+  width: var(--control-lg);
+  height: var(--control-lg);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(var(--space-3));
+  transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out), visibility var(--duration-fast);
+}
+.scroll-top--visible { opacity: 1; visibility: visible; transform: none; }
+.scroll-top:hover { background: var(--color-accent-hover); }
+@media (min-width: 768px) {
+  .scroll-top { inset-inline-end: var(--space-6); inset-block-end: var(--space-6); }
+}

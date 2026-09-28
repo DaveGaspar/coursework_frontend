@@ -16,6 +16,7 @@
       "notSet": "Not set",
       "toBeAnnounced": "To be announced",
       "backToHome": "Back to home",
+      "backToTop": "Back to top",
       "showPassword": "Show password",
       "hidePassword": "Hide password",
       "matchTitle": "{home} vs {away}",
@@ -189,8 +190,8 @@
       "hero": {
         "label": "Featured matches",
         "slide": "{index} of {total}",
-        "liveNow": "Live now",
-        "upcoming": "Upcoming · {date}",
+        "liveNow": "Featured match · On air now",
+        "upcoming": "Featured match · {date}",
         "watchLive": "Watch live",
         "buyTickets": "Buy tickets",
         "pause": "Pause slideshow",
@@ -201,13 +202,17 @@
         "emptyText": "Fixtures are on their way. Browse all matches in the meantime."
       },
       "live": {
-        "title": "Live now",
+        "title": "Happening now",
+        "text": "Matches in progress. Scores and goals update every 30 seconds.",
+        "seeAll": "Open the live centre",
         "emptyTitle": "No live games right now",
         "emptyText": "See what's coming up next.",
         "emptyAction": "See upcoming"
       },
       "upcoming": {
-        "title": "Upcoming",
+        "title": "Coming up next",
+        "text": "The next kick-offs across Europe. Tickets are on sale now.",
+        "seeAll": "All matches and tickets",
         "emptyTitle": "No upcoming matches yet"
       },
       "rows": {
@@ -229,8 +234,8 @@
         "photo": "Photo:"
       },
       "teams": {
-        "title": "Teams",
-        "text": "Clubs from the Premier League, the Champions League and the Bundesliga.",
+        "title": "Clubs to follow",
+        "text": "Pick a club to see its upcoming matches and tickets.",
         "link": "Tickets for {team}"
       }
     },
@@ -269,9 +274,23 @@
       "steps": {
         "label": "Checkout progress",
         "match": "Match",
+        "seats": "Seats",
         "payment": "Payment",
         "confirmation": "Confirmation",
         "done": "(completed)"
+      },
+      "seats": {
+        "title": "Choose your seats",
+        "text": "Pick a stand on the stadium plan or in the list. The ticket price depends on where you sit.",
+        "legend": "Stand",
+        "perTicket": "{price} per ticket",
+        "zoneLine": "Seats: {zone}",
+        "zones": {
+          "goal": { "name": "Behind the goal", "text": "The loudest atmosphere and the best price." },
+          "side": { "name": "Side stand", "text": "A clear view along the whole pitch." },
+          "main": { "name": "Main stand", "text": "Central seats next to the team benches." },
+          "vip": { "name": "VIP box", "text": "Padded seats, lounge access and food included." }
+        }
       },
       "summary": "Order summary",
       "tickets": "Tickets",
@@ -464,7 +483,7 @@
         "chooseTeam": "Choose a team",
         "home": "Home team",
         "away": "Away team",
-        "price": "Ticket price",
+        "price": "Base ticket price (USD)",
         "capacity": "Ticket capacity",
         "streamUrl": "Stream URL",
         "referee": "Referee",
@@ -475,10 +494,10 @@
         "fouls": "Fouls",
         "yellowCards": "Yellow cards",
         "redCards": "Red cards",
-        "revenueTickets": "Ticket revenue",
-        "revenueMerchandise": "Merchandise revenue",
-        "revenueSponsorship": "Sponsorship revenue",
-        "revenueConcessions": "Concessions revenue"
+        "revenueTickets": "Ticket revenue (USD)",
+        "revenueMerchandise": "Merchandise revenue (USD)",
+        "revenueSponsorship": "Sponsorship revenue (USD)",
+        "revenueConcessions": "Concessions revenue (USD)"
       },
       "reports": {
         "title": "Reports",
@@ -578,6 +597,7 @@
       "notSet": "Նշված չէ",
       "toBeAnnounced": "Կհայտարարվի ավելի ուշ",
       "backToHome": "Վերադառնալ գլխավոր էջ",
+      "backToTop": "Վերադառնալ էջի սկիզբ",
       "showPassword": "Ցույց տալ գաղտնաբառը",
       "hidePassword": "Թաքցնել գաղտնաբառը",
       "matchTitle": "{home} – {away}",
@@ -751,8 +771,8 @@
       "hero": {
         "label": "Առանձնացված խաղեր",
         "slide": "{index}՝ {total}-ից",
-        "liveNow": "Հիմա ուղիղ եթերում",
-        "upcoming": "Առաջիկայում · {date}",
+        "liveNow": "Օրվա խաղը · Հիմա եթերում",
+        "upcoming": "Օրվա խաղը · {date}",
         "watchLive": "Դիտել ուղիղ",
         "buyTickets": "Գնել տոմսեր",
         "pause": "Դադարեցնել սլայդշոուն",
@@ -763,13 +783,17 @@
         "emptyText": "Խաղացանկը շուտով կհայտնվի։ Մինչ այդ դիտեք բոլոր խաղերը։"
       },
       "live": {
-        "title": "Հիմա ուղիղ եթերում",
+        "title": "Հենց հիմա",
+        "text": "Ընթացող խաղեր։ Հաշիվն ու գոլերը թարմացվում են 30 վայրկյանը մեկ։",
+        "seeAll": "Բացել ուղիղ եթերը",
         "emptyTitle": "Այս պահին ուղիղ խաղեր չկան",
         "emptyText": "Տեսեք, թե ինչ խաղեր են սպասվում։",
         "emptyAction": "Սպասվող խաղերը"
       },
       "upcoming": {
-        "title": "Սպասվող խաղեր",
+        "title": "Շուտով մեկնարկող խաղեր",
+        "text": "Եվրոպայի մոտակա խաղերը։ Տոմսերն արդեն վաճառքում են։",
+        "seeAll": "Բոլոր խաղերն ու տոմսերը",
         "emptyTitle": "Սպասվող խաղեր դեռ չկան"
       },
       "rows": {
@@ -783,7 +807,7 @@
         "hdTitle": "Դիտեք HD որակով",
         "hdText": "Ուղիղ հեռարձակումներ և տեսաամփոփումներ բարձր որակով։",
         "ticketsTitle": "Գնեք տոմսեր վայրկյանների ընթացքում",
-        "ticketsText": "Ընտրեք խաղը, տոմսերի քանակը և վճարեք պահված քարտով։",
+        "ticketsText": "Ընտրեք խաղը, նստատեղերը և վճարեք պահված քարտով։",
         "chatTitle": "Զրուցեք երկրպագուների հետ",
         "chatText": "Արձագանքեք յուրաքանչյուր գոլին միասին՝ խաղի ընթացքում։",
         "cta": "Դիտել խաղերը",
@@ -791,8 +815,8 @@
         "photo": "Լուսանկարը՝"
       },
       "teams": {
-        "title": "Թիմեր",
-        "text": "Պրեմիեր լիգայի, Չեմպիոնների լիգայի և Բունդեսլիգայի ակումբներ։",
+        "title": "Ակումբներ",
+        "text": "Ընտրեք ակումբը՝ տեսնելու նրա մոտակա խաղերն ու տոմսերը։",
         "link": "{team} թիմի խաղերի տոմսեր"
       }
     },
@@ -831,9 +855,23 @@
       "steps": {
         "label": "Պատվերի փուլերը",
         "match": "Խաղ",
+        "seats": "Նստատեղեր",
         "payment": "Վճարում",
         "confirmation": "Հաստատում",
         "done": "(ավարտված)"
+      },
+      "seats": {
+        "title": "Ընտրեք նստատեղերը",
+        "text": "Ընտրեք տրիբունան մարզադաշտի սխեմայի վրա կամ ցանկից։ Տոմսի գինը կախված է նստատեղի դիրքից։",
+        "legend": "Տրիբունա",
+        "perTicket": "{price}՝ մեկ տոմսի համար",
+        "zoneLine": "Նստատեղեր՝ {zone}",
+        "zones": {
+          "goal": { "name": "Դարպասի ետևում", "text": "Ամենաթեժ մթնոլորտը և ամենամատչելի գինը։" },
+          "side": { "name": "Կողային տրիբունա", "text": "Լավ տեսանելիություն ամբողջ դաշտի երկայնքով։" },
+          "main": { "name": "Գլխավոր տրիբունա", "text": "Կենտրոնական տեղեր՝ թիմերի նստարանների կողքին։" },
+          "vip": { "name": "VIP օթյակ", "text": "Փափուկ նստատեղեր, լաունջ և սնունդ՝ ներառված գնի մեջ։" }
+        }
       },
       "summary": "Պատվերի ամփոփում",
       "tickets": "Տոմսեր",
@@ -1026,7 +1064,7 @@
         "chooseTeam": "Ընտրեք թիմը",
         "home": "Տանտեր թիմ",
         "away": "Հյուր թիմ",
-        "price": "Տոմսի գինը",
+        "price": "Տոմսի բազային գինը (USD)",
         "capacity": "Տոմսերի քանակը",
         "streamUrl": "Հեռարձակման URL",
         "referee": "Մրցավար",
@@ -1037,10 +1075,10 @@
         "fouls": "Խախտումներ",
         "yellowCards": "Դեղին քարտեր",
         "redCards": "Կարմիր քարտեր",
-        "revenueTickets": "Եկամուտ տոմսերից",
-        "revenueMerchandise": "Եկամուտ ապրանքներից",
-        "revenueSponsorship": "Եկամուտ հովանավորությունից",
-        "revenueConcessions": "Եկամուտ սննդից և խմիչքից"
+        "revenueTickets": "Եկամուտ տոմսերից (USD)",
+        "revenueMerchandise": "Եկամուտ ապրանքներից (USD)",
+        "revenueSponsorship": "Եկամուտ հովանավորությունից (USD)",
+        "revenueConcessions": "Եկամուտ սննդից և խմիչքից (USD)"
       },
       "reports": {
         "title": "Հաշվետվություններ",

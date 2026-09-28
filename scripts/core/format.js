@@ -1,5 +1,5 @@
-import { CURRENCY } from './config.js';
-import { getLocale } from '../i18n/i18n.js';
+import { AMD_PER_USD, CURRENCIES } from './config.js';
+import { getLanguage, getLocale } from '../i18n/i18n.js';
 
 const formatters = new Map();
 
@@ -20,13 +20,20 @@ export function formatNumber(value, options = {}) {
   return formatter('number', options).format(Number(value) || 0);
 }
 
-export function formatCurrency(amount, { whole = false } = {}) {
-  const digits = whole ? { minimumFractionDigits: 0, maximumFractionDigits: 0 } : { minimumFractionDigits: 2, maximumFractionDigits: 2 };
-  return formatter('number', { style: 'currency', currency: CURRENCY, currencyDisplay: 'narrowSymbol', ...digits }).format(Number(amount) || 0);
+const currency = () => CURRENCIES[getLanguage()] ?? 'USD';
+// Dram prices are whole numbers, so each unit price is rounded before it is multiplied.
+const convert = (usd) => (currency() === 'AMD' ? Math.round((Number(usd) || 0) * AMD_PER_USD) : Number(usd) || 0);
+
+// `usd` is always in dollars; it is shown in dollars (English) or dram (Armenian).
+// Pass `quantity` for "3 × price" totals so they match the unit price shown next to them.
+export function formatCurrency(usd, { whole = false, quantity = 1 } = {}) {
+  const noCents = whole || currency() === 'AMD';
+  const digits = noCents ? { minimumFractionDigits: 0, maximumFractionDigits: 0 } : { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+  return formatter('number', { style: 'currency', currency: currency(), currencyDisplay: 'narrowSymbol', ...digits }).format(convert(usd) * quantity);
 }
 
-export function formatCompactCurrency(amount) {
-  return formatter('number', { style: 'currency', currency: CURRENCY, currencyDisplay: 'narrowSymbol', notation: 'compact', maximumFractionDigits: 1 }).format(Number(amount) || 0);
+export function formatCompactCurrency(usd) {
+  return formatter('number', { style: 'currency', currency: currency(), currencyDisplay: 'narrowSymbol', notation: 'compact', maximumFractionDigits: 1 }).format(convert(usd));
 }
 
 export function formatCompactNumber(value) {

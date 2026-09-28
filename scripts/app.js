@@ -1,6 +1,7 @@
 import { mountFooter } from '../components/Footer/Footer.js';
 import { mountNavbar } from '../components/Navbar/Navbar.js';
 import { initStaleNotice } from '../components/Notice/Notice.js';
+import { mountScrollTop } from '../components/ScrollTop/ScrollTop.js';
 import { toast } from '../components/Toast/Toast.js';
 import { hydrate } from './core/template.js';
 import { initTheme } from './core/theme.js';
@@ -27,6 +28,7 @@ export async function boot({ page, access = 'public' }) {
   hydrate(document.body);
   mountNavbar(document.getElementById('site-header'), user);
   mountFooter(document.getElementById('site-footer'), user);
+  mountScrollTop();
   setMeta(page);
   onLanguageChange(() => setMeta(page));
 

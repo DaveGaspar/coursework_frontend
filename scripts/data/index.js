@@ -8,7 +8,7 @@ import { matchesRepo as hybridMatches } from './repositories/matches.js';
 import { playersRepo as hybridPlayers, POSITIONS } from './repositories/players.js';
 import { reportsRepo as hybridReports } from './repositories/reports.js';
 import { teamsRepo as hybridTeams } from './repositories/teams.js';
-import { ticketsRepo as hybridTickets, MAX_TICKETS_PER_ORDER } from './repositories/tickets.js';
+import { ticketsRepo as hybridTickets, MAX_TICKETS_PER_ORDER, SEAT_ZONES, zonePrice } from './repositories/tickets.js';
 
 const useBackend = DATA_SOURCE === 'backend';
 
@@ -23,7 +23,7 @@ export const reportsRepo = useBackend ? backend.reports : hybridReports;
 export const PLAYER_POSITIONS = POSITIONS;
 export const MATCH_STATUSES = ['upcoming', 'live', 'finished'];
 export const USER_ROLES = ['viewer', 'admin'];
-export { MAX_TICKETS_PER_ORDER };
+export { MAX_TICKETS_PER_ORDER, SEAT_ZONES, zonePrice };
 
 export function startDataSource() {
   if (!useBackend) startHybrid();

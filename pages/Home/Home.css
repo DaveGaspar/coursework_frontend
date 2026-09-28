@@ -3,6 +3,8 @@
   .home { padding-block-start: var(--space-6); }
 }
 .home__title { display: inline-flex; align-items: center; gap: var(--space-3); }
+.home__title-icon { width: var(--size-well); height: var(--size-well); flex: none; padding: var(--space-2); border-radius: var(--radius-md); background: var(--color-accent-tint); color: var(--color-text-accent); }
+.home__title-icon--live { background: var(--color-danger-subtle); color: var(--color-live); }
 .home__live-dot {
   width: var(--space-3);
   height: var(--space-3);

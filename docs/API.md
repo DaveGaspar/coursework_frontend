@@ -13,7 +13,7 @@ All example values are real data imported on 2026-09-27.
 | Topic | Rule |
 |---|---|
 | Base URL | `/api` on the same origin (`BACKEND_BASE_URL`) |
-| Format | JSON request and response bodies, UTF-8. Dates are ISO 8601 in UTC (`2026-10-10T11:30:00.000Z`). Money is a number in USD with 2 decimals. |
+| Format | JSON request and response bodies, UTF-8. Dates are ISO 8601 in UTC (`2026-10-10T11:30:00.000Z`). Money is a number in USD with 2 decimals. The site converts it for display (dram in Armenian). |
 | Auth | Session cookie (`HttpOnly`, `Secure`, `SameSite=Lax`) set by sign-in / sign-up. The frontend sends `credentials: 'include'`. |
 | Roles | `viewer` (default at sign-up) and `admin`. |
 | IDs | Integers (`SERIAL`). |
@@ -59,7 +59,7 @@ never rely on `message` for the UI.
 | `teams` | `id`, `name`, `coach_name`, `logo_url`, `created_at` |
 | `players` | `id`, `team_id` → teams, `full_name`, `position`, `jersey_number` (1–99, unique per team, nullable), `created_at` |
 | `matches` | `id`, `home_team_id`, `away_team_id`, `venue`, `scheduled_at`, `status`, `league`, `stream_url`, `home_score`, `away_score`, `attendance`, `total_fouls`, `yellow_cards`, `red_cards`, `revenue_tickets`, `revenue_merchandise`, `revenue_sponsorship`, `revenue_concessions`, `ticket_price`, `ticket_capacity`, `referee`, `poster_url`, `created_at` |
-| `tickets` | `id`, `match_id` → matches, `user_id` → users, `quantity`, `price_per_ticket`, `purchased_at` |
+| `tickets` | `id`, `match_id` → matches, `user_id` → users, `quantity`, `seat_zone` (`goal`, `side`, `main`, `vip`), `price_per_ticket`, `purchased_at` |
 | `payment_cards` | `id`, `user_id` → users, `cardholder_name`, `card_last_four`, `expiry_date` (`MM/YY`), `brand`, `is_default`, `created_at` |
 
 Enums: `status` is `upcoming | live | finished`; `position` is `Goalkeeper | Defender | Midfielder | Forward`;
@@ -296,28 +296,30 @@ Admin. Body: `{ "team_id": 43, "full_name": "Cole Palmer", "position": "Midfield
 Signed in. Buys tickets for an `upcoming` match. Pay with a saved card:
 
 ```json
-{ "match_id": 46, "quantity": 2, "card": { "saved_card_id": 1 } }
+{ "match_id": 46, "quantity": 2, "zone": "main", "card": { "saved_card_id": 1 } }
 ```
 
 or with a new card (sent to the payment provider, never stored in full; `save: true` stores the safe
 fields as a saved card):
 
 ```json
-{ "match_id": 46, "quantity": 2, "card": { "number": "4242 4242 4242 4242", "expiry": "12/30", "cvv": "123", "name": "Mike Davis", "save": true } }
+{ "match_id": 46, "quantity": 2, "zone": "main", "card": { "number": "4242 4242 4242 4242", "expiry": "12/30", "cvv": "123", "name": "Mike Davis", "save": true } }
 ```
 
-`quantity` is 1–10. `price_per_ticket` is copied from the match at purchase time. `201`:
+`quantity` is 1–10. `zone` is the stand: `goal` (behind the goal, ×1), `side` (×1.5), `main` (×2) or `vip` (×4).
+The server sets `price_per_ticket` = the match's `ticket_price` × the zone multiplier, rounded to cents; never trust a
+price sent by the browser. `201`:
 
 ```json
 {
-  "ticket": { "id": 1, "match_id": 46, "user_id": 3, "quantity": 2, "price_per_ticket": 30, "purchased_at": "2026-09-27T16:52:21.659Z" },
+  "ticket": { "id": 1, "match_id": 46, "user_id": 3, "quantity": 2, "seat_zone": "main", "price_per_ticket": 60, "purchased_at": "2026-09-27T16:52:21.659Z" },
   "match": { "…": "the match with the new tickets_left" },
-  "total": 60,
+  "total": 120,
   "card": { "brand": "visa", "card_last_four": "4242" }
 }
 ```
 
-Errors: `400 validation` (card fields: `number`, `expiry`, `cvv`, `name`; or `quantity`),
+Errors: `400 validation` (card fields: `number`, `expiry`, `cvv`, `name`; or `quantity`, `zone`),
 `400 match_not_on_sale`, `409 not_enough_tickets`, `402 card_declined`, `401 unauthorized`.
 The check for tickets left and the insert must run in one transaction.
 

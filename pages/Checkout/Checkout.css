@@ -7,6 +7,7 @@
   .checkout__side { grid-column: 2; grid-row: 1; position: sticky; inset-block-start: calc(var(--nav-height) + var(--space-6)); }
 }
 .checkout__summary,
+.checkout__seats,
 .checkout__payment { display: flex; flex-direction: column; gap: var(--space-5); }
 
 .summary__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); }

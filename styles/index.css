@@ -420,6 +420,8 @@ strong, b { font-weight: var(--weight-semibold); }
 }
 
 /* Typography */
+/* Long single words (common in Armenian) may break rather than push past a narrow screen. */
+h1, h2, .d-xl, .d-lg, .h1, .h2 { overflow-wrap: anywhere; }
 .d-xl, .d-lg, .h1 {
   font-family: var(--font-display);
   font-weight: var(--weight-bold);

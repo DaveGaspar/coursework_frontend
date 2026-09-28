@@ -1,10 +1,15 @@
 .form { display: flex; flex-direction: column; gap: var(--space-5); }
-.form-row { display: grid; gap: var(--space-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.form-grid { display: grid; gap: var(--space-4); grid-template-columns: minmax(0, 1fr); }
+/* Two columns when there is room, one when a long label would not fit. */
+.form-row { display: grid; gap: var(--space-2) var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); }
+.form-grid { display: grid; gap: var(--space-2) var(--space-4); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 640px) {
   .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .form-grid > .field--full { grid-column: 1 / -1; }
 }
+/* Side-by-side fields share three rows (label, input, message), so the inputs line up even when a
+   longer (e.g. Armenian) label wraps onto two lines. */
+.form-row > .field,
+.form-grid > .field { display: grid; grid-row: span 3; grid-template-rows: subgrid; gap: var(--space-2); }
 .form-section { display: flex; flex-direction: column; gap: var(--space-4); }
 .form-section__title { font-size: var(--text-md); font-weight: var(--weight-semibold); }
 .form-section[disabled] { opacity: 0.6; }
@@ -12,6 +17,8 @@
 .field { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
 .field__label { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-text); }
 .field__label-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+/* The help button must not make its label row taller than a plain label (fields in a row stay aligned). */
+.field__label-row > .tip { margin-block: calc(var(--space-2) * -1); }
 .field__control { position: relative; display: flex; align-items: center; }
 
 .input,

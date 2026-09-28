@@ -283,7 +283,7 @@
         "title": "Choose your seats",
         "text": "Pick a stand on the stadium plan or in the list. The ticket price depends on where you sit.",
         "legend": "Stand",
-        "perTicket": "{price} per ticket",
+        "perTicket": "per ticket",
         "zoneLine": "Seats: {zone}",
         "zones": {
           "goal": { "name": "Behind the goal", "text": "The loudest atmosphere and the best price." },
@@ -864,7 +864,7 @@
         "title": "Ընտրեք նստատեղերը",
         "text": "Ընտրեք տրիբունան մարզադաշտի սխեմայի վրա կամ ցանկից։ Տոմսի գինը կախված է նստատեղի դիրքից։",
         "legend": "Տրիբունա",
-        "perTicket": "{price}՝ մեկ տոմսի համար",
+        "perTicket": "մեկ տոմսի համար",
         "zoneLine": "Նստատեղեր՝ {zone}",
         "zones": {
           "goal": { "name": "Դարպասի ետևում", "text": "Ամենաթեժ մթնոլորտը և ամենամատչելի գինը։" },

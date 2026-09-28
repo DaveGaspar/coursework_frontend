@@ -97,7 +97,7 @@ function createUserMenu(user) {
 }
 
 function bindSheet(button, sheet) {
-  const desktop = matchMedia('(min-width: 768px)');
+  const desktop = matchMedia('(min-width: 1024px)');
   const setOpen = (open) => {
     sheet.hidden = !open;
     button.setAttribute('aria-expanded', String(open));

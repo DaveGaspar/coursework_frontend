@@ -13,6 +13,7 @@
 .seat-map__zones { display: flex; flex-direction: column; gap: var(--space-2); margin: 0; padding: 0; border: 0; }
 .seat-zone {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-4);
@@ -25,7 +26,9 @@
 .seat-zone:has(.seat-zone__radio:checked) { border-color: var(--color-accent); background: var(--color-accent-tint); }
 .seat-zone:has(.seat-zone__radio:focus-visible) { outline: var(--focus-width) solid var(--color-focus); outline-offset: var(--focus-offset); }
 .seat-zone__radio { flex: none; width: var(--size-icon-md); height: var(--size-icon-md); margin: 0; accent-color: var(--color-accent); }
-.seat-zone__info { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.seat-zone__info { display: flex; flex: 1 1 10rem; flex-direction: column; min-width: 0; overflow-wrap: anywhere; }
 .seat-zone__name { font-weight: var(--weight-semibold); }
 .seat-zone__text { color: var(--color-text-muted); font-size: var(--text-sm); }
-.seat-zone__price { flex: none; font-weight: var(--weight-semibold); text-align: end; white-space: nowrap; }
+.seat-zone__price { display: flex; flex-direction: column; align-items: flex-end; margin-inline-start: auto; text-align: end; }
+.seat-zone__amount { font-weight: var(--weight-semibold); white-space: nowrap; }
+.seat-zone__unit { color: var(--color-text-muted); font-size: var(--text-xs); }

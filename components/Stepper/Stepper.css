@@ -46,4 +46,7 @@
     white-space: nowrap;
   }
   .stepper__label { white-space: normal; }
+  .stepper,
+  .stepper__step { gap: var(--space-1); }
+  .stepper__step:not(:first-child)::before { min-width: var(--space-1); margin-inline-end: 0; }
 }

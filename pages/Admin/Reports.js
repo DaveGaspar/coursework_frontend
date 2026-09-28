@@ -22,7 +22,7 @@ function statTile(iconName, labelKey, value) {
     h('span', { class: 'stat-tile__well' }, icon(iconName, { size: 'lg' })),
     h('div', { class: 'stat-tile__body' },
       h('span', { class: 'stat-tile__label', 'data-i18n': labelKey }),
-      h('span', { class: 'stat-tile__value' }, value)));
+      h('span', { class: ['stat-tile__value', value.length > 8 && 'stat-tile__value--long'] }, value)));
 }
 
 function renderKpis() {
@@ -100,7 +100,7 @@ function renderCharts() {
     table: table(head, streamRows(), foot),
     body: (canvas) => h('div', { class: 'donut' },
       h('div', { class: 'donut__chart' }, canvas, h('div', { class: 'donut__center' },
-        h('span', { class: 'donut__total' }, formatCompactCurrency(summary.total_revenue)),
+        h('span', { class: 'donut__total' }, formatCompactCurrency(summary.total_revenue).replace(/[\u00a0\u202f]/, ' ')),
         h('span', { class: 'donut__caption', 'data-i18n': 'admin.reports.total' }))),
       h('ul', { class: 'legend', role: 'list' }, STREAMS.map((key, i) => h('li', { class: 'legend__item' },
         h('span', { class: `swatch swatch--${i + 1}` }),

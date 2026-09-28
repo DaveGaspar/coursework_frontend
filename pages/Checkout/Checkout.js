@@ -152,7 +152,7 @@ async function load() {
   seatMap = createSeatMap({
     zones: SEAT_ZONES,
     value: zone,
-    priceLabel: (id) => t('checkout.seats.perTicket', { price: formatCurrency(zonePrice(match.ticket_price, id)) }),
+    priceLabel: (id) => formatCurrency(zonePrice(match.ticket_price, id)),
     onChange: (id) => {
       zone = id;
       renderSummary();

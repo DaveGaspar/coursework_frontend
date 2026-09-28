@@ -22,3 +22,14 @@
 @media (pointer: coarse) {
   .theme-switch__option { min-height: var(--touch-min); }
 }
+/* Very narrow screens: icons only (the words stay available to screen readers). */
+@media (max-width: 399.98px) {
+  .theme-switch__option span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}

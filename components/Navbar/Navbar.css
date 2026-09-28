@@ -70,14 +70,15 @@
 .navbar__lang { display: none; }
 .navbar__menu-btn { color: var(--color-text); }
 
-@media (min-width: 768px) {
+/* Full link row from 1024px: the Armenian labels need the room. */
+@media (min-width: 1024px) {
   .navbar { gap: var(--space-6); }
   .navbar__nav { display: block; }
   .navbar__actions { margin-inline-start: 0; }
   .navbar__lang { display: inline-flex; }
   .navbar__menu-btn { display: none; }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .navbar__links { gap: var(--space-8); }
 }
 
@@ -157,13 +158,13 @@
 .nav-sheet__link:hover { background: var(--color-surface-sunken); text-decoration: none; }
 .nav-sheet__link[aria-current="page"] { color: var(--color-text-accent); font-weight: var(--weight-semibold); background: var(--color-accent-tint); }
 .nav-sheet__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: var(--size-sheet-link); padding: 0 var(--space-3); }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .nav-sheet { display: none; }
 }
 .nav-sheet__link .icon { color: var(--color-text-muted); }
 .nav-sheet__link[aria-current="page"] .icon { color: inherit; }
 .nav-sheet__auth { display: grid; gap: var(--space-3); padding: var(--space-4) var(--space-3) 0; }
 .navbar__signin { display: none; }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .navbar__signin { display: inline-flex; }
 }

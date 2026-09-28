@@ -65,6 +65,7 @@
   .table--stack tbody tr:hover td { background: transparent; }
   .table--stack td {
     display: flex;
+    overflow-wrap: anywhere;
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);

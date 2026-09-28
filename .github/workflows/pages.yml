@@ -1,9 +1,9 @@
-# Publishes the site to GitHub Pages on every push to main (or when started by hand in the Actions tab).
+# Publishes the site to GitHub Pages on every push to dev (or when started by hand in the Actions tab).
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [dev]
   workflow_dispatch:
 
 permissions:

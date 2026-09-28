@@ -70,13 +70,14 @@ when the connection drops.
 ## Publishing on GitHub Pages (free)
 
 The site is plain files, so GitHub Pages can host it without a server. The workflow in
-`.github/workflows/pages.yml` publishes it every time `main` changes.
+`.github/workflows/pages.yml` publishes it every time the `dev` branch changes.
 
-1. Merge `dev` into `main` and push `main` to GitHub.
-2. On GitHub, open the repository → **Settings** → **Pages**. Under **Build and deployment**, set
+1. On GitHub, open the repository → **Settings** → **Pages**. Under **Build and deployment**, set
    **Source** to **GitHub Actions**.
-3. Open the **Actions** tab. The **Deploy to GitHub Pages** run starts on its own after a push to
-   `main` (or click **Run workflow**). It takes about a minute.
+2. Still in **Settings**, open **Environments** → **github-pages**. Under **Deployment branches and
+   tags**, add a rule for `dev` (by default only the default branch, `main`, may publish).
+3. Push `dev` to GitHub. The **Deploy to GitHub Pages** run in the **Actions** tab starts on its own
+   and takes about a minute.
 4. The site is at `https://<your-user-name>.github.io/<repository-name>/`, for this repository
    `https://davegaspar.github.io/coursework_frontend/`.
 

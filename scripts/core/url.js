@@ -61,7 +61,9 @@ export function safeNext(next, fallback = ROUTES.home) {
   if (!next || !next.startsWith('/') || next.startsWith('//') || next.includes('\\')) return fallback;
   try {
     const url = new URL(next, location.origin);
-    return url.origin === location.origin ? `${url.pathname}${url.search}${url.hash}` : fallback;
+    // Same site only: on GitHub Pages other projects share this origin under other folders.
+    const inSite = url.origin === location.origin && url.pathname.startsWith(BASE_PATH);
+    return inSite ? `${url.pathname}${url.search}${url.hash}` : fallback;
   } catch {
     return fallback;
   }

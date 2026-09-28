@@ -67,6 +67,24 @@ Match data, team badges and stadium photos come from public APIs, so the first v
 After that, the last loaded data is kept in the browser and shown with a "Showing saved data" notice
 when the connection drops.
 
+## Publishing on GitHub Pages (free)
+
+The site is plain files, so GitHub Pages can host it without a server. The workflow in
+`.github/workflows/pages.yml` publishes it every time `main` changes.
+
+1. Merge `dev` into `main` and push `main` to GitHub.
+2. On GitHub, open the repository → **Settings** → **Pages**. Under **Build and deployment**, set
+   **Source** to **GitHub Actions**.
+3. Open the **Actions** tab. The **Deploy to GitHub Pages** run starts on its own after a push to
+   `main` (or click **Run workflow**). It takes about a minute.
+4. The site is at `https://<your-user-name>.github.io/<repository-name>/`, for this repository
+   `https://davegaspar.github.io/coursework_frontend/`.
+
+Only the site files are published (`index.html`, `assets`, `components`, `pages`, `scripts`,
+`styles`), plus a `404.html` made from the not-found page. After a new deploy, browsers can keep the
+old files for up to 10 minutes. Accounts, tickets and admin changes are still saved in each visitor's
+own browser, exactly as on a local server.
+
 ## Demo accounts
 
 | Username | Password | Role |

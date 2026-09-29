@@ -23,15 +23,16 @@
 .player {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   place-items: center;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  min-height: 15rem;
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: var(--color-night-bg);
   color: var(--color-on-night);
 }
+/* 16:9 at least; the countdown or score makes it taller when it needs more room. */
+.player::before { content: ""; grid-area: 1 / 1; width: 100%; aspect-ratio: 16 / 9; }
 .player__frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .player__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .player__content {
@@ -40,10 +41,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  grid-area: 1 / 1;
+  place-self: stretch;
   gap: var(--space-4);
-  width: 100%;
-  height: 100%;
   justify-content: center;
+  min-height: 15rem;
   padding: var(--space-5);
   background: var(--overlay-night);
   text-align: center;
@@ -60,12 +62,17 @@
   .player__score { font-size: var(--text-display-xl); }
 }
 .player__credit { position: absolute; inset-block-end: var(--space-2); inset-inline-end: var(--space-3); color: var(--color-on-night-muted); }
+.player:has(.player__credit) .player__content { padding-block-end: var(--space-10); }
+.skeleton.player { min-height: 15rem; }
 
 .goals { display: flex; flex-direction: column; gap: var(--space-1); max-height: 7.5rem; overflow-y: auto; padding: 0; list-style: none; font-size: var(--text-sm); }
 .goals li { display: flex; align-items: center; justify-content: center; gap: var(--space-2); }
 .goals .num { color: var(--color-on-night-muted); }
 
-.countdown { display: flex; gap: var(--space-3); padding: 0; list-style: none; }
+.countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-2) var(--space-3); padding: 0; list-style: none; }
+@media (max-width: 479.98px) {
+  .countdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 .countdown li {
   display: flex;
   flex-direction: column;

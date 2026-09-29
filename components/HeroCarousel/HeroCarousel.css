@@ -2,7 +2,7 @@
 .hero__viewport {
   position: relative;
   display: grid;
-  aspect-ratio: 4 / 5;
+  grid-template-columns: minmax(0, 1fr);
   overflow: hidden;
   isolation: isolate;
   touch-action: pan-y; /* horizontal swipes go to the carousel, vertical ones still scroll the page */
@@ -12,8 +12,10 @@
     linear-gradient(135deg, var(--night-700), var(--night-900));
   color: var(--color-on-night);
 }
-@media (min-width: 768px)  { .hero__viewport { aspect-ratio: 16 / 9; } }
-@media (min-width: 1024px) { .hero__viewport { aspect-ratio: 16 / 7; } }
+/* The empty ::before keeps the shape; a slide with more text than fits makes the carousel taller instead of being cut off. */
+.hero__viewport::before { content: ""; grid-area: 1 / 1; aspect-ratio: 4 / 5; }
+@media (min-width: 768px)  { .hero__viewport::before { aspect-ratio: 16 / 9; } }
+@media (min-width: 1024px) { .hero__viewport::before { aspect-ratio: 16 / 7; } }
 
 .hero__slide {
   position: relative;
@@ -58,7 +60,7 @@
   flex-direction: column;
   gap: var(--space-4);
   max-width: var(--size-hero-body);
-  padding: var(--space-16) var(--space-5) var(--space-6);
+  padding: var(--space-16) var(--space-5) var(--space-8);
 }
 @media (min-width: 768px) {
   .hero__body { padding: var(--space-10); }

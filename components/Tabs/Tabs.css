@@ -36,4 +36,10 @@
 @media (pointer: coarse) {
   .tabs__item { min-height: var(--touch-min); }
 }
+/* Phones: tabs share the row and long labels wrap instead of hiding past the edge. A tab moves to a new
+   row only when its longest word cannot fit. */
+@media (max-width: 639.98px) {
+  .tabs { display: flex; flex-wrap: wrap; }
+  .tabs__item { flex: 1 1 0; padding-inline: var(--space-2); text-align: center; white-space: normal; }
+}
 .tab-panel:focus-visible { outline-offset: var(--space-2); border-radius: var(--radius-sm); }

@@ -32,18 +32,19 @@ function createSlide(match, index, total) {
   }
   ref.eyebrow.textContent = live ? t('home.hero.liveNow') : t('home.hero.upcoming', { date: formatDate(match.scheduled_at, 'weekday') });
   ref.title.textContent = matchTitle(match);
-  ref.meta.append(
+  // append() would print a skipped (null or false) item as text.
+  ref.meta.append(...[
     metaItem('trophy', match.league),
     match.venue && metaItem('map-pin', match.venue),
     live
       ? metaItem('timer', t('common.liveLine', { score: scoreLabel(match), clock: liveLabel(match) }))
       : metaItem('calendar', kickoffLabel(match)),
-  );
-  ref.actions.append(
+  ].filter(Boolean));
+  ref.actions.append(...[
     h('a', { class: 'btn btn--primary btn--lg', href: liveUrl(match) }, icon('circle-play'), t('home.hero.watchLive')),
     !live && match.tickets_left > 0
       && h('a', { class: 'btn btn--on-night btn--lg', href: checkoutUrl(match) }, icon('ticket'), t('home.hero.buyTickets')),
-  );
+  ].filter(Boolean));
   const credit = photoCredit(match);
   if (credit) {
     ref.creditLabel.textContent = t('home.hero.photo');

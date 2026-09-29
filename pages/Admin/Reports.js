@@ -61,10 +61,11 @@ function renderDetails() {
 
 function table(headKeys, rows, foot = null) {
   const num = (i) => (i > 0 ? 'cell-num' : null);
-  return h('table', { class: 'table' },
+  const cells = (list) => list.map((c, i) => h('td', { class: num(i), 'data-label': t(headKeys[i]) }, c));
+  return h('table', { class: 'table table--stack' },
     h('thead', null, h('tr', null, headKeys.map((key, i) => h('th', { scope: 'col', class: num(i), 'data-i18n': key })))),
-    h('tbody', null, rows.map((cells) => h('tr', null, cells.map((c, i) => h('td', { class: num(i) }, c))))),
-    foot && h('tfoot', null, h('tr', null, foot.map((c, i) => h('td', { class: num(i) }, c)))));
+    h('tbody', null, rows.map((row) => h('tr', null, cells(row)))),
+    foot && h('tfoot', null, h('tr', null, cells(foot))));
 }
 
 function streamRows() {

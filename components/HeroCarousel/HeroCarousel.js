@@ -107,6 +107,15 @@ export function createHeroCarousel(matches, { start = 0 } = {}) {
   root.addEventListener('mouseleave', hold(false));
   root.addEventListener('focusin', hold(true));
   root.addEventListener('focusout', hold(false));
+  // Swipe left or right on touch screens.
+  let swipeX = null;
+  ref.viewport.addEventListener('pointerdown', (event) => { swipeX = event.pointerType === 'mouse' ? null : event.clientX; });
+  ref.viewport.addEventListener('pointercancel', () => { swipeX = null; });
+  ref.viewport.addEventListener('pointerup', (event) => {
+    const dx = swipeX === null ? 0 : event.clientX - swipeX;
+    swipeX = null;
+    if (total > 1 && Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+  });
   if (total < 2) ref.toggle.parentElement.hidden = true;
 
   syncToggle();

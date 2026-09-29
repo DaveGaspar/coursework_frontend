@@ -13,7 +13,7 @@
 .team-logo--mono {
   border-radius: var(--radius-pill);
   font-family: var(--font-brand);
-  font-size: calc(var(--logo-size) * 0.36);
+  font-size: max(var(--text-xs), calc(var(--logo-size) * 0.36));
   font-weight: var(--weight-bold);
   line-height: 1;
   letter-spacing: var(--tracking-display);

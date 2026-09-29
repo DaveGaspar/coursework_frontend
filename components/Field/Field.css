@@ -36,6 +36,20 @@
   transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
 }
 .textarea { min-height: calc(var(--control-lg) * 2); resize: vertical; }
+.input,
+.select { min-width: 0; }
+/* Safari draws search fields with its own rounded shape and inner padding. */
+input[type="search"] { -webkit-appearance: none; appearance: none; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+/* iOS Safari gives native date/time inputs a content-based minimum width (they spill past the screen edge
+   and ignore width: 100%) and centres their text. Dropping the native look fixes both; tapping still opens
+   the iOS picker. The feature query only matches iOS, so desktop date pickers keep their calendar button. */
+@supports (-webkit-touch-callout: none) {
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="time"] { display: block; -webkit-appearance: none; appearance: none; }
+  input::-webkit-date-and-time-value { min-height: 1.5em; text-align: start; }
+}
 .input::placeholder,
 .textarea::placeholder { color: var(--color-text-muted); opacity: 1; }
 .input:hover:not(:disabled),

@@ -5,6 +5,7 @@
   aspect-ratio: 4 / 5;
   overflow: hidden;
   isolation: isolate;
+  touch-action: pan-y; /* horizontal swipes go to the carousel, vertical ones still scroll the page */
   border-radius: var(--radius-xl);
   background:
     radial-gradient(120% 90% at 85% 20%, var(--color-night-glow) 0%, transparent 55%),

@@ -14,6 +14,7 @@
       <ul class="navbar__links" role="list" data-ref="links"></ul>
     </nav>
     <div class="navbar__actions">
+      <div class="navbar__lang" data-ref="currency"></div>
       <div class="navbar__lang" data-ref="lang"></div>
       <div class="account" data-ref="account"></div>
       <button class="btn btn--icon navbar__menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" data-ref="menuButton" data-i18n-attr="aria-label:nav.openMenu">
@@ -77,6 +78,10 @@
     <div class="nav-sheet__row">
       <span data-i18n="language.label"></span>
       <div data-ref="lang"></div>
+    </div>
+    <div class="nav-sheet__row">
+      <span data-i18n="currency.label"></span>
+      <div data-ref="currency"></div>
     </div>
     <div class="nav-sheet__auth" data-ref="auth" hidden>
       <a class="btn btn--primary btn--block" data-route="signin" data-i18n="nav.signIn"></a>

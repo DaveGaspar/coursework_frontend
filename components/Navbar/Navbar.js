@@ -4,6 +4,7 @@ import { BASE_PATH, ROUTES, isCurrent } from '../../scripts/core/url.js';
 import { applyTranslations } from '../../scripts/i18n/i18n.js';
 import { isAdmin, signOut } from '../../scripts/services/auth.js';
 import { createAvatar } from '../Avatar/Avatar.js';
+import { createCurrencySwitch } from '../CurrencySwitch/CurrencySwitch.js';
 import { createLanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher.js';
 
 const use = await loadTemplates(new URL('./Navbar.html', import.meta.url));
@@ -124,6 +125,7 @@ export function mountNavbar(header, user) {
   const ref = refs(bar);
   for (const item of navItems(user)) ref.links.append(link('nav-link', item));
   ref.lang.append(createLanguageSwitcher());
+  ref.currency.append(createCurrencySwitch());
   ref.account.replaceWith(user ? createUserMenu(user) : use('sign-in'));
 
   const sheet = use('nav-sheet');
@@ -132,6 +134,7 @@ export function mountNavbar(header, user) {
     sheetRef.links.append(link('sheet-link', item));
   }
   sheetRef.lang.append(createLanguageSwitcher());
+  sheetRef.currency.append(createCurrencySwitch());
   sheetRef.auth.hidden = Boolean(user);
 
   header.replaceChildren(bar, sheet);

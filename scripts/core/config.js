@@ -2,8 +2,7 @@
 export const DATA_SOURCE = 'hybrid';
 export const BACKEND_BASE_URL = '/api';
 export const CHAT_WS_URL = '/ws/chat';
-// Prices are stored in USD and shown in the language's currency. Fixed approximate rate, not a live one.
-export const CURRENCIES = { en: 'USD', hy: 'AMD' };
+// Prices are stored in USD; visitors can switch the display to dram. Fixed approximate rate, not a live one.
 export const AMD_PER_USD = 385;
 
 export const LANGUAGES = ['en', 'hy'];

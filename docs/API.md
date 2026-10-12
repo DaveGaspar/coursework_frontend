@@ -13,7 +13,7 @@ All example values are real data imported on 2026-09-27.
 | Topic | Rule |
 |---|---|
 | Base URL | `/api` on the same origin (`BACKEND_BASE_URL`) |
-| Format | JSON request and response bodies, UTF-8. Dates are ISO 8601 in UTC (`2026-10-10T11:30:00.000Z`). Money is a number in USD with 2 decimals. The site converts it for display (dram in Armenian). |
+| Format | JSON request and response bodies, UTF-8. Dates are ISO 8601 in UTC (`2026-10-10T11:30:00.000Z`). Money is a number in USD with 2 decimals. Visitors can switch the display to Armenian dram (a setting of its own, separate from the language); the site converts it. |
 | Auth | Session cookie (`HttpOnly`, `Secure`, `SameSite=Lax`) set by sign-in / sign-up. The frontend sends `credentials: 'include'`. |
 | Roles | `viewer` (default at sign-up) and `admin`. |
 | IDs | Integers (`SERIAL`). |

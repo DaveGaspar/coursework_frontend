@@ -1,5 +1,6 @@
-import { AMD_PER_USD, CURRENCIES } from './config.js';
-import { getLanguage, getLocale } from '../i18n/i18n.js';
+import { AMD_PER_USD } from './config.js';
+import { showsDram } from './currency.js';
+import { getLocale } from '../i18n/i18n.js';
 
 const formatters = new Map();
 
@@ -20,11 +21,11 @@ export function formatNumber(value, options = {}) {
   return formatter('number', options).format(Number(value) || 0);
 }
 
-const currency = () => CURRENCIES[getLanguage()] ?? 'USD';
+const currency = () => (showsDram() ? 'AMD' : 'USD');
 // Dram prices are whole numbers, so each unit price is rounded before it is multiplied.
 const convert = (usd) => (currency() === 'AMD' ? Math.round((Number(usd) || 0) * AMD_PER_USD) : Number(usd) || 0);
 
-// `usd` is always in dollars; it is shown in dollars (English) or dram (Armenian).
+// `usd` is always in dollars; it is shown in dollars or dram, whichever the visitor picked.
 // Pass `quantity` for "3 × price" totals so they match the unit price shown next to them.
 export function formatCurrency(usd, { whole = false, quantity = 1 } = {}) {
   const noCents = whole || currency() === 'AMD';

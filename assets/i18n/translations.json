@@ -47,6 +47,11 @@
       "en": "English",
       "hy": "Հայերեն"
     },
+    "currency": {
+      "label": "Currency",
+      "usd": "US dollars",
+      "amd": "Armenian dram"
+    },
     "theme": {
       "label": "Theme",
       "system": "System",
@@ -627,6 +632,11 @@
       "label": "Լեզու",
       "en": "English",
       "hy": "Հայերեն"
+    },
+    "currency": {
+      "label": "Արժույթ",
+      "usd": "ԱՄՆ դոլար",
+      "amd": "Հայկական դրամ"
     },
     "theme": {
       "label": "Թեմա",

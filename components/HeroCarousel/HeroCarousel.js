@@ -1,6 +1,7 @@
 import { CAROUSEL_INTERVAL_MS } from '../../scripts/core/config.js';
 import { h, icon } from '../../scripts/core/dom.js';
 import { formatDate } from '../../scripts/core/format.js';
+import { fallBackToStock, stockPhoto } from '../../scripts/core/stock-photos.js';
 import { hydrate, loadTemplates, refs } from '../../scripts/core/template.js';
 import { t } from '../../scripts/i18n/i18n.js';
 import { checkoutUrl, kickoffLabel, liveLabel, liveUrl, matchTitle, scoreLabel } from '../../scripts/services/match-display.js';
@@ -13,10 +14,16 @@ function metaItem(iconName, text) {
 }
 
 function photoCredit(match) {
-  if (!match.backdrop_url) return null;
   if (match.backdrop_url === match.venue_image_url && match.venue_image_credit) return match.venue_image_credit;
   if (/thesportsdb\.com/.test(match.backdrop_url)) return { label: 'TheSportsDB', url: 'https://www.thesportsdb.com' };
   return null;
+}
+
+function showCredit(ref, credit) {
+  ref.credit.hidden = !credit;
+  if (!credit) return;
+  ref.creditLabel.textContent = t('home.hero.photo');
+  ref.credit.replaceChildren(ref.creditLabel, ' ', h('a', { href: credit.url }, credit.label));
 }
 
 function createSlide(match, index, total) {
@@ -24,12 +31,13 @@ function createSlide(match, index, total) {
   const ref = refs(slide);
   const live = match.status === 'live';
   slide.setAttribute('aria-label', t('home.hero.slide', { index: index + 1, total }));
-  if (match.backdrop_url) {
-    slide.prepend(h('img', {
-      class: 'hero__bg', src: match.backdrop_url, alt: '', width: 1280, height: 560,
-      loading: index ? 'lazy' : 'eager', fetchpriority: index ? null : 'high', decoding: 'async',
-    }));
-  }
+  const bg = h('img', {
+    class: 'hero__bg', src: match.backdrop_url ?? stockPhoto(match.id).src, alt: '', width: 1280, height: 560,
+    loading: index ? 'lazy' : 'eager', fetchpriority: index ? null : 'high', decoding: 'async',
+  });
+  slide.prepend(bg);
+  showCredit(ref, match.backdrop_url ? photoCredit(match) : stockPhoto(match.id).credit);
+  if (match.backdrop_url) fallBackToStock(bg, match.id, (credit) => showCredit(ref, credit));
   ref.eyebrow.textContent = live ? t('home.hero.liveNow') : t('home.hero.upcoming', { date: formatDate(match.scheduled_at, 'weekday') });
   ref.title.textContent = matchTitle(match);
   // append() would print a skipped (null or false) item as text.
@@ -45,12 +53,6 @@ function createSlide(match, index, total) {
     !live && match.tickets_left > 0
       && h('a', { class: 'btn btn--on-night btn--lg', href: checkoutUrl(match) }, icon('ticket'), t('home.hero.buyTickets')),
   ].filter(Boolean));
-  const credit = photoCredit(match);
-  if (credit) {
-    ref.creditLabel.textContent = t('home.hero.photo');
-    ref.credit.append(' ', h('a', { href: credit.url }, credit.label));
-    ref.credit.hidden = false;
-  }
   return slide;
 }
 

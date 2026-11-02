@@ -65,7 +65,9 @@ Wi-Fi, run `node server/server.js --host 0.0.0.0` and visit `http://<your-comput
 
 Match data, team badges and stadium photos come from public APIs, so the first visit needs internet.
 After that, the last loaded data is kept in the browser and shown with a "Showing saved data" notice
-when the connection drops.
+when the connection drops. TheSportsDB limits its free key: when it refuses requests, the Bundesliga still
+loads from OpenLigaDB, and stadium photos come from the set bundled in `assets/img/stadiums`. Before a
+demo, open the site once on that computer so its data is already saved.
 
 ## Publishing on GitHub Pages (free)
 
@@ -171,3 +173,6 @@ keys, or if an HTML file contains untranslated text.
 Icons: [Lucide](https://lucide.dev) (ISC). Card brand logos: [Simple Icons](https://simpleicons.org) (CC0).
 Fonts: Inter, Barlow Condensed and Noto Sans Armenian (SIL Open Font License).
 Charts: [Chart.js](https://www.chartjs.org) 4.5.1 (MIT), included in `assets/vendor` so it works without a CDN.
+Stadium photos in `assets/img/stadiums`, shown when a match has no photo or the photo service is down (credited on
+the page), all from Wikimedia Commons: Krzysztof Popławski (CC BY 4.0), Markus Unger (CC BY 2.0),
+Der-wuppertaler (CC BY-SA 3.0), Paul Gillett (CC BY-SA 2.0) and Terry Robinson (CC BY-SA 2.0).

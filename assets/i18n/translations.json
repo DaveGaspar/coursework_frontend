@@ -236,6 +236,7 @@
         "chatText": "React to every goal together while the match is on.",
         "cta": "Browse matches",
         "photoAlt": "{venue}, home of {team}",
+        "stockAlt": "A football stadium during a match",
         "photo": "Photo:"
       },
       "teams": {
@@ -822,6 +823,7 @@
         "chatText": "Արձագանքեք յուրաքանչյուր գոլին միասին՝ խաղի ընթացքում։",
         "cta": "Դիտել խաղերը",
         "photoAlt": "{venue}՝ {team} թիմի տնային մարզադաշտը",
+        "stockAlt": "Ֆուտբոլային մարզադաշտ խաղի ժամանակ",
         "photo": "Լուսանկարը՝"
       },
       "teams": {

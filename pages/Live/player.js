@@ -1,6 +1,7 @@
 import { createStatusBadge } from '../../components/Badge/Badge.js';
 import { h, icon } from '../../scripts/core/dom.js';
 import { countdownParts, formatNumber } from '../../scripts/core/format.js';
+import { fallBackToStock, stockPhoto } from '../../scripts/core/stock-photos.js';
 import { applyTranslations, t } from '../../scripts/i18n/i18n.js';
 import { checkoutUrl, kickoffLabel, liveClock, matchTitle, scoreLabel } from '../../scripts/services/match-display.js';
 
@@ -27,16 +28,27 @@ function frame(src, titleKey, match) {
   });
 }
 
+function creditLine(credit) {
+  return h('p', { class: 'credit player__credit' },
+    h('span', { 'data-i18n': 'home.why.photo' }), ' ',
+    credit.url ? h('a', { href: credit.url }, credit.label) : credit.label);
+}
+
+// The stadium photo, or a bundled one when the match has none or it does not load.
 function backdrop(match) {
-  const src = match.venue_image_url ?? match.backdrop_url;
-  if (!src) return [];
-  const credit = src === match.venue_image_url ? match.venue_image_credit : null;
-  return [
-    h('img', { class: 'player__bg', src, alt: '', decoding: 'async' }),
-    credit && h('p', { class: 'credit player__credit' },
-      h('span', { 'data-i18n': 'home.why.photo' }), ' ',
-      credit.url ? h('a', { href: credit.url }, credit.label) : credit.label),
-  ];
+  const remote = match.venue_image_url ?? match.backdrop_url;
+  const stock = stockPhoto(match.id);
+  const img = h('img', { class: 'player__bg', src: remote ?? stock.src, alt: '', decoding: 'async' });
+  const credit = remote ? (remote === match.venue_image_url ? match.venue_image_credit : null) : stock.credit;
+  const line = credit && creditLine(credit);
+  if (remote) {
+    fallBackToStock(img, match.id, (stockCredit) => {
+      const next = creditLine(stockCredit);
+      applyTranslations(next);
+      if (line) line.replaceWith(next); else img.parentElement?.append(next);
+    });
+  }
+  return [img, line];
 }
 
 function goalItem(goal) {

@@ -92,7 +92,8 @@ own browser, exactly as on a local server.
 
 | Username | Password | Role |
 |---|---|---|
-| `admin_john` | `Admin#2026` | Admin: sees the Admin pages (teams, matches, reports) |
+| `admin` | `Admin1234!` | Admin: sees the Admin pages (teams, matches, reports) |
+| `admin_john` | `Admin#2026` | Admin |
 | `admin_sara` | `Admin#2026` | Admin |
 | `viewer_mike` | `Viewer#2026` | Viewer: has a saved Mastercard ending 4444 |
 | `viewer_anna` | `Viewer#2026` | Viewer: has a saved Visa ending 4242 |

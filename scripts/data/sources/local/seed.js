@@ -1,10 +1,12 @@
-// First run: demo accounts, their saved cards, and a background import of the leagues.
+// Every start: missing demo accounts (with their saved cards), the saved season, then a background import of the leagues.
 import { emit, on } from '../../../core/events.js';
 import { db } from './local-db.js';
 import { hashPassword } from './password.js';
-import { syncAll } from './sync.js';
+import { loadSeason } from './season.js';
+import { importSaved, syncAll } from './sync.js';
 
 const DEMO_USERS = [
+  { username: 'admin', email: 'admin@sportslive.test', password: 'Admin1234!', role: 'admin' },
   { username: 'admin_john', email: 'john@sportslive.test', password: 'Admin#2026', role: 'admin' },
   { username: 'admin_sara', email: 'sara@sportslive.test', password: 'Admin#2026', role: 'admin' },
   { username: 'viewer_mike', email: 'mike@sportslive.test', password: 'Viewer#2026', role: 'viewer' },
@@ -20,9 +22,12 @@ let usersReady = null;
 let started = false;
 let firstImport = null;
 
+// Adds the demo accounts this browser does not have yet, so a new one also reaches visitors with saved data.
 async function seedUsers() {
-  if (db.all('users').length) return;
-  for (const user of DEMO_USERS) {
+  const taken = (name, email) => db.find('users', (u) => String(u.username).toLowerCase() === name || String(u.email ?? '').toLowerCase() === email);
+  const missing = DEMO_USERS.filter((user) => !taken(user.username, user.email));
+  if (!missing.length) return;
+  for (const user of missing) {
     db.insert('users', {
       username: user.username,
       email: user.email,
@@ -31,14 +36,14 @@ async function seedUsers() {
     });
   }
   for (const card of DEMO_CARDS) {
-    const owner = db.find('users', (u) => u.username === card.username);
+    const owner = missing.some((u) => u.username === card.username) && db.find('users', (u) => u.username === card.username);
     if (owner) {
       const { username, ...row } = card;
       db.insert('payment_cards', { ...row, user_id: owner.id });
     }
   }
   const meta = db.meta();
-  meta.seededAt = new Date().toISOString();
+  meta.seededAt ??= new Date().toISOString();
   db.saveMeta();
 }
 
@@ -59,7 +64,9 @@ export function startHybrid() {
       stop();
     }
   });
-  syncAll()
+  importSaved()
+    .catch((err) => console.error('Loading the saved season failed', err))
+    .then(() => syncAll())
     .catch((err) => console.error('League import failed', err))
     .finally(() => {
       resolveFirst();
@@ -70,6 +77,7 @@ export function startHybrid() {
 
 export async function whenMatchesAvailable() {
   startHybrid();
+  await loadSeason();
   if (db.all('matches').length) return;
   await firstImport;
 }

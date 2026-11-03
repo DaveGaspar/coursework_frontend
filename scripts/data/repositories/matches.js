@@ -72,8 +72,9 @@ export const matchesRepo = {
   async get(id, { fresh = false } = {}) {
     await whenMatchesAvailable();
     const row = mustGet('matches', id);
-    if (fresh) await refreshMatch(row.id, { live: row.status === 'live' }).catch(() => {});
-    await venueImage(db.get('matches', row.id) ?? row).catch(() => null);
+    // Live lookups can queue behind TheSportsDB's rate limit, so the page waits for them only briefly.
+    if (fresh) await Promise.race([refreshMatch(row.id, { live: row.status === 'live' }).catch(() => {}), latency(4000)]);
+    await Promise.race([venueImage(db.get('matches', row.id) ?? row).catch(() => null), latency(1500)]);
     return toMatch(mustGet('matches', id));
   },
 

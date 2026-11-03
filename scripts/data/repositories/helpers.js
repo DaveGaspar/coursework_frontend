@@ -2,6 +2,7 @@ import { AuthError, NotFoundError } from '../../core/errors.js';
 import { readJSON, removeKey, writeJSON } from '../../core/storage.js';
 import { liveClock, shortName } from '../sources/external/mappers.js';
 import { db } from '../sources/local/local-db.js';
+import { localImage } from '../sources/local/season.js';
 
 const SESSION_KEY = 'sl:session';
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -72,7 +73,14 @@ export function teamSummary(team) {
   return { id: team.id, name: team.name, short_name: shortName(team), logo_url: team.logo_url ?? null };
 }
 
-export function toMatch(row, { teams = teamsById(), sold = soldByMatch() } = {}) {
+// A picture saved with the site wins over one that only exists online.
+function backdrop(urls) {
+  const found = urls.filter(Boolean);
+  const saved = found.find((url) => localImage(url) !== url);
+  return localImage(saved ?? found[0] ?? null);
+}
+
+export function toMatch(row,{ teams = teamsById(), sold = soldByMatch() } = {}) {
   const home = teams.get(row.home_team_id);
   const away = teams.get(row.away_team_id);
   const clock = row.status === 'live' ? liveClock(row.scheduled_at) : { minute: null, period: null };
@@ -86,8 +94,8 @@ export function toMatch(row, { teams = teamsById(), sold = soldByMatch() } = {})
     live_minute: clock.minute,
     live_period: clock.period,
     highlights_url: row.status === 'finished' ? row._ext?.video ?? null : null,
-    backdrop_url: row._ext?.thumb ?? home?._ext?.fanart ?? venueImage?.url ?? null,
-    venue_image_url: venueImage?.url ?? null,
+    backdrop_url: backdrop([row._ext?.thumb, home?._ext?.fanart, venueImage?.url]),
+    venue_image_url: localImage(venueImage?.url ?? null),
     venue_image_credit: venueImage?.credit ?? null,
   };
 }

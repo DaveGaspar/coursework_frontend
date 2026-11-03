@@ -63,11 +63,19 @@ Wi-Fi, run `node server/server.js --host 0.0.0.0` and visit `http://<your-comput
 
 ### Internet connection
 
-Match data, team badges and stadium photos come from public APIs, so the first visit needs internet.
-After that, the last loaded data is kept in the browser and shown with a "Showing saved data" notice
-when the connection drops. TheSportsDB limits its free key: when it refuses requests, the Bundesliga still
-loads from OpenLigaDB, and stadium photos come from the set bundled in `assets/img/stadiums`. Before a
-demo, open the site once on that computer so its data is already saved.
+The site carries its own copy of this season: fixtures, results, teams, squads, coaches, team badges and
+stadium photos (`assets/data/season.json`, `assets/img/teams`, `assets/img/venues`). Every page shows that copy at once,
+so the site works even without internet or when TheSportsDB is refusing requests. When the public APIs answer,
+newer data (live scores, the latest results) replaces it in the background. Matches played after the copy was
+made appear once the APIs answer again. A match without a photo gets one from `assets/img/stadiums`.
+
+To refresh the copy, for example the day before a demo, run this on Windows from the project folder, then
+commit and push the changed files in `assets/`. It takes about 40 minutes, because TheSportsDB allows only about
+10 requests a minute; close the site in the browser while it runs.
+
+```bash
+powershell -ExecutionPolicy Bypass -File tools\build-season.ps1
+```
 
 ## Publishing on GitHub Pages (free)
 
@@ -128,9 +136,9 @@ scripts/              shared JavaScript
   data/               data layer: repositories, public API clients, browser storage
   i18n/               translation engine (English and Armenian)
   services/           sign-in state, live score refresh, match text helpers
-assets/               fonts, icons, images, translations.json, manifest, vendor/ (Chart.js)
+assets/               fonts, icons, images, data/season.json, translations.json, manifest, vendor/ (Chart.js)
 server/               server.js (Node.js) and serve.ps1 (Windows, no install)
-tools/                developer checks and asset builders (need Node.js)
+tools/                developer checks and asset builders (Node.js); build-season.ps1 saves the season
 docs/API.md           the REST API the backend team needs to build
 ```
 
@@ -150,6 +158,11 @@ docs/API.md           the REST API the backend team needs to build
 | [OpenLigaDB](https://www.openligadb.de) | Bundesliga and 2. Bundesliga fixtures, results, live scores and goals |
 | [TheSportsDB](https://www.thesportsdb.com) (free key) | Premier League and Champions League fixtures, team badges, stadiums, capacities, squads, posters, highlights, goals and cards |
 | [Wikipedia](https://www.wikipedia.org) | Stadium photos when TheSportsDB has none (credited on the page) |
+| [ESPN](https://www.espn.com/soccer/) (public site data) | Full squads with shirt numbers, saved with the site by `tools/build-season.ps1` |
+| [Wikidata](https://www.wikidata.org) | Current head coaches, saved with the site by `tools/build-season.ps1` |
+
+A copy of what OpenLigaDB and TheSportsDB return for the current season is saved with the site (see
+"Internet connection" above).
 
 Ticket prices, attendance where the API has none, and revenue figures are not available from any
 public API. They are generated from a fixed seed per match, so they stay the same on every load.
@@ -177,3 +190,5 @@ Charts: [Chart.js](https://www.chartjs.org) 4.5.1 (MIT), included in `assets/ven
 Stadium photos in `assets/img/stadiums`, shown when a match has no photo or the photo service is down (credited on
 the page), all from Wikimedia Commons: Krzysztof Popławski (CC BY 4.0), Markus Unger (CC BY 2.0),
 Der-wuppertaler (CC BY-SA 3.0), Paul Gillett (CC BY-SA 2.0) and Terry Robinson (CC BY-SA 2.0).
+Team badges and stadium photos in `assets/img/teams` and `assets/img/venues` are copies of
+[TheSportsDB](https://www.thesportsdb.com) images, credited on the page.

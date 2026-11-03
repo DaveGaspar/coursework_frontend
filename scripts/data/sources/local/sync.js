@@ -10,9 +10,11 @@ import { OLDB_TO_TSDB } from '../external/team-map.js';
 import { extKey, mapOldbMatch, mapOldbTeam, mapTsdbEvent, mapTsdbEventTeam, mapTsdbTeam } from '../external/mappers.js';
 import { finishedFigures, ticketTerms } from './business-data.js';
 import { db } from './local-db.js';
+import { loadSeason, savedMatches, savedTeam } from './season.js';
 
 const { PRIORITY } = tsdb;
 const leagueByKey = (key) => LEAGUES.find((l) => l.key === key);
+const personKey = (name) => `name:${String(name ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim()}`;
 const range = (from, to) => Array.from({ length: Math.max(0, to - from + 1) }, (_, i) => from + i);
 
 export function editable(row, column) {
@@ -59,13 +61,16 @@ function fillFinished(match) {
   applyPatch('matches', match, figures);
 }
 
-function importMatch(league, { fields, ext }, homeMapped, awayMapped) {
+// `saved`: the row comes from the copy saved with the site, which never overrides newer live data,
+// except to add the result of a match the live import last saw unfinished.
+function importMatch(league, { fields, ext }, homeMapped, awayMapped, { saved = false } = {}) {
   if (!fields.scheduled_at || db.isTombstoned(ext.key)) return null;
+  const existing = db.find('matches', (m) => m._ext?.key === ext.key);
+  if (existing && saved && !(fields.status === 'finished' && existing.status !== 'finished')) return existing.id;
   const home = upsertTeam(homeMapped);
   const away = upsertTeam(awayMapped);
   if (!home || !away) return null;
 
-  const existing = db.find('matches', (m) => m._ext?.key === ext.key);
   if (existing) {
     const patch = { ...fields, home_team_id: home.id, away_team_id: away.id };
     if (!patch.venue && !existing.venue && home._ext?.venue) patch.venue = home._ext.venue;
@@ -234,29 +239,16 @@ export async function refreshMatch(matchId, { live = false } = {}) {
   fillFinished(updated);
 }
 
-export async function enrichTeam(teamId, priority = PRIORITY.background) {
-  let team = db.get('teams', teamId);
-  if (!team) return null;
-  if (team._ext?.enrichedAt && Date.now() - team._ext.enrichedAt < TTL.teams) return team;
-  let tsdbId = team._ext?.tsdb;
-  if (!tsdbId && team._ext?.oldb != null) {
-    tsdbId = OLDB_TO_TSDB[team._ext.oldb] ?? (await tsdb.searchSoccerTeam(team._ext.shortName ?? team.name, 'Germany', { priority }).catch(() => null))?.idTeam;
-  }
-  const details = tsdbId ? await tsdb.lookupTeam(tsdbId, { priority }).catch(() => null) : null;
-  team = db.get('teams', teamId);
-  if (!team) return null;
-  if (!details) {
-    return db.update('teams', teamId, { _ext: { ...team._ext, enrichedAt: Date.now() } });
-  }
+// Badge, stadium, capacity and stadium photo from TheSportsDB (live or saved), copied onto the team and its home matches.
+function applyTeamDetails(teamId, details, venue, { saved = false } = {}) {
   const mapped = mapTsdbTeam(details);
   // lookupteam has no capacity on the free tier; the venue lookup has it (plus stadium photos).
-  const venue = details.idVenue ? await tsdb.lookupVenue(details.idVenue, { priority }).catch(() => null) : null;
   if (venue?.intCapacity) mapped.ext.capacity = venue.intCapacity;
   const photo = venue?.strThumb ?? venue?.strFanart1 ?? null;
   if (photo) Object.assign(mapped.ext, { venueImage: { url: photo, credit: { label: 'TheSportsDB', url: 'https://www.thesportsdb.com' } }, venueImageAt: Date.now() });
-  team = db.get('teams', teamId);
+  let team = db.get('teams', teamId);
   if (!team) return null;
-  const patch = { _ext: { ...team._ext, ...mapped.ext, enrichedAt: Date.now() } };
+  const patch = { _ext: { ...team._ext, ...mapped.ext, enrichedAt: Date.now(), saved } };
   if (mapped.fields.logo_url && editable(team, 'logo_url')) patch.logo_url = mapped.fields.logo_url;
   team = db.update('teams', teamId, patch);
 
@@ -269,6 +261,48 @@ export async function enrichTeam(teamId, priority = PRIORITY.background) {
     if (p.ticket_capacity) fillFinished(db.update('matches', m.id, { _ext: { ...updated._ext, capacitySource: 'venue' } }));
   }
   return team;
+}
+
+// Teams in the saved copy already have their details, so they are never looked up online.
+export async function enrichTeam(teamId, priority = PRIORITY.background) {
+  let team = db.get('teams', teamId);
+  if (!team) return null;
+  if (team._ext?.saved || (team._ext?.enrichedAt && Date.now() - team._ext.enrichedAt < TTL.teams)) return team;
+  let tsdbId = team._ext?.tsdb;
+  if (!tsdbId && team._ext?.oldb != null) {
+    tsdbId = OLDB_TO_TSDB[team._ext.oldb] ?? (await tsdb.searchSoccerTeam(team._ext.shortName ?? team.name, 'Germany', { priority }).catch(() => null))?.idTeam;
+  }
+  const details = tsdbId ? await tsdb.lookupTeam(tsdbId, { priority }).catch(() => null) : null;
+  team = db.get('teams', teamId);
+  if (!team) return null;
+  if (!details) return db.update('teams', teamId, { _ext: { ...team._ext, enrichedAt: Date.now() } });
+  const venue = details.idVenue ? await tsdb.lookupVenue(details.idVenue, { priority }).catch(() => null) : null;
+  return applyTeamDetails(teamId, details, venue);
+}
+
+// Fills the database from the copy saved with the site. Runs before the live import, which then updates it.
+export async function importSaved({ force = false } = {}) {
+  const data = await loadSeason();
+  if (!data) return 0;
+  const meta = db.meta();
+  if (!force && meta.saved?.capturedAt === data.capturedAt && Date.now() - meta.saved.at < TTL.fixtures) return 0;
+  let count = 0;
+  for (const league of LEAGUES) {
+    for (const item of savedMatches(league, data)) if (importMatch(league, item.mapped, item.home, item.away, { saved: true })) count += 1;
+  }
+  for (const team of db.all('teams')) {
+    const saved = savedTeam(team._ext?.tsdb);
+    if (!saved) continue;
+    applyTeamDetails(team.id, saved.details, saved.venue, { saved: true });
+    if (saved.squad && team._ext?.squadSaved !== data.capturedAt) {
+      applySquad(team.id, saved.squad);
+      db.update('teams', team.id, { _ext: { ...db.get('teams', team.id)._ext, squadSaved: data.capturedAt } });
+    }
+  }
+  meta.saved = { capturedAt: data.capturedAt, at: Date.now() };
+  db.saveMeta();
+  emit('sync:progress', { league: 'saved', count });
+  return count;
 }
 
 export function scheduleEnrichment() {
@@ -287,13 +321,21 @@ export async function ensureRoster(teamId, priority = PRIORITY.visible) {
   if (!team || team._ext?.rosterAt || !team._ext) return;
   const enriched = await enrichTeam(teamId, priority);
   const tsdbId = enriched?._ext?.tsdb;
-  const squad = tsdbId ? await tsdb.teamSquad(tsdbId, { priority }).catch(() => null) : null;
+  await loadSeason();
+  applySquad(teamId, savedTeam(tsdbId)?.squad ?? (tsdbId ? await tsdb.teamSquad(tsdbId, { priority }).catch(() => null) : null));
+}
+
+// Players and coach from a squad (live or saved). Players already listed under another source are matched by
+// name, and players an admin deleted stay deleted.
+function applySquad(teamId, squad) {
   const current = db.get('teams', teamId);
   if (!current) return;
   if (squad) {
+    const roster = db.filter('players', (x) => x.team_id === teamId);
+    const known = new Set([...roster.map((x) => x._ext?.key), ...roster.map((x) => personKey(x.full_name))]);
     for (const p of squad.players) {
       const key = extKey('tsdbplayer', p.idPlayer);
-      if (db.isTombstoned(key) || db.find('players', (x) => x._ext?.key === key)) continue;
+      if (db.isTombstoned(key) || known.has(key) || known.has(personKey(p.name))) continue;
       db.insert('players', {
         team_id: teamId, full_name: p.name, position: p.position, jersey_number: p.number,
         _ext: { key, cutout: p.cutout }, _edited: [],
@@ -307,7 +349,7 @@ export async function ensureRoster(teamId, priority = PRIORITY.visible) {
 
 export async function venueImage(match) {
   const home = db.get('teams', match.home_team_id);
-  if (home?._ext?.venueImageAt && Date.now() - home._ext.venueImageAt < TTL.venue) return home._ext.venueImage ?? null;
+  if (home?._ext?.saved || (home?._ext?.venueImageAt && Date.now() - home._ext.venueImageAt < TTL.venue)) return home._ext.venueImage ?? null;
   let image = null;
   const venueId = match._ext?.venueId ?? home?._ext?.venueId;
   if (venueId) {

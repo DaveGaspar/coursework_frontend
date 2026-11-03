@@ -2,7 +2,7 @@ import { API, TTL } from '../../../core/config.js';
 import { cached } from '../../../core/cache.js';
 import { getJSON } from '../../../core/http.js';
 
-function pickMatch(m) {
+export function pickMatch(m) {
   const results = (m.matchResults ?? []).map((r) => ({ typeId: r.resultTypeID, order: r.resultOrderID, home: r.pointsTeam1, away: r.pointsTeam2 }));
   const team = (t) => ({ teamId: t?.teamId, teamName: t?.teamName, shortName: t?.shortName, teamIconUrl: t?.teamIconUrl || null });
   return {

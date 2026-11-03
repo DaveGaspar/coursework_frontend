@@ -1,5 +1,6 @@
 import { formatDate, formatTime } from '../core/format.js';
 import { routeTo } from '../core/url.js';
+import { localImage } from '../data/sources/local/season.js';
 import { t } from '../i18n/i18n.js';
 
 export function matchTitle(match) {
@@ -45,7 +46,9 @@ export function checkoutUrl(match) {
   return routeTo('checkout', { match: match.id });
 }
 
-// TheSportsDB serves smaller renditions: tiny (~50px), small (~250px), medium (~500px).
+// The copy saved with the site when there is one; otherwise TheSportsDB's smaller renditions: tiny (~50px), small (~250px), medium (~500px).
 export function sizedImage(url, size = 'medium') {
+  const local = localImage(url);
+  if (local !== url) return local;
   return url && /thesportsdb\.com\/images\//.test(url) ? `${url}/${size}` : url;
 }

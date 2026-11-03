@@ -9,8 +9,8 @@ const queue = createRequestQueue({ perMinute: TSDB_REQUESTS_PER_MINUTE, storageK
 
 export const PRIORITY = { background: 0, normal: 5, visible: 10 };
 
-// Cloudflare's block lasts about a minute; retrying sooner only gets blocked again.
-const BACKOFF_MS = 60_000;
+// Cloudflare's block lasts several minutes; retrying sooner only gets blocked again.
+const BACKOFF_MS = 5 * 60_000;
 
 function call(endpoint, params, { ttl, priority = PRIORITY.normal, force = false }, pick) {
   const url = withQuery(`${API.theSportsDb}/${endpoint}`, params);
@@ -30,7 +30,7 @@ function call(endpoint, params, { ttl, priority = PRIORITY.normal, force = false
 const str = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null);
 const int = (v) => (v === null || v === undefined || v === '' ? null : Number.isFinite(Number(v)) ? Number(v) : null);
 
-function pickEvent(e) {
+export function pickEvent(e) {
   return {
     idEvent: str(e.idEvent), idLeague: str(e.idLeague), strSeason: str(e.strSeason), intRound: int(e.intRound),
     strTimestamp: str(e.strTimestamp), dateEvent: str(e.dateEvent), strTime: str(e.strTime),
@@ -80,7 +80,7 @@ export function eventTimeline(eventId, { live = false, ...options } = {}) {
       .filter(Boolean));
 }
 
-function pickTeam(t) {
+export function pickTeam(t) {
   return {
     idTeam: str(t.idTeam), strTeam: str(t.strTeam), strTeamShort: str(t.strTeamShort), strSport: str(t.strSport),
     strCountry: str(t.strCountry), strLeague: str(t.strLeague), strBadge: str(t.strBadge), strFanart1: str(t.strFanart1),
@@ -113,28 +113,32 @@ export function canonicalPosition(position) {
   return null;
 }
 
+export function pickSquad(rows, teamId) {
+  const list = (rows ?? []).filter((p) => str(p.idTeam) === String(teamId) && str(p.strSport) !== 'Ice Hockey');
+  const manager = list.find((p) => /^(manager|head coach|coach)$/i.test(str(p.strPosition) ?? ''));
+  const players = list
+    .map((p) => ({
+      idPlayer: str(p.idPlayer), name: str(p.strPlayer), position: canonicalPosition(str(p.strPosition)),
+      number: int(p.strNumber), cutout: str(p.strCutout),
+    }))
+    .filter((p) => p.idPlayer && p.name && p.position);
+  return { coach: str(manager?.strPlayer), players };
+}
+
 export function teamSquad(teamId, options = {}) {
-  return call('lookup_all_players.php', { id: teamId }, { ttl: TTL.players, ...options }, (json) => {
-    const list = (json?.player ?? []).filter((p) => str(p.idTeam) === String(teamId) && str(p.strSport) !== 'Ice Hockey');
-    const manager = list.find((p) => /^(manager|head coach|coach)$/i.test(str(p.strPosition) ?? ''));
-    const players = list
-      .map((p) => ({
-        idPlayer: str(p.idPlayer), name: str(p.strPlayer), position: canonicalPosition(str(p.strPosition)),
-        number: int(p.strNumber), cutout: str(p.strCutout),
-      }))
-      .filter((p) => p.idPlayer && p.name && p.position);
-    return { coach: str(manager?.strPlayer), players };
-  });
+  return call('lookup_all_players.php', { id: teamId }, { ttl: TTL.players, ...options }, (json) => pickSquad(json?.player, teamId));
+}
+
+export function pickVenue(v) {
+  return v ? {
+    idVenue: str(v.idVenue), strVenue: str(v.strVenue), intCapacity: int(v.intCapacity), strLocation: str(v.strLocation),
+    strThumb: str(v.strThumb), strFanart1: str(v.strFanart1), strDescriptionEN: str(v.strDescriptionEN)?.slice(0, 600) ?? null,
+  } : null;
 }
 
 export function lookupVenue(venueId, options = {}) {
-  return call('lookupvenue.php', { id: venueId }, { ttl: TTL.venue, ...options }, (json) => {
-    const v = (json?.venues ?? []).find((x) => str(x.idVenue) === String(venueId));
-    return v ? {
-      idVenue: str(v.idVenue), strVenue: str(v.strVenue), intCapacity: int(v.intCapacity), strLocation: str(v.strLocation),
-      strThumb: str(v.strThumb), strFanart1: str(v.strFanart1), strDescriptionEN: str(v.strDescriptionEN)?.slice(0, 600) ?? null,
-    } : null;
-  });
+  return call('lookupvenue.php', { id: venueId }, { ttl: TTL.venue, ...options },
+    (json) => pickVenue((json?.venues ?? []).find((x) => str(x.idVenue) === String(venueId))));
 }
 
 export function leagueTeams(leagueName) {

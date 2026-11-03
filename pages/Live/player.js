@@ -60,13 +60,17 @@ function goalItem(goal) {
     h('span', { class: 'num' }, t('common.score', { home: goal.home_score, away: goal.away_score })));
 }
 
+// The score often arrives without the list of goals, so "No goals yet" is shown only at 0–0.
+function goalList(match) {
+  if (match.goals.length) return h('ol', { class: 'goals', 'aria-label': t('live.goals') }, match.goals.map(goalItem).reverse());
+  return !match.home_score && !match.away_score && h('p', { class: 'player__eyebrow', 'data-i18n': 'live.noGoals' });
+}
+
 function matchCenter(match) {
   return [
     h('p', { class: 'eyebrow player__eyebrow cluster' }, createStatusBadge('live'), liveClock(match)),
     h('p', { class: 'player__score' }, scoreLabel(match)),
-    match.goals.length
-      ? h('ol', { class: 'goals', 'aria-label': t('live.goals') }, match.goals.map(goalItem).reverse())
-      : h('p', { class: 'player__eyebrow', 'data-i18n': 'live.noGoals' }),
+    goalList(match),
   ];
 }
 
